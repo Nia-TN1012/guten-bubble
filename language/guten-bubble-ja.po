@@ -1,0 +1,294 @@
+# Copyright (C) 2013 WordPress
+# This file is distributed under the same license as the WordPress package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Guten-Bubble\n"
+"Report-Msgid-Bugs-To: http://wppolyglots.wordpress.com\n"
+"POT-Creation-Date: 2019-01-06 09:33+0900\n"
+"PO-Revision-Date: 2019-01-06 14:17+0900\n"
+"Last-Translator: Nia Tomonaka <nia1012@outlook.jp>\n"
+"Language-Team: Nia Tomonaka <nia1012-tmnk@outlook.jp>\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: ../js\n"
+"X-Poedit-SearchPath-0: block_guten-bubble.js\n"
+
+#: block_guten-bubble.js:89
+msgid "Displays a speech bubble like a chat conversation."
+msgstr "チャットの会話のような吹き出しを表示します。"
+
+#: block_guten-bubble.js:90
+msgid "speech"
+msgstr "会話"
+
+#: block_guten-bubble.js:90
+msgid "bubble"
+msgstr "吹き出し"
+
+#: block_guten-bubble.js:90
+msgid "chara"
+msgstr "キャラ"
+
+#: block_guten-bubble.js:181
+msgid "Enter serif here ..."
+msgstr "ここにセリフを入力 …"
+
+#: block_guten-bubble.js:194
+msgid "Character icon (preset)"
+msgstr "キャラアイコン (プリセット)"
+
+#: block_guten-bubble.js:200
+msgid "Custom"
+msgstr "カスタム"
+
+#: block_guten-bubble.js:265
+msgid "Character icon (custom)"
+msgstr "キャラアイコン (カスタム)"
+
+#: block_guten-bubble.js:266
+msgid ""
+"Enabled only when \"Custom\" is selected for the \"Character icon (preset)\"."
+msgstr ""
+"「キャラアイコン (プリセット)」で「カスタム」が選択されている場合にのみ有効に"
+"なります。"
+
+#: block_guten-bubble.js:267
+msgid ""
+"Specifies a image file in the '/wp-content/upload/guten-bubble/img/' folder."
+msgstr ""
+"'/wp-content/upload/guten-bubble/img/' フォルダ内の画像ファイルを指定します。"
+
+#: block_guten-bubble.js:269
+msgid "Character icon file name"
+msgstr "キャラアイコンのファイル名"
+
+#: block_guten-bubble.js:278
+msgid "Character icon alignment"
+msgstr "キャラアイコンの配置"
+
+#: block_guten-bubble.js:284
+msgid "Left"
+msgstr "左寄せ"
+
+#: block_guten-bubble.js:285
+msgid "Right"
+msgstr "右寄せ"
+
+#: block_guten-bubble.js:290 block_guten-bubble.js:292
+msgid "Character name"
+msgstr "キャラの名前"
+
+#: block_guten-bubble.js:303
+msgid "Theme color"
+msgstr "テーマカラー"
+
+#: block_guten-bubble.js:309
+msgid "Default"
+msgstr "デフォルト"
+
+#: block_guten-bubble.js:310
+msgid "Rose"
+msgstr "ローズ"
+
+#: block_guten-bubble.js:311
+msgid "Rose (fill-color)"
+msgstr "ローズ（塗りつぶし）"
+
+#: block_guten-bubble.js:312
+msgid "Orange"
+msgstr "オレンジ"
+
+#: block_guten-bubble.js:313
+msgid "Orange (fill-color)"
+msgstr "オレンジ（塗りつぶし）"
+
+#: block_guten-bubble.js:314
+msgid "Lemon"
+msgstr "レモン"
+
+#: block_guten-bubble.js:315
+msgid "Lemon (fill-color)"
+msgstr "レモン（塗りつぶし）"
+
+#: block_guten-bubble.js:316
+msgid "Lime"
+msgstr "ライム"
+
+#: block_guten-bubble.js:317
+msgid "Lime (fill-color)"
+msgstr "ライム（塗りつぶし）"
+
+#: block_guten-bubble.js:318
+msgid "Viridian"
+msgstr "ビリジアン"
+
+#: block_guten-bubble.js:319
+msgid "Viridian (fill-color)"
+msgstr "ビリジアン（塗りつぶし）"
+
+#: block_guten-bubble.js:320
+msgid "Sky Blue"
+msgstr "スカイブルー"
+
+#: block_guten-bubble.js:321
+msgid "Sky Blue (fill-color)"
+msgstr "スカイブルー（塗りつぶし）"
+
+#: block_guten-bubble.js:322
+msgid "Imperial Blue"
+msgstr "インペリアルブルー"
+
+#: block_guten-bubble.js:323
+msgid "Imperial Blue (fill-color)"
+msgstr "インペリアルブルー（塗りつぶし）"
+
+#: block_guten-bubble.js:324
+msgid "Lavendar"
+msgstr "ラベンダー"
+
+#: block_guten-bubble.js:325
+msgid "Lavendar (fill-color)"
+msgstr "ラベンダー（塗りつぶし）"
+
+#: block_guten-bubble.js:326
+msgid "Monotone"
+msgstr "モノトーン"
+
+#: block_guten-bubble.js:327
+msgid "Monotone (fill-color)"
+msgstr "モノトーン（塗りつぶし）"
+
+#: block_guten-bubble.js:328
+msgid "Bootstrap like (Success)"
+msgstr "Bootstrap風（Success）"
+
+#: block_guten-bubble.js:329
+msgid "Bootstrap like (Info)"
+msgstr "Bootstrap風（Info）"
+
+#: block_guten-bubble.js:330
+msgid "Bootstrap like (Warning)"
+msgstr "Bootstrap風（Warning）"
+
+#: block_guten-bubble.js:331
+msgid "Bootstrap like (Danger)"
+msgstr "Bootstrap風（Danger）"
+
+#: block_guten-bubble.js:336
+msgid "Speech bubble tail type"
+msgstr "吹き出しのしっぽのタイプ"
+
+#: block_guten-bubble.js:342
+msgid "Speaking"
+msgstr "Speaking"
+
+#: block_guten-bubble.js:343
+msgid "Thinking"
+msgstr "Thinking"
+
+#: block_guten-bubble.js:348
+msgid "Speech bubble text font size"
+msgstr "吹き出しテキストのフォントサイズ"
+
+#: block_guten-bubble.js:354
+msgid "Small"
+msgstr "小"
+
+#: block_guten-bubble.js:359
+msgid "Large"
+msgstr "大"
+
+#: block_guten-bubble.js:364
+msgid "Extra Large"
+msgstr "特大"
+
+#: block_guten-bubble.js:378
+msgid "Drop shadow"
+msgstr "影を付ける"
+
+#: block_guten-bubble.js:386
+msgid "Icon negation"
+msgstr "アイコンのネガ化"
+
+#: block_guten-bubble.js:394
+msgid "Character icon corner radius"
+msgstr "キャラアイコンの角丸設定"
+
+#: block_guten-bubble.js:400 block_guten-bubble.js:417
+msgid "Square"
+msgstr "四角"
+
+#: block_guten-bubble.js:401 block_guten-bubble.js:418
+msgid "Corner radius Lv.1"
+msgstr "角丸（Lv.1）"
+
+#: block_guten-bubble.js:402 block_guten-bubble.js:419
+msgid "Corner radius Lv.2"
+msgstr "角丸（Lv.2）"
+
+#: block_guten-bubble.js:403 block_guten-bubble.js:420
+msgid "Corner radius Lv.3"
+msgstr "角丸（Lv.3）"
+
+#: block_guten-bubble.js:404 block_guten-bubble.js:421
+msgid "Corner radius Lv.4"
+msgstr "角丸（Lv.4）"
+
+#: block_guten-bubble.js:405 block_guten-bubble.js:422
+msgid "Corner radius Lv.5"
+msgstr "角丸（Lv.5）"
+
+#: block_guten-bubble.js:406
+msgid "Rounded"
+msgstr "丸型"
+
+#: block_guten-bubble.js:411
+msgid "Speech bubble corner-radius"
+msgstr "吹き出しの角丸設定"
+
+#: block_guten-bubble.js:432
+msgid "None"
+msgstr "なし"
+
+#: block_guten-bubble.js:433
+msgid "Spin"
+msgstr "回転"
+
+#: block_guten-bubble.js:434
+msgid "Spin (Reverse)"
+msgstr "回転（逆方向）"
+
+#: block_guten-bubble.js:435
+msgid "Pendulum"
+msgstr "振り子"
+
+#: block_guten-bubble.js:436
+msgid "Snake"
+msgstr "振動"
+
+#: block_guten-bubble.js:437
+msgid "Bound"
+msgstr "バウンド"
+
+#: block_guten-bubble.js:456
+msgid "Character icon settings"
+msgstr "キャラアイコンの設定"
+
+#: block_guten-bubble.js:462
+msgid "Speech bubble settings"
+msgstr "吹き出しの設定"
+
+#: block_guten-bubble.js:467
+msgid "Effect settings"
+msgstr "エフェクトの設定"
+
+#: block_guten-bubble.js:473
+msgid "Animation"
+msgstr "アニメーション"
+
+#~ msgid "Content settings"
+#~ msgstr "Content settings"

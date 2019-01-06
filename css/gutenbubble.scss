@@ -1,0 +1,407 @@
+/*!
+	Guten-Bubble style sheet
+*/
+@charset "UTF-8";
+
+@mixin large-content {
+	@media screen and ( min-width: 721px ) {
+		@content;
+	}
+}
+@mixin small-content {
+	@media screen and ( max-width: 720px ) {
+		@content;
+	}
+}
+
+// Base
+.cn-gutenbubble {
+	overflow: hidden;
+	padding: 10px 20px;
+	margin: 0;
+	line-height: 1.5;
+	color: #333333;
+	display: block;
+	clear: both;
+	content: "";
+
+	// Chara Location
+	%base-chara {
+		@include large-content {
+			width: 110px;	
+		}
+		@include small-content {
+			width: 70px;	
+		}
+	}
+	.chara {
+		&-left {
+			@extend %base-chara;
+			float: left;
+			@include large-content {
+				margin-right: -110px;
+			}
+			@include small-content {
+				margin-right: -70px;	
+			}
+		}
+		&-right {
+			@extend %base-chara;
+			float: right;
+			@include large-content {
+				margin-left: -110px;
+			}
+			@include small-content {
+				margin-left: -70px;	
+			}
+		}
+	}
+
+	// Speaker Icon
+	.chara-icon {
+		text-align: center;
+		@include large-content {
+			height: 100px;
+		}
+		@include small-content {
+			height: 60px;
+		}
+
+		> img {
+			@include large-content {
+				height: 100px;
+				width: 100px;
+			}
+			@include small-content {
+				height: 60px;
+				width: 60px;
+			}
+		}
+	}
+
+	// Chara Name
+	.chara-name {
+		overflow: hidden;
+		text-align: center;
+		font-size: 12px;
+	}
+
+	// Bubble unit
+	%base-bubble {
+		position: relative;
+		padding-top: 14px;
+	}
+	.bubble {
+		&-left {
+			@extend %base-bubble;
+			float: left;
+			@include large-content {
+				margin-left: 140px;
+				margin-right: 120px;
+			}
+			@include small-content {
+				margin-left: 100px;
+			}
+		}
+		&-right {
+			@extend %base-bubble;
+			float: right;
+			@include large-content {
+				margin-right: 140px;
+				margin-left: 120px;
+			}
+			@include small-content {
+				margin-right: 100px;
+			}
+		}
+	}
+
+	// Speak Tail
+	%base-tail-speak {
+		position: absolute;
+		top: 23px;
+		z-index: 1;
+		height: 0;
+		width: 0;
+		border-top-width: 6px;
+		border-bottom-width: 6px;
+		border-color: transparent #CCCCCC;
+		content: "";
+	}
+	.tail-speak {
+		@mixin left {
+			border-right-width: 24px;
+			border-style: solid solid solid none;
+		}
+		@mixin right {
+			border-left-width: 24px;
+			border-style: solid none solid solid;
+		}
+		&-left {
+			&::before {
+				@extend %base-tail-speak;
+				@include left;
+				left: -24px;
+			}
+			&::after {
+				@extend %base-tail-speak;
+				@include left;
+				left: -22px;
+				z-index: 3;
+				border-color: transparent #FFFFFF;
+			}
+		}
+		&-right {
+			&::before {
+				@extend %base-tail-speak;
+				@include right;
+				right: -24px;
+			}
+			&::after {
+				@extend %base-tail-speak;
+				@include right;
+				right: -22px;
+				z-index: 3;
+				border-color: transparent #FFFFFF;
+			}
+		}
+	}
+
+	// Think Tail
+	%base-tail-think {
+		position: absolute;
+		background-color: #FFFFFF;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #CCCCCC;
+		content: "";
+	}
+	.tail-think {
+		@mixin big( $align: left ) {
+			top: 24px;
+			#{$align}: -17px;
+			height: 12px;
+			width:  12px;
+			border-radius: 10px;
+		}
+		@mixin small( $align: left ) {
+			top: 20px;
+			#{$align}: -28px;
+			height: 8px;
+			width:  8px;
+			border-radius: 5px;
+		}
+		&-left {
+			&::before {
+				@extend %base-tail-think;
+				@include big( left );
+			}
+			&::after {
+				@extend %base-tail-think;
+				@include small( left );
+			}
+		}
+		&-right {
+			&::before {
+				@extend %base-tail-think;
+				@include big( right );
+			}
+			&::after {
+				@extend %base-tail-think;
+				@include small( right );
+			}
+		}
+	}
+
+	// Content
+	.content {
+		position: relative;
+		padding: 5px 10px;
+		z-index: 2;
+		background-color: #FFFFFF;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #EEEEEE;
+		color: #333333;
+	}
+
+	// Theme Color
+	// Bootstrap style
+	@mixin theme-color-bootstrap( $name, $color-light, $color-vivid, $color-text ) {
+		div[class*="tail-speak"].theme-color-#{$name}::after {
+			border-color: transparent $color-light !important;
+		}
+		div[class*="tail-think"].theme-color-#{$name} {
+			&::before, &::after {
+				background-color: $color-light !important;
+				border-color: $color-vivid !important;
+			}
+		}
+		.content.theme-color-#{$name} {
+			background-color: $color-light !important;
+			border-color: $color-vivid !important;
+			color: $color-text !important;
+		}
+	}
+	// Success
+	@include theme-color-bootstrap( 'success', #dff0d8, #d6e9c6, #3c763d );
+	// Info
+	@include theme-color-bootstrap( 'info', #d9edf7, #bce8f1, #31708f );
+	// Warning
+	@include theme-color-bootstrap( 'warning', #fcf8e3, #f5e79e, #8a6d3b );
+	// Danger
+	@include theme-color-bootstrap( 'danger', #f2dede, #ebccd1, #a94442 );
+
+	// Basic Color
+	@mixin theme-color-base( $name, $color-light, $color-vivid, $color-text-in-fill: inherit ) {
+		div[class*="tail-speak"].theme-color-#{$name} {
+			&::before, &-fill::before {
+				border-color: transparent $color-vivid !important;
+			}
+			&::after {
+				border-color: transparent $color-light !important;
+			}
+			&-fill::after {
+				border-color: transparent $color-vivid !important;
+			}
+		}
+		div[class*="tail-think"].theme-color-#{$name} {
+			&::before, &::after {
+				background-color: $color-light !important;
+				border-color: $color-vivid !important;
+			}
+			&-fill {
+				&::before, &::after {
+					background-color: $color-vivid !important;
+					border-color: $color-vivid !important;
+				}
+			}
+		}
+		.content.theme-color-#{$name} {
+			background-color: $color-light !important;
+			border-color: $color-vivid !important;
+	
+			&-fill {
+				@extend .theme-color-#{$name};
+				background-color: $color-vivid !important;
+				@if $color-text-in-fill != inherit {
+					color: $color-text-in-fill !important;
+				}
+			}
+		}
+	}
+	// Rose
+	@include theme-color-base( 'rose', #FFEDF6, #F9007C, white );
+	// Orange
+	@include theme-color-base( 'orange', #FDEAD7, #F98511, white );
+	// Lemon
+	@include theme-color-base( 'lemon', #FFFACD, #FFE900 );
+	// Lime
+	@include theme-color-base( 'lime', #E5FFE5, #00FF00 );
+	// Viridian
+	@include theme-color-base( 'viridian', #D1FFF5, #05FFC8 );
+	// Sky
+	@include theme-color-base( 'sky', #D8F5FF, #00BFFF, white );
+	// Imperial Blue
+	@include theme-color-base( 'imperial', #D8E4FF, #2464FF, white );
+	// Lavendar
+	@include theme-color-base( 'lavendar', #DFD6F9, #9F80FC, white );
+	// Monotone
+	@include theme-color-base( 'monotone', #EEE, #777, white );
+
+	// Effects
+	// Drop Shadow
+	.chara-icon > .shadow,
+	.content.shadow {
+		box-shadow: 0px 2px 5px rgba( 0, 0, 0, 0.26 );
+	}
+	div[class*="tail-think"].shadow {
+		&::before, &::after {
+			box-shadow: 0px 2px 5px rgba( 0, 0, 0, 0.26 );
+		}
+	}
+
+	// Corner Radius
+	@for $level from 1 through 5 {
+		.chara-icon > .corner-r#{$level} {
+			border-radius: #{$level * 4}#{'%'};
+		}
+		.content.corner-r#{$level} {
+			border-radius: #{$level * 2}px;
+		}
+	}
+	.chara-icon > .corner-round {
+		border-radius: 50#{'%'};
+	}
+
+	// Negative
+	.chara-icon > .nega {
+		filter: invert( 100% );
+	}
+
+	// Animations
+	// Spin Animation
+	@mixin spin-animation( $duration, $reverse: false ) {
+		$suffix: '';
+		$end-rotate: 360deg;
+		@if $reverse {
+			$suffix: -rev;
+			$end-rotate: -360deg;
+		}
+		animation: spin#{$suffix} $duration linear infinite;
+		@keyframes spin#{$suffix} {
+			0% { transform: rotate( 0deg ); }
+			100% { transform: rotate( $end-rotate ); }
+		}
+	}
+	.chara-icon > .spin {
+		@include spin-animation( 1.5s );
+
+		&-rev {
+			@include spin-animation( 1.5s, true );
+		}
+	}
+
+	// Pendulum
+	@mixin pendulum-animation {
+		animation: pendulum 1.5s linear infinite;
+		@keyframes pendulum {
+			0% { transform: rotate( 0deg ); }
+			25% { transform: rotate( 60deg ); }
+			50% { transform: rotate( 0deg ); }
+			75% { transform: rotate( -60deg ); }
+			100% { transform: rotate( 0deg ); }
+		}
+	}
+	.chara-icon > .pendulum {
+		@include pendulum-animation;
+	}
+
+	// Snake
+	@mixin snake-animation {
+		animation: snake 0.1s linear infinite;
+		@keyframes snake {
+			0% { transform: translate( 0px, 0px) rotateZ( 0deg ) }
+			25% { transform: translate( 2px, 2px ) rotateZ( 1deg ) }
+			50% { transform: translate( 0px, 2px ) rotateZ( 0deg ) }
+			75% { transform: translate( 2px, 0px ) rotateZ( -1deg ) }
+			100% { transform: translate( 0px, 0px ) rotateZ( 0deg ) }
+		}
+	}
+	.chara-icon > .snake {
+		@include snake-animation;
+	}
+
+	// Bound
+	@mixin bound-animation {
+		animation: bound 0.5s ease infinite;
+		@keyframes bound {
+			0% { transform: translateY( 0px ) }
+			50% { transform: translateY( -15px ) }
+			100% { transform: translateY( 0px ) }
+		}
+	}
+	.chara-icon > .bound {
+		@include bound-animation;
+	}
+}
