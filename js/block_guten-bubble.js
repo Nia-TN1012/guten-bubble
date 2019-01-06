@@ -357,7 +357,7 @@
             );
             // Bubble Corner Raduis
             var elEffectBubbleRadius = el( 'div', {},
-                el( 'label', { style: { display: 'block' } }, __( 'Speech bubble corner-radius', 'guten-bubble' ) ),
+                el( 'label', { style: { display: 'block' } }, __( 'Speech bubble corner radius', 'guten-bubble' ) ),
                 el( 'select', { value: effectBubbleRadius, onChange: function( event ) {
                     var selected = event.target.querySelector( 'option:checked' );
                     props.setAttributes( { effect_bubble_radius: selected.value } );
