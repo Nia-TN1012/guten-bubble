@@ -63,7 +63,6 @@ class GutenBubble {
         }
         
         wp_enqueue_script( 'block-guten-bubble', plugins_url( 'js/block_guten-bubble.min.js', __FILE__ ), ['wp-blocks', 'wp-editor', 'wp-i18n', 'wp-element', 'wp-components'], "", true );
-        wp_enqueue_script( 'block-prism-code', plugins_url( 'js/block_prism-code.min.js', __FILE__ ), ['wp-blocks', 'wp-editor', 'wp-i18n', 'wp-element', 'wp-components'], "", true );
     
         // WordPress 5.0〜
         if( function_exists( 'wp_set_script_translations' ) ) {
