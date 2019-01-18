@@ -568,6 +568,38 @@
   color: white !important;
 }
 
+.cn-gutenbubble div[class*="tail-speak"].theme-color-espresso::before, .cn-gutenbubble div[class*="tail-speak"].content.theme-color-espresso-fill::before, .cn-gutenbubble div[class*="tail-speak"].theme-color-espresso-fill::before {
+  border-color: transparent #271202 !important;
+}
+
+.cn-gutenbubble div[class*="tail-speak"].theme-color-espresso::after, .cn-gutenbubble div[class*="tail-speak"].content.theme-color-espresso-fill::after {
+  border-color: transparent #F7E5AF !important;
+}
+
+.cn-gutenbubble div[class*="tail-speak"].theme-color-espresso-fill::after {
+  border-color: transparent #271202 !important;
+}
+
+.cn-gutenbubble div[class*="tail-think"].theme-color-espresso::before, .cn-gutenbubble div[class*="tail-think"].content.theme-color-espresso-fill::before, .cn-gutenbubble div[class*="tail-think"].theme-color-espresso::after, .cn-gutenbubble div[class*="tail-think"].content.theme-color-espresso-fill::after {
+  background-color: #F7E5AF !important;
+  border-color: #271202 !important;
+}
+
+.cn-gutenbubble div[class*="tail-think"].theme-color-espresso-fill::before, .cn-gutenbubble div[class*="tail-think"].theme-color-espresso-fill::after {
+  background-color: #271202 !important;
+  border-color: #271202 !important;
+}
+
+.cn-gutenbubble .content.theme-color-espresso, .cn-gutenbubble .content.theme-color-espresso-fill {
+  background-color: #F7E5AF !important;
+  border-color: #271202 !important;
+}
+
+.cn-gutenbubble .content.theme-color-espresso-fill {
+  background-color: #271202 !important;
+  color: white !important;
+}
+
 .cn-gutenbubble .chara-icon > .shadow,
 .cn-gutenbubble .content.shadow {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);

@@ -207,6 +207,7 @@
                     el( 'option', { value: '07-imperial.png' }, __( 'Imperial Blue', 'guten-bubble' ) ),
                     el( 'option', { value: '08-lavendar.png' }, __( 'Lavendar', 'guten-bubble' ) ),
                     el( 'option', { value: '09-monotone.png' }, __( 'Monotone', 'guten-bubble' ) ),
+                    el( 'option', { value: '10-espresso.png' }, __( 'Espresso', 'guten-bubble' ) ),
                 ),
             );
             // Chara Icon Custom
@@ -274,6 +275,8 @@
                     el( 'option', { value: 'lavendar-fill' }, __( 'Lavendar (fill-color)', 'guten-bubble' ) ),
                     el( 'option', { value: 'monotone' }, __( 'Monotone', 'guten-bubble' ) ),
                     el( 'option', { value: 'monotone-fill' }, __( 'Monotone (fill-color)', 'guten-bubble' ) ),
+                    el( 'option', { value: 'espresso' }, __( 'Espresso', 'guten-bubble' ) ),
+                    el( 'option', { value: 'espresso-fill' }, __( 'Espresso (fill-color)', 'guten-bubble' ) ),
                     el( 'option', { value: 'success' }, __( 'Bootstrap like (Success)', 'guten-bubble' ) ),
                     el( 'option', { value: 'info' }, __( 'Bootstrap like (Info)', 'guten-bubble' ) ),
                     el( 'option', { value: 'warning' }, __( 'Bootstrap like (Warning)', 'guten-bubble' ) ),
