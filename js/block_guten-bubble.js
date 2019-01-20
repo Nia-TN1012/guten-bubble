@@ -302,20 +302,35 @@
                     value: contentFontSize,
                     fallbackFontSize: 12,
                     fontSizes: [
+                        // 0.625rem
+                        {
+                            name: __( 'Extra Small', 'guten-bubble' ),
+                            slug: 'xsmall',
+                            size: 10,
+                        },
+                        // 0.75rem
                         {
                             name: __( 'Small', 'guten-bubble' ),
                             slug: 'small',
-                            size: 10,
+                            size: 12,
                         },
+                        // 1rem
+                        {
+                            name: __( 'Middle', 'guten-bubble' ),
+                            slug: 'middle',
+                            size: 16,
+                        },
+                        // 1.5rem
                         {
                             name: __( 'Large', 'guten-bubble' ),
                             slug: 'large',
-                            size: 20,
+                            size: 24,
                         },
+                        // 2rem
                         {
                             name: __( 'Extra Large', 'guten-bubble' ),
                             slug: 'xlarge',
-                            size: 30,
+                            size: 32,
                         }
                     ],
                     onChange: function( value ) {
