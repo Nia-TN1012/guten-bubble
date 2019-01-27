@@ -198,16 +198,16 @@
                     event.preventDefault();
                 } },
                     el( 'option', { value: 'custom' }, __( 'Custom', 'guten-bubble' ) ),
-                    el( 'option', { value: '01-rose.png' }, __( 'Rose', 'guten-bubble' ) ),
-                    el( 'option', { value: '02-orange.png' }, __( 'Orange', 'guten-bubble' ) ),
-                    el( 'option', { value: '03-lemon.png' }, __( 'Lemon', 'guten-bubble' ) ),
-                    el( 'option', { value: '04-lime.png' }, __( 'Lime', 'guten-bubble' ) ),
-                    el( 'option', { value: '05-viridian.png' }, __( 'Viridian', 'guten-bubble' ) ),
-                    el( 'option', { value: '06-sky.png' }, __( 'Sky Blue', 'guten-bubble' ) ),
-                    el( 'option', { value: '07-imperial.png' }, __( 'Imperial Blue', 'guten-bubble' ) ),
-                    el( 'option', { value: '08-lavendar.png' }, __( 'Lavendar', 'guten-bubble' ) ),
-                    el( 'option', { value: '09-monotone.png' }, __( 'Monotone', 'guten-bubble' ) ),
-                    el( 'option', { value: '10-espresso.png' }, __( 'Espresso', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/01-rose.png' }, __( 'Rose', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/02-orange.png' }, __( 'Orange', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/03-lemon.png' }, __( 'Lemon', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/04-lime.png' }, __( 'Lime', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/05-viridian.png' }, __( 'Viridian', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/06-sky.png' }, __( 'Sky Blue', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/07-imperial.png' }, __( 'Imperial Blue', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/08-lavendar.png' }, __( 'Lavendar', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/09-monotone.png' }, __( 'Monotone', 'guten-bubble' ) ),
+                    el( 'option', { value: 'default/10-espresso.png' }, __( 'Espresso', 'guten-bubble' ) ),
                 ),
             );
             // Chara Icon Custom
@@ -334,6 +334,7 @@
                         }
                     ],
                     onChange: function( value ) {
+                        console.log( value );
                         props.setAttributes( { content_fontsize: value } );
                     }
                 })
