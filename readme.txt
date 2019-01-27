@@ -32,7 +32,7 @@ Guten-bubble can create a speech bubble display like a chat conversation.
 
 == Frequently Asked Questions ==
 
-= To use the icon image on hand! =
+= To use the icon image on hand =
 
 Open Guten-bubble settings page in the setting menu of the admin page.
 Press the 'Select from media library' button to select the icon image you want to use from the media library (if you have not uploaded it yet, upload it here) and press the 'Import' button to import.
