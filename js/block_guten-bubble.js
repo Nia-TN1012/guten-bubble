@@ -137,7 +137,7 @@
             },
             effect_shadow: {
                 type: 'bool',
-                default: true,
+                default: false,
             },
             effect_nega: {
                 type: 'bool',
