@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Guten-Bubble\n"
 "Report-Msgid-Bugs-To: http://wppolyglots.wordpress.com\n"
-"POT-Creation-Date: 2019-01-20 13:30+0900\n"
-"PO-Revision-Date: 2019-01-20 13:30+0900\n"
+"POT-Creation-Date: 2019-01-29 14:10+0900\n"
+"PO-Revision-Date: 2019-01-29 14:10+0900\n"
 "Last-Translator: Nia Tomonaka <nia1012@outlook.jp>\n"
 "Language-Team: Nia Tomonaka <nia1012-tmnk@outlook.jp>\n"
 "Language: ja_JP\n"
@@ -98,9 +98,10 @@ msgstr ""
 
 #: block_guten-bubble.js:217
 msgid ""
-"Specifies a image file in the '/wp-content/upload/guten-bubble/img/' folder."
+"Specifies a image file in the '/wp-content/uploads/guten-bubble/img/' folder."
 msgstr ""
-"'/wp-content/upload/guten-bubble/img/' フォルダ内の画像ファイルを指定します。"
+"'/wp-content/uploads/guten-bubble/img/' フォルダ内の画像ファイルを指定しま"
+"す。"
 
 #: block_guten-bubble.js:219
 msgid "Character icon file name"
@@ -222,87 +223,87 @@ msgstr "大"
 msgid "Extra Large"
 msgstr "特大"
 
-#: block_guten-bubble.js:345
+#: block_guten-bubble.js:346
 msgid "Drop shadow"
 msgstr "影を付ける"
 
-#: block_guten-bubble.js:353
+#: block_guten-bubble.js:354
 msgid "Icon negation"
 msgstr "アイコンのネガ化"
 
-#: block_guten-bubble.js:361
+#: block_guten-bubble.js:362
 msgid "Character icon corner radius"
 msgstr "キャラアイコンの角丸設定"
 
-#: block_guten-bubble.js:367 block_guten-bubble.js:384
+#: block_guten-bubble.js:368 block_guten-bubble.js:385
 msgid "Square"
 msgstr "四角"
 
-#: block_guten-bubble.js:368 block_guten-bubble.js:385
+#: block_guten-bubble.js:369 block_guten-bubble.js:386
 msgid "Corner radius Lv.1"
 msgstr "角丸（Lv.1）"
 
-#: block_guten-bubble.js:369 block_guten-bubble.js:386
+#: block_guten-bubble.js:370 block_guten-bubble.js:387
 msgid "Corner radius Lv.2"
 msgstr "角丸（Lv.2）"
 
-#: block_guten-bubble.js:370 block_guten-bubble.js:387
+#: block_guten-bubble.js:371 block_guten-bubble.js:388
 msgid "Corner radius Lv.3"
 msgstr "角丸（Lv.3）"
 
-#: block_guten-bubble.js:371 block_guten-bubble.js:388
+#: block_guten-bubble.js:372 block_guten-bubble.js:389
 msgid "Corner radius Lv.4"
 msgstr "角丸（Lv.4）"
 
-#: block_guten-bubble.js:372 block_guten-bubble.js:389
+#: block_guten-bubble.js:373 block_guten-bubble.js:390
 msgid "Corner radius Lv.5"
 msgstr "角丸（Lv.5）"
 
-#: block_guten-bubble.js:373
+#: block_guten-bubble.js:374
 msgid "Rounded"
 msgstr "丸型"
 
-#: block_guten-bubble.js:378
+#: block_guten-bubble.js:379
 msgid "Speech bubble corner radius"
 msgstr "吹き出しの角丸設定"
 
-#: block_guten-bubble.js:399
+#: block_guten-bubble.js:400
 msgid "None"
 msgstr "なし"
 
-#: block_guten-bubble.js:400
+#: block_guten-bubble.js:401
 msgid "Spin"
 msgstr "回転"
 
-#: block_guten-bubble.js:401
+#: block_guten-bubble.js:402
 msgid "Spin (Reverse)"
 msgstr "回転（逆方向）"
 
-#: block_guten-bubble.js:402
+#: block_guten-bubble.js:403
 msgid "Pendulum"
 msgstr "振り子"
 
-#: block_guten-bubble.js:403
+#: block_guten-bubble.js:404
 msgid "Snake"
 msgstr "振動"
 
-#: block_guten-bubble.js:404
+#: block_guten-bubble.js:405
 msgid "Bound"
 msgstr "バウンド"
 
-#: block_guten-bubble.js:423
+#: block_guten-bubble.js:424
 msgid "Character icon settings"
 msgstr "キャラアイコンの設定"
 
-#: block_guten-bubble.js:429
+#: block_guten-bubble.js:430
 msgid "Speech bubble settings"
 msgstr "吹き出しの設定"
 
-#: block_guten-bubble.js:434
+#: block_guten-bubble.js:435
 msgid "Effect settings"
 msgstr "エフェクトの設定"
 
-#: block_guten-bubble.js:440
+#: block_guten-bubble.js:441
 msgid "Animation"
 msgstr "アニメーション"
 

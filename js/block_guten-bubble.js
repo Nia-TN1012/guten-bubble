@@ -137,7 +137,7 @@
             },
             effect_shadow: {
                 type: 'bool',
-                default: false,
+                default: true,
             },
             effect_nega: {
                 type: 'bool',
@@ -214,7 +214,7 @@
             var elCharaIconCustom = el( 'div', {},
                 el( 'label', { style: { display: 'block' } }, __( 'Character icon (custom)', 'guten-bubble' ) ),
                 el( 'small', { style: { display: 'block' } }, __( 'Enabled only when "Custom" is selected for the "Character icon (preset)".', 'guten-bubble' ) ),
-                el( 'small', { style: { display: 'block' } }, __( 'Specifies a image file in the \'/wp-content/upload/guten-bubble/img/\' folder.', 'guten-bubble' ) ),
+                el( 'small', { style: { display: 'block' } }, __( 'Specifies a image file in the \'/wp-content/uploads/guten-bubble/img/\' folder.', 'guten-bubble' ) ),
                 el( TextControl, {
                     placeholder: __( 'Character icon file name', 'guten-bubble' ),
                     value: charaIconCustom,
