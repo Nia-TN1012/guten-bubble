@@ -70,7 +70,7 @@ class GutenBubbleOptionsPage {
                     <h3><?= __( "Remarks", "guten-bubble-admin" ) ?></h3>
                     <ul>
                         <li><?= __( "Select the image in the WordPress media library and import it into the image folder of Guten-bubble.", "guten-bubble-admin" ) ?></li>
-                        <li><?= __( "The recommended image size is 120px x 120ox.", "guten-bubble-admin" ) ?></li>
+                        <li><?= __( "The recommended image size is 120px x 120px or more.", "guten-bubble-admin" ) ?></li>
                         <li><?= __( "Imported icon images are not deleted even if they are deleted from the media library.", "guten-bubble-admin" ) ?></li>
                     </ul>
                 </div>

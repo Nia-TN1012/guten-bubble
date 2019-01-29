@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Guten-Bubble\n"
 "Report-Msgid-Bugs-To: http://wppolyglots.wordpress.com\n"
-"POT-Creation-Date: 2019-01-27 20:00+0900\n"
-"PO-Revision-Date: 2019-01-27 20:02+0900\n"
+"POT-Creation-Date: 2019-01-29 13:51+0900\n"
+"PO-Revision-Date: 2019-01-29 13:51+0900\n"
 "Last-Translator: Nia Tomonaka <nia1012@outlook.jp>\n"
 "Language-Team: Nia Tomonaka <nia1012-tmnk@outlook.jp>\n"
 "Language: ja_JP\n"
@@ -18,45 +18,45 @@ msgstr ""
 "X-Poedit-SearchPath-0: guten-bubble.php\n"
 "X-Poedit-SearchPath-1: options-page.php\n"
 
-#: guten-bubble.php:104
+#: guten-bubble.php:105
 msgid "Settings"
 msgstr "設定"
 
-#: options-page.php:28
+#: options-page.php:27
 msgid "Guten-bubble settings"
 msgstr "Guten-Bubbleの設定"
 
-#: options-page.php:32
+#: options-page.php:31
 msgid ""
 "NOTICE: To use the Guten-bubble plugin, required WordPress 5.0 or later."
 msgstr ""
 "重要: Guten-bubbleプラグインを利用するには、WordPress 5.0以降が必要です。"
 
-#: options-page.php:37
+#: options-page.php:36
 msgid "Import character icon image from media library"
 msgstr "メディアライブラリからキャラアイコン画像をインポート"
 
-#: options-page.php:51
+#: options-page.php:50
 msgid "Select character icon image"
 msgstr "キャラアイコンを選択"
 
-#: options-page.php:55
+#: options-page.php:54
 msgid "Choose Image"
 msgstr "画像を選択"
 
-#: options-page.php:56
+#: options-page.php:55
 msgid "Select from media library"
 msgstr "メディアライブラリから選択"
 
-#: options-page.php:67
+#: options-page.php:66
 msgid "Import"
 msgstr "インポート"
 
-#: options-page.php:71
+#: options-page.php:70
 msgid "Remarks"
 msgstr "備考"
 
-#: options-page.php:73
+#: options-page.php:72
 msgid ""
 "Select the image in the WordPress media library and import it into the image "
 "folder of Guten-bubble."
@@ -64,11 +64,11 @@ msgstr ""
 "WordPressのメディアライブラリから画像を選択し、Guten-bubbleの画像フォルダにイ"
 "ンポートします。"
 
-#: options-page.php:74
-msgid "The recommended image size is 120px x 120ox."
-msgstr "画像のサイズは120px × 120pxをオススメします。"
+#: options-page.php:73
+msgid "The recommended image size is 120px x 120px or more."
+msgstr "画像のサイズは120px × 120px以上を推奨します。"
 
-#: options-page.php:75
+#: options-page.php:74
 msgid ""
 "Imported icon images are not deleted even if they are deleted from the media "
 "library."
@@ -76,11 +76,11 @@ msgstr ""
 "メディアファイルからアイコン画像を削除しても、インポート済みのものは削除され"
 "ず残ります。"
 
-#: options-page.php:79
+#: options-page.php:78
 msgid "Attention"
 msgstr "注意"
 
-#: options-page.php:81
+#: options-page.php:80
 msgid ""
 "If there is an image file of the same name in the import destination, it "
 "will be overwritten."
@@ -88,30 +88,30 @@ msgstr ""
 "インポート済みのものと同じファイル名の画像をインポートした場合、上書きされま"
 "す。"
 
-#: options-page.php:95
+#: options-page.php:94
 msgid "Default character icon list"
 msgstr "デフォルトのキャラアイコン一覧"
 
-#: options-page.php:104
+#: options-page.php:103
 msgid "Imported character icon list"
 msgstr "インポート済みのキャラアイコンの一覧"
 
-#: options-page.php:155
+#: options-page.php:154
 #, php-format
 msgid "ERROR: The selected image URL is invalid. ('%s')"
 msgstr "エラー: 選択された画像のURLが無効です。(‘%s’)"
 
-#: options-page.php:161
+#: options-page.php:160
 #, php-format
 msgid "ERROR: '%s' does not exist or the file path is invalid."
 msgstr "エラー: ‘%s’ が存在しないか、ファイルパスが無効です。"
 
-#: options-page.php:167
+#: options-page.php:166
 #, php-format
 msgid "ERROR: Failed to import '%s'."
 msgstr "エラー: ‘%s’ のインポートに失敗しました。"
 
-#: options-page.php:172
+#: options-page.php:171
 #, php-format
 msgid "Info: '%s' is imported."
 msgstr "情報: ‘%s’ をインポートしました。"
