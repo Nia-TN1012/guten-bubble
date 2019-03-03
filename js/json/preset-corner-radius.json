@@ -1,0 +1,19 @@
+{
+    "chara": [
+        { "value": "square", "label":  "Square" },
+        { "value": "corner-r1", "label":  "Corner radius Lv.1" },
+        { "value": "corner-r2", "label":  "Corner radius Lv.2" },
+        { "value": "corner-r3", "label":  "Corner radius Lv.3" },
+        { "value": "corner-r4", "label":  "Corner radius Lv.4" },
+        { "value": "corner-r5", "label":  "Corner radius Lv.5" },
+        { "value": "corner-round", "label":  "Rounded" }
+    ],
+    "bubble":  [
+        { "value": "square", "label":  "Square" },
+        { "value": "corner-r1", "label":  "Corner radius Lv.1" },
+        { "value": "corner-r2", "label":  "Corner radius Lv.2" },
+        { "value": "corner-r3", "label":  "Corner radius Lv.3" },
+        { "value": "corner-r4", "label":  "Corner radius Lv.4" },
+        { "value": "corner-r5", "label":  "Corner radius Lv.5" }
+    ]
+}

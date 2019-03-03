@@ -10,6 +10,11 @@ const {
     FontSizePicker 
 } = wp.components;
 
+const presetCharaIcons = require( './json/preset-chara-icons.json' );
+const presetThemeColors = require( './json/preset-theme-colors.json' );
+const presetAnimations = require( './json/preset-animations.json' );
+const presetCornerRadius = require( './json/preset-corner-radius.json' );
+
 const renderGutenBubble = ( elContent, gbprops ) => {
     const charaIconClass = [];
     const tailClass = [
@@ -205,17 +210,11 @@ export default {
                                     event.preventDefault();
                                 }
                             }>
-                                <option value="custom">{ __( 'Custom', 'guten-bubble' ) }</option>
-                                <option value="default/01-rose.png">{ __( 'Rose', 'guten-bubble' ) }</option>
-                                <option value="default/02-orange.png">{ __( 'Lemon', 'guten-bubble' ) }</option>
-                                <option value="default/03-lemon.png">{ __( 'Lime', 'guten-bubble' ) }</option>
-                                <option value="default/04-lime.png">{ __( 'Viridian', 'guten-bubble' ) }</option>
-                                <option value="default/05-viridian.png">{ __( 'Sky Blue', 'guten-bubble' ) }</option>
-                                <option value="default/06-sky.png">{ __( 'Imperial Blue', 'guten-bubble' ) }</option>
-                                <option value="default/07-imperial.png">{ __( 'Lavendar', 'guten-bubble' ) }</option>
-                                <option value="default/08-lavendar.png">{ __( 'Monotone', 'guten-bubble' ) }</option>
-                                <option value="default/09-monotone.png">{ __( 'Espresso', 'guten-bubble' ) }</option>
-                                <option value="default/10-espresso.png">{ __( 'Espresso', 'guten-bubble' ) }</option>
+                                {
+                                    presetCharaIcons.map(
+                                        element => <option value={ element.value }>{ __( element.label, 'guten-bubble' ) }</option>
+                                    )
+                                }
                             </select>
                         </div>
                         <div>
@@ -258,31 +257,11 @@ export default {
                                     event.preventDefault();
                                 }
                             }>
-                                <option value="default">{ __( 'Default', 'guten-bubble' ) }</option>
-                                <option value="rose">{ __( 'Rose', 'guten-bubble' ) }</option>
-                                <option value="rose-fill">{ __( 'Rose (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="orange">{ __( 'Orange', 'guten-bubble' ) }</option>
-                                <option value="orange-fill">{ __( 'Orange (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="lemon">{ __( 'Lemon', 'guten-bubble' ) }</option>
-                                <option value="lemon-fill">{ __( 'Lemon (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="lime">{ __( 'Lime', 'guten-bubble' ) }</option>
-                                <option value="lime-fill">{ __( 'Lime (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="viridian">{ __( 'Viridian', 'guten-bubble' ) }</option>
-                                <option value="viridian-fill">{ __( 'Viridian (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="sky">{ __( 'Sky Blue', 'guten-bubble' ) }</option>
-                                <option value="sky-fill">{ __( 'Sky Blue (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="imperial">{ __( 'Imperial Blue', 'guten-bubble' ) }</option>
-                                <option value="imperial-fill">{ __( 'Imperial Blue (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="lavendar">{ __( 'Lavendar', 'guten-bubble' ) }</option>
-                                <option value="lavendar-fill">{ __( 'Lavendar (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="monotone">{ __( 'Monotone', 'guten-bubble' ) }</option>
-                                <option value="monotone-fill">{ __( 'Monotone (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="espresso">{ __( 'Espresso', 'guten-bubble' ) }</option>
-                                <option value="espresso-fill">{ __( 'Espresso (fill-color)', 'guten-bubble' ) }</option>
-                                <option value="success">{ __( 'Bootstrap like (Success)', 'guten-bubble' ) }</option>
-                                <option value="info">{ __( 'Bootstrap like (Info)', 'guten-bubble' ) }</option>
-                                <option value="warning">{ __( 'Bootstrap like (Warning)', 'guten-bubble' ) }</option>
-                                <option value="danger">{ __( 'Bootstrap like (Danger)', 'guten-bubble' ) }</option>
+                                {
+                                    presetThemeColors.map(
+                                        element => <option value={ element.value }>{ __( element.label, 'guten-bubble' ) }</option>
+                                    )
+                                }
                             </select>
                         </div>
                         <div>
@@ -361,13 +340,11 @@ export default {
                                     event.preventDefault();
                                 }
                             }>
-                                <option value="square">{ __( 'Square', 'guten-bubble' ) }</option>
-                                <option value="corner-r1">{ __( 'Corner radius Lv.1', 'guten-bubble' ) }</option>
-                                <option value="corner-r2">{ __( 'Corner radius Lv.2', 'guten-bubble' ) }</option>
-                                <option value="corner-r3">{ __( 'Corner radius Lv.3', 'guten-bubble' ) }</option>
-                                <option value="corner-r4">{ __( 'Corner radius Lv.4', 'guten-bubble' ) }</option>
-                                <option value="corner-r5">{ __( 'Corner radius Lv.5', 'guten-bubble' ) }</option>
-                                <option value="corner-round">{ __( 'Rounded', 'guten-bubble' ) }</option>
+                                {
+                                    presetCornerRadius.chara.map(
+                                        element => <option value={ element.value }>{ __( element.label, 'guten-bubble' ) }</option>
+                                    )
+                                }
                             </select>
                         </div>
                         <div>
@@ -378,12 +355,11 @@ export default {
                                     event.preventDefault();
                                 }
                             }>
-                                <option value="square">{ __( 'Square', 'guten-bubble' ) }</option>
-                                <option value="corner-r1">{ __( 'Corner radius Lv.1', 'guten-bubble' ) }</option>
-                                <option value="corner-r2">{ __( 'Corner radius Lv.2', 'guten-bubble' ) }</option>
-                                <option value="corner-r3">{ __( 'Corner radius Lv.3', 'guten-bubble' ) }</option>
-                                <option value="corner-r4">{ __( 'Corner radius Lv.4', 'guten-bubble' ) }</option>
-                                <option value="corner-r5">{ __( 'Corner radius Lv.5', 'guten-bubble' ) }</option>
+                                {
+                                    presetCornerRadius.bubble.map(
+                                        element => <option value={ element.value }>{ __( element.label, 'guten-bubble' ) }</option>
+                                    )
+                                }
                             </select>
                         </div>
                     </PanelBody>
@@ -395,12 +371,11 @@ export default {
                                     event.preventDefault();
                                 }
                             }>
-                                <option value="none">{ __( 'None', 'guten-bubble' ) }</option>
-                                <option value="spin">{ __( 'Spin', 'guten-bubble' ) }</option>
-                                <option value="spin-rev">{ __( 'Spin (Reverse)', 'guten-bubble' ) }</option>
-                                <option value="pendulum">{ __( 'Pendulum', 'guten-bubble' ) }</option>
-                                <option value="snake">{ __( 'Snake', 'guten-bubble' ) }</option>
-                                <option value="bound">{ __( 'Bound', 'guten-bubble' ) }</option>
+                                {
+                                    presetAnimations.map(
+                                        element => <option value={ element.value }>{ __( element.label, 'guten-bubble' ) }</option>
+                                    )
+                                }
                             </select>
                         </div>
                     </PanelBody>

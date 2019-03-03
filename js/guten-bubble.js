@@ -121,6 +121,14 @@ var _wp$components = wp.components,
     ToggleControl = _wp$components.ToggleControl,
     FontSizePicker = _wp$components.FontSizePicker;
 
+var presetCharaIcons = __webpack_require__(/*! ./json/preset-chara-icons.json */ "./js/json/preset-chara-icons.json");
+
+var presetThemeColors = __webpack_require__(/*! ./json/preset-theme-colors.json */ "./js/json/preset-theme-colors.json");
+
+var presetAnimations = __webpack_require__(/*! ./json/preset-animations.json */ "./js/json/preset-animations.json");
+
+var presetCornerRadius = __webpack_require__(/*! ./json/preset-corner-radius.json */ "./js/json/preset-corner-radius.json");
+
 var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
   var charaIconClass = [];
   var tailClass = ['bubble-' + gbprops.charaAlign, 'tail-' + gbprops.tailType + '-' + gbprops.charaAlign];
@@ -169,7 +177,7 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
   }, wp.element.createElement("div", {
     className: 'chara-icon'
   }, wp.element.createElement("img", {
-    className: charaIconClass,
+    className: charaIconClass.join(' '),
     src: '/wp-content/uploads/guten-bubble/img/' + gbprops.charaIcon,
     alt: gbprops.charaIcon
   })), wp.element.createElement("div", {
@@ -313,37 +321,16 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
     }, __('Character icon (preset)', 'guten-bubble')), wp.element.createElement("select", {
       value: charaIconPreset,
       onChange: function onChange(event) {
-        var _event$target$querySe = event.target.querySelector('option:checked'),
-            selected = _event$target$querySe.selected;
-
         props.setAttributes({
-          charaIconPreset: selected.value
+          charaIconPreset: event.target.value
         });
         event.preventDefault();
       }
-    }, wp.element.createElement("option", {
-      value: "custom"
-    }, __('Custom', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/01-rose.png"
-    }, __('Rose', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/02-orange.png"
-    }, __('Lemon', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/03-lemon.png"
-    }, __('Lime', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/04-lime.png"
-    }, __('Viridian', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/05-viridian.png"
-    }, __('Sky Blue', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/06-sky.png"
-    }, __('Imperial Blue', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/07-imperial.png"
-    }, __('Lavendar', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/08-lavendar.png"
-    }, __('Monotone', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/09-monotone.png"
-    }, __('Espresso', 'guten-bubble')), wp.element.createElement("option", {
-      value: "default/10-espresso.png"
-    }, __('Espresso', 'guten-bubble')))), wp.element.createElement("div", null, wp.element.createElement("label", {
+    }, presetCharaIcons.map(function (element) {
+      return wp.element.createElement("option", {
+        value: element.value
+      }, __(element.label, 'guten-bubble'));
+    }))), wp.element.createElement("div", null, wp.element.createElement("label", {
       style: {
         display: 'block'
       }
@@ -370,11 +357,8 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
     }, __('Character icon alignment', 'guten-bubble')), wp.element.createElement("select", {
       value: charaAlign,
       onChange: function onChange(event) {
-        var _event$target$querySe2 = event.target.querySelector('option:checked'),
-            selected = _event$target$querySe2.selected;
-
         props.setAttributes({
-          charaAlign: selected.value
+          charaAlign: event.target.value
         });
         event.preventDefault();
       }
@@ -403,76 +387,24 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
     }, __('Theme color', 'guten-bubble')), wp.element.createElement("select", {
       value: themeColor,
       onChange: function onChange(event) {
-        var _event$target$querySe3 = event.target.querySelector('option:checked'),
-            selected = _event$target$querySe3.selected;
-
         props.setAttributes({
-          themeColor: selected.value
+          themeColor: event.target.value
         });
         event.preventDefault();
       }
-    }, wp.element.createElement("option", {
-      value: "default"
-    }, __('Default', 'guten-bubble')), wp.element.createElement("option", {
-      value: "rose"
-    }, __('Rose', 'guten-bubble')), wp.element.createElement("option", {
-      value: "rose-fill"
-    }, __('Rose (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "orange"
-    }, __('Orange', 'guten-bubble')), wp.element.createElement("option", {
-      value: "orange-fill"
-    }, __('Orange (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "lemon"
-    }, __('Lemon', 'guten-bubble')), wp.element.createElement("option", {
-      value: "lemon-fill"
-    }, __('Lemon (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "lime"
-    }, __('Lime', 'guten-bubble')), wp.element.createElement("option", {
-      value: "lime-fill"
-    }, __('Lime (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "viridian"
-    }, __('Viridian', 'guten-bubble')), wp.element.createElement("option", {
-      value: "viridian-fill"
-    }, __('Viridian (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "sky"
-    }, __('Sky Blue', 'guten-bubble')), wp.element.createElement("option", {
-      value: "sky-fill"
-    }, __('Sky Blue (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "imperial"
-    }, __('Imperial Blue', 'guten-bubble')), wp.element.createElement("option", {
-      value: "imperial-fill"
-    }, __('Imperial Blue (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "lavendar"
-    }, __('Lavendar', 'guten-bubble')), wp.element.createElement("option", {
-      value: "lavendar-fill"
-    }, __('Lavendar (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "monotone"
-    }, __('Monotone', 'guten-bubble')), wp.element.createElement("option", {
-      value: "monotone-fill"
-    }, __('Monotone (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "espresso"
-    }, __('Espresso', 'guten-bubble')), wp.element.createElement("option", {
-      value: "espresso-fill"
-    }, __('Espresso (fill-color)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "success"
-    }, __('Bootstrap like (Success)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "info"
-    }, __('Bootstrap like (Info)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "warning"
-    }, __('Bootstrap like (Warning)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "danger"
-    }, __('Bootstrap like (Danger)', 'guten-bubble')))), wp.element.createElement("div", null, wp.element.createElement("label", {
+    }, presetThemeColors.map(function (element) {
+      return wp.element.createElement("option", {
+        value: element.value
+      }, __(element.label, 'guten-bubble'));
+    }))), wp.element.createElement("div", null, wp.element.createElement("label", {
       style: {
         display: 'block'
       }
     }, __('Speech bubble tail type', 'guten-bubble')), wp.element.createElement("select", {
       value: tailType,
       onChange: function onChange(event) {
-        var _event$target$querySe4 = event.target.querySelector('option:checked'),
-            selected = _event$target$querySe4.selected;
-
         props.setAttributes({
-          tailType: selected.value
+          tailType: event.target.value
         });
         event.preventDefault();
       }
@@ -512,7 +444,12 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         name: __('Extra Large', 'guten-bubble'),
         slug: 'xlarge',
         size: 32
-      }]
+      }],
+      onChange: function onChange(value) {
+        return setAttributes({
+          contentFontSize: value
+        });
+      }
     }))), wp.element.createElement(PanelBody, {
       title: __('Effect settings', 'guten-bubble')
     }, wp.element.createElement("div", null, wp.element.createElement(ToggleControl, {
@@ -538,81 +475,46 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
     }, __('Character icon corner radius', 'guten-bubble')), wp.element.createElement("select", {
       value: effectCharaRadius,
       onChange: function onChange(event) {
-        var _event$target$querySe5 = event.target.querySelector('option:checked'),
-            selected = _event$target$querySe5.selected;
-
         props.setAttributes({
-          effectCharaRadius: selected.value
+          effectCharaRadius: event.target.value
         });
         event.preventDefault();
       }
-    }, wp.element.createElement("option", {
-      value: "square"
-    }, __('Square', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r1"
-    }, __('Corner radius Lv.1', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r2"
-    }, __('Corner radius Lv.2', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r3"
-    }, __('Corner radius Lv.3', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r4"
-    }, __('Corner radius Lv.4', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r5"
-    }, __('Corner radius Lv.5', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-round"
-    }, __('Rounded', 'guten-bubble')))), wp.element.createElement("div", null, wp.element.createElement("label", {
+    }, presetCornerRadius.chara.map(function (element) {
+      return wp.element.createElement("option", {
+        value: element.value
+      }, __(element.label, 'guten-bubble'));
+    }))), wp.element.createElement("div", null, wp.element.createElement("label", {
       style: {
         display: 'block'
       }
     }, __('Speech bubble corner radius', 'guten-bubble')), wp.element.createElement("select", {
       value: effectBubbleRadius,
       onChange: function onChange(event) {
-        var _event$target$querySe6 = event.target.querySelector('option:checked'),
-            selected = _event$target$querySe6.selected;
-
         props.setAttributes({
-          effectBubbleRadius: selected.value
+          effectBubbleRadius: event.target.value
         });
         event.preventDefault();
       }
-    }, wp.element.createElement("option", {
-      value: "square"
-    }, __('Square', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r1"
-    }, __('Corner radius Lv.1', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r2"
-    }, __('Corner radius Lv.2', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r3"
-    }, __('Corner radius Lv.3', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r4"
-    }, __('Corner radius Lv.4', 'guten-bubble')), wp.element.createElement("option", {
-      value: "corner-r5"
-    }, __('Corner radius Lv.5', 'guten-bubble'))))), wp.element.createElement(PanelBody, {
+    }, presetCornerRadius.bubble.map(function (element) {
+      return wp.element.createElement("option", {
+        value: element.value
+      }, __(element.label, 'guten-bubble'));
+    })))), wp.element.createElement(PanelBody, {
       title: __('Animation', 'guten-bubble')
     }, wp.element.createElement("div", null, wp.element.createElement("select", {
       value: animation,
       onChange: function onChange(event) {
-        var _event$target$querySe7 = event.target.querySelector('option:checked'),
-            selected = _event$target$querySe7.selected;
-
         props.setAttributes({
-          animation: selected.value
+          animation: event.target.value
         });
         event.preventDefault();
       }
-    }, wp.element.createElement("option", {
-      value: "none"
-    }, __('None', 'guten-bubble')), wp.element.createElement("option", {
-      value: "spin"
-    }, __('Spin', 'guten-bubble')), wp.element.createElement("option", {
-      value: "spin-rev"
-    }, __('Spin (Reverse)', 'guten-bubble')), wp.element.createElement("option", {
-      value: "pendulum"
-    }, __('Pendulum', 'guten-bubble')), wp.element.createElement("option", {
-      value: "snake"
-    }, __('Snake', 'guten-bubble')), wp.element.createElement("option", {
-      value: "bound"
-    }, __('Bound', 'guten-bubble'))))))];
+    }, presetAnimations.map(function (element) {
+      return wp.element.createElement("option", {
+        value: element.value
+      }, __(element.label, 'guten-bubble'));
+    })))))];
   },
   save: function save(props) {
     var _props$attributes2 = props.attributes,
@@ -644,6 +546,50 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
     });
   }
 });
+
+/***/ }),
+
+/***/ "./js/json/preset-animations.json":
+/*!****************************************!*\
+  !*** ./js/json/preset-animations.json ***!
+  \****************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, default */
+/***/ (function(module) {
+
+module.exports = [{"value":"none","label":"None"},{"value":"spin","label":"Spin"},{"value":"spin-rev","label":"Spin (Reverse)"},{"value":"pendulum","label":"Pendulum"},{"value":"snake","label":"Snake"},{"value":"bound","label":"Bound"}];
+
+/***/ }),
+
+/***/ "./js/json/preset-chara-icons.json":
+/*!*****************************************!*\
+  !*** ./js/json/preset-chara-icons.json ***!
+  \*****************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, default */
+/***/ (function(module) {
+
+module.exports = [{"value":"custom","label":"Custom"},{"value":"default/01-rose.png","label":"Rose"},{"value":"default/02-orange.png","label":"Orange"},{"value":"default/03-lemon.png","label":"Lemon"},{"value":"default/04-lime.png","label":"Lime"},{"value":"default/05-viridian.png","label":"Viridian"},{"value":"default/06-sky.png","label":"Sky Blue"},{"value":"default/07-imperial.png","label":"Imperial Blue"},{"value":"default/08-lavendar.png","label":"Lavendar"},{"value":"default/09-monotone.png","label":"Monotone"},{"value":"default/10-espresso.png","label":"Espresso"}];
+
+/***/ }),
+
+/***/ "./js/json/preset-corner-radius.json":
+/*!*******************************************!*\
+  !*** ./js/json/preset-corner-radius.json ***!
+  \*******************************************/
+/*! exports provided: chara, bubble, default */
+/***/ (function(module) {
+
+module.exports = {"chara":[{"value":"square","label":"Square"},{"value":"corner-r1","label":"Corner radius Lv.1"},{"value":"corner-r2","label":"Corner radius Lv.2"},{"value":"corner-r3","label":"Corner radius Lv.3"},{"value":"corner-r4","label":"Corner radius Lv.4"},{"value":"corner-r5","label":"Corner radius Lv.5"},{"value":"corner-round","label":"Rounded"}],"bubble":[{"value":"square","label":"Square"},{"value":"corner-r1","label":"Corner radius Lv.1"},{"value":"corner-r2","label":"Corner radius Lv.2"},{"value":"corner-r3","label":"Corner radius Lv.3"},{"value":"corner-r4","label":"Corner radius Lv.4"},{"value":"corner-r5","label":"Corner radius Lv.5"}]};
+
+/***/ }),
+
+/***/ "./js/json/preset-theme-colors.json":
+/*!******************************************!*\
+  !*** ./js/json/preset-theme-colors.json ***!
+  \******************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, default */
+/***/ (function(module) {
+
+module.exports = [{"value":"default","label":"Default"},{"value":"rose","label":"Rose"},{"value":"rose-fill","label":"Rose (fill-color)"},{"value":"orange","label":"Orange"},{"value":"orange-fill","label":"Orange (fill-color)"},{"value":"lemon","label":"Lemon"},{"value":"lemon-fill","label":"Lemon (fill-color)"},{"value":"lime","label":"Lime"},{"value":"lime-fill","label":"Lime (fill-color)"},{"value":"viridian","label":"Viridian"},{"value":"viridian-fill","label":"Viridian (fill-color)"},{"value":"sky","label":"Sky Blue"},{"value":"sky-fill","label":"Sky Blue (fill-color)"},{"value":"imperial","label":"Imperial Blue"},{"value":"imperial-fill","label":"Imperial Blue (fill-color)"},{"value":"lavendar","label":"Lavendar"},{"value":"lavendar-fill","label":"Lavendar (fill-color)"},{"value":"monotone","label":"Monotone"},{"value":"monotone-fill","label":"Monotone (fill-color)"},{"value":"espresso","label":"Espresso"},{"value":"espresso-fill","label":"Espresso (fill-color)"},{"value":"success","label":"Bootstrap like (Success)"},{"value":"info","label":"Bootstrap like (Info)"},{"value":"warning","label":"Bootstrap like (Warning)"},{"value":"danger","label":"Bootstrap like (Danger)"}];
 
 /***/ })
 

@@ -1,0 +1,13 @@
+[
+    { "value": "custom", "label":  "Custom" },
+    { "value": "default/01-rose.png", "label":  "Rose" },
+    { "value": "default/02-orange.png", "label":  "Orange" },
+    { "value": "default/03-lemon.png", "label":  "Lemon" },
+    { "value": "default/04-lime.png", "label":  "Lime" },
+    { "value": "default/05-viridian.png", "label":  "Viridian" },
+    { "value": "default/06-sky.png", "label":  "Sky Blue" },
+    { "value": "default/07-imperial.png", "label":  "Imperial Blue" },
+    { "value": "default/08-lavendar.png", "label":  "Lavendar" },
+    { "value": "default/09-monotone.png", "label":  "Monotone" },
+    { "value": "default/10-espresso.png", "label":  "Espresso" }
+]
