@@ -4,7 +4,7 @@ Donate link:
 Tags: speech, bubble, balloon
 Requires at least: 5.0.0
 Tested up to: 5.0.3
-Stable tag: 0.8.1
+Stable tag: 0.9.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

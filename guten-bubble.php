@@ -3,7 +3,7 @@
 Plugin Name: Guten-Bubble
 Plugin URI: https://github.com/Nia-TN1012/guten-bubble/
 Description: Displays a speech bubble like a chat conversation. 
-Version: 0.8.1
+Version: 0.9.1
 Author: Chronoir.net
 Author URI: https://chronoir.net/
 License: GPLv2 or later
@@ -79,7 +79,7 @@ class GutenBubble {
             return;
         }
         
-        wp_enqueue_script( 'block-guten-bubble', plugins_url( 'js/block_guten-bubble.min.js', __FILE__ ), ['wp-blocks', 'wp-editor', 'wp-i18n', 'wp-element', 'wp-components'], "", true );
+        wp_enqueue_script( 'block-guten-bubble', plugins_url( 'js/guten-bubble.min.js', __FILE__ ), ['wp-blocks', 'wp-editor', 'wp-i18n', 'wp-element', 'wp-components'], "", true );
     
         if( function_exists( 'wp_set_script_translations' ) ) {
             wp_set_script_translations( 'block-guten-bubble', 'guten-bubble', plugin_dir_path( __FILE__ ).'languages' );
