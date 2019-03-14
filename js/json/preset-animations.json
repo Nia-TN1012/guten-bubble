@@ -1,8 +1,0 @@
-[
-    { "value": "none", "label":  "None" },
-    { "value": "spin", "label":  "Spin" },
-    { "value": "spin-rev", "label":  "Spin (Reverse)" },
-    { "value": "pendulum", "label":  "Pendulum" },
-    { "value": "snake", "label":  "Snake" },
-    { "value": "bound", "label":  "Bound" }
-]
