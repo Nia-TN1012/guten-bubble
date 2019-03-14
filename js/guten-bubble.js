@@ -198,65 +198,65 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
   description: __('Displays a speech bubble like a chat conversation.', 'guten-bubble'),
   keywords: [__('speech', 'guten-bubble'), __('bubble', 'guten-bubble'), __('chara', 'guten-bubble')],
   attributes: {
-    charaIconPreset: {
+    chara_icon_preset: {
       type: 'string',
       default: 'custom'
     },
-    charaIconCustom: {
+    chara_icon_custom: {
       type: 'string',
       source: 'attribute',
       attribute: 'alt',
       selector: 'img',
       default: 'default/01-rose.png'
     },
-    charaName: {
+    chara_name: {
       type: 'array',
       source: 'children',
       selector: '.chara-name'
     },
-    contentText: {
+    content: {
       type: 'array',
       source: 'children',
       selector: '.content'
     },
-    themeColor: {
+    theme_color: {
       type: 'string',
       source: 'attribute',
       attribute: 'data-theme-color',
       selector: 'div',
       default: 'default'
     },
-    charaAlign: {
+    chara_align: {
       type: 'string',
       source: 'attribute',
       attribute: 'data-chara-align',
       selector: 'div',
       default: 'left'
     },
-    tailType: {
+    tail_type: {
       type: 'string',
       source: 'attribute',
       attribute: 'data-tail',
       selector: 'div',
       default: 'speak'
     },
-    contentFontSize: {
+    content_fontsize: {
       type: 'number',
       default: undefined
     },
-    effectShadow: {
+    effect_shadow: {
+      type: 'bool',
+      default: true
+    },
+    effect_nega: {
       type: 'bool',
       default: false
     },
-    effectNega: {
-      type: 'bool',
-      default: false
-    },
-    effectCharaRadius: {
+    effect_chara_radius: {
       type: 'string',
       default: 'square'
     },
-    effectBubbleRadius: {
+    effect_bubble_radius: {
       type: 'string',
       default: 'square'
     },
@@ -271,44 +271,44 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
   edit: function edit(props) {
     var className = props.className,
         _props$attributes = props.attributes,
-        charaIconPreset = _props$attributes.charaIconPreset,
-        charaIconCustom = _props$attributes.charaIconCustom,
-        charaName = _props$attributes.charaName,
-        contentText = _props$attributes.contentText,
-        themeColor = _props$attributes.themeColor,
-        charaAlign = _props$attributes.charaAlign,
-        tailType = _props$attributes.tailType,
-        contentFontSize = _props$attributes.contentFontSize,
-        effectShadow = _props$attributes.effectShadow,
-        effectNega = _props$attributes.effectNega,
-        effectCharaRadius = _props$attributes.effectCharaRadius,
-        effectBubbleRadius = _props$attributes.effectBubbleRadius,
+        chara_icon_preset = _props$attributes.chara_icon_preset,
+        chara_icon_custom = _props$attributes.chara_icon_custom,
+        chara_name = _props$attributes.chara_name,
+        content = _props$attributes.content,
+        theme_color = _props$attributes.theme_color,
+        chara_align = _props$attributes.chara_align,
+        tail_type = _props$attributes.tail_type,
+        content_fontsize = _props$attributes.content_fontsize,
+        effect_shadow = _props$attributes.effect_shadow,
+        effect_nega = _props$attributes.effect_nega,
+        effect_chara_radius = _props$attributes.effect_chara_radius,
+        effect_bubble_radius = _props$attributes.effect_bubble_radius,
         animation = _props$attributes.animation,
         setAttributes = props.setAttributes;
     return [renderGutenBubble(wp.element.createElement(RichText, {
       tagName: "p",
       placeholder: __('Enter serif here ...', 'guten-bubble'),
-      value: contentText,
+      value: content,
       keepPlaceholderOnFocus: true,
       style: {
-        fontSize: contentFontSize + 'px'
+        fontSize: content_fontsize + 'px'
       },
       onChange: function onChange(value) {
         setAttributes({
-          contentText: value
+          content: value
         });
       }
     }), {
-      charaIcon: charaIconPreset !== 'custom' ? charaIconPreset : charaIconCustom,
-      charaAlign: charaAlign,
-      charaName: charaName,
-      themeColor: themeColor,
-      tailType: tailType,
-      contentFontSize: contentFontSize,
-      effectShadow: effectShadow,
-      effectNega: effectNega,
-      effectCharaRadius: effectCharaRadius,
-      effectBubbleRadius: effectBubbleRadius,
+      charaIcon: chara_icon_preset !== 'custom' ? chara_icon_preset : chara_icon_custom,
+      charaAlign: chara_align,
+      charaName: chara_name,
+      themeColor: theme_color,
+      tailType: tail_type,
+      contentFontSize: content_fontsize,
+      effectShadow: effect_shadow,
+      effectNega: effect_nega,
+      effectCharaRadius: effect_chara_radius,
+      effectBubbleRadius: effect_bubble_radius,
       animation: animation
     }), wp.element.createElement(InspectorControls, {
       className: className
@@ -319,10 +319,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         display: 'block'
       }
     }, __('Character icon (preset)', 'guten-bubble')), wp.element.createElement("select", {
-      value: charaIconPreset,
+      value: chara_icon_preset,
       onChange: function onChange(event) {
         props.setAttributes({
-          charaIconPreset: event.target.value
+          chara_icon_preset: event.target.value
         });
         event.preventDefault();
       }
@@ -344,10 +344,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
       }
     }, __('Specifies a image file in the \'/wp-content/uploads/guten-bubble/img/\' folder.', 'guten-bubble')), wp.element.createElement(TextControl, {
       placeholder: __('Character icon file name', 'guten-bubble'),
-      value: charaIconCustom,
+      value: chara_icon_custom,
       onChange: function onChange(value) {
         return setAttributes({
-          charaIconCustom: value
+          chara_icon_custom: value
         });
       }
     })), wp.element.createElement("div", null, wp.element.createElement("label", {
@@ -355,10 +355,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         display: 'block'
       }
     }, __('Character icon alignment', 'guten-bubble')), wp.element.createElement("select", {
-      value: charaAlign,
+      value: chara_align,
       onChange: function onChange(event) {
         props.setAttributes({
-          charaAlign: event.target.value
+          chara_align: event.target.value
         });
         event.preventDefault();
       }
@@ -372,10 +372,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
       }
     }, __('Character name', 'guten-bubble')), wp.element.createElement(TextControl, {
       placeholder: __('Character name', 'guten-bubble'),
-      value: charaName,
+      value: chara_name,
       onChange: function onChange(value) {
         return setAttributes({
-          charaName: value
+          chara_name: value
         });
       }
     }))), wp.element.createElement(PanelBody, {
@@ -385,10 +385,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         display: 'block'
       }
     }, __('Theme color', 'guten-bubble')), wp.element.createElement("select", {
-      value: themeColor,
+      value: theme_color,
       onChange: function onChange(event) {
         props.setAttributes({
-          themeColor: event.target.value
+          theme_color: event.target.value
         });
         event.preventDefault();
       }
@@ -401,10 +401,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         display: 'block'
       }
     }, __('Speech bubble tail type', 'guten-bubble')), wp.element.createElement("select", {
-      value: tailType,
+      value: tail_type,
       onChange: function onChange(event) {
         props.setAttributes({
-          tailType: event.target.value
+          tail_type: event.target.value
         });
         event.preventDefault();
       }
@@ -417,7 +417,7 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         display: 'block'
       }
     }, __('Speech bubble text font size', 'guten-bubble')), wp.element.createElement(FontSizePicker, {
-      value: contentFontSize,
+      value: content_fontsize,
       fallbackFontSize: "12",
       fontSizes: [// 0.625rem
       {
@@ -447,25 +447,25 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
       }],
       onChange: function onChange(value) {
         return setAttributes({
-          contentFontSize: value
+          content_fontsize: value
         });
       }
     }))), wp.element.createElement(PanelBody, {
       title: __('Effect settings', 'guten-bubble')
     }, wp.element.createElement("div", null, wp.element.createElement(ToggleControl, {
       label: __('Drop shadow', 'guten-bubble'),
-      checked: effectShadow,
+      checked: effect_shadow,
       onChange: function onChange(value) {
         return setAttributes({
-          effectShadow: value
+          effect_shadow: value
         });
       }
     })), wp.element.createElement("div", null, wp.element.createElement(ToggleControl, {
       label: __('Icon negation', 'guten-bubble'),
-      checked: effectNega,
+      checked: effect_nega,
       onChange: function onChange(value) {
         return setAttributes({
-          effectNega: value
+          effect_nega: value
         });
       }
     })), wp.element.createElement("div", null, wp.element.createElement("label", {
@@ -473,10 +473,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         display: 'block'
       }
     }, __('Character icon corner radius', 'guten-bubble')), wp.element.createElement("select", {
-      value: effectCharaRadius,
+      value: effect_chara_radius,
       onChange: function onChange(event) {
         props.setAttributes({
-          effectCharaRadius: event.target.value
+          effect_chara_radius: event.target.value
         });
         event.preventDefault();
       }
@@ -489,10 +489,10 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
         display: 'block'
       }
     }, __('Speech bubble corner radius', 'guten-bubble')), wp.element.createElement("select", {
-      value: effectBubbleRadius,
+      value: effect_bubble_radius,
       onChange: function onChange(event) {
         props.setAttributes({
-          effectBubbleRadius: event.target.value
+          effect_bubble_radius: event.target.value
         });
         event.preventDefault();
       }
@@ -518,30 +518,30 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
   },
   save: function save(props) {
     var _props$attributes2 = props.attributes,
-        charaIconPreset = _props$attributes2.charaIconPreset,
-        charaIconCustom = _props$attributes2.charaIconCustom,
-        charaName = _props$attributes2.charaName,
-        contentText = _props$attributes2.contentText,
-        themeColor = _props$attributes2.themeColor,
-        charaAlign = _props$attributes2.charaAlign,
-        tailType = _props$attributes2.tailType,
+        chara_icon_preset = _props$attributes2.chara_icon_preset,
+        chara_icon_custom = _props$attributes2.chara_icon_custom,
+        chara_name = _props$attributes2.chara_name,
+        content = _props$attributes2.content,
+        theme_color = _props$attributes2.theme_color,
+        chara_align = _props$attributes2.chara_align,
+        tail_type = _props$attributes2.tail_type,
         contentFontSize = _props$attributes2.contentFontSize,
-        effectShadow = _props$attributes2.effectShadow,
-        effectNega = _props$attributes2.effectNega,
-        effectCharaRadius = _props$attributes2.effectCharaRadius,
-        effectBubbleRadius = _props$attributes2.effectBubbleRadius,
+        effect_shadow = _props$attributes2.effect_shadow,
+        effect_nega = _props$attributes2.effect_nega,
+        effect_chara_radius = _props$attributes2.effect_chara_radius,
+        effect_bubble_radius = _props$attributes2.effect_bubble_radius,
         animation = _props$attributes2.animation;
-    return renderGutenBubble(contentText, {
-      charaIcon: charaIconPreset !== 'custom' ? charaIconPreset : charaIconCustom,
-      charaAlign: charaAlign,
-      charaName: charaName,
-      themeColor: themeColor,
-      tailType: tailType,
+    return renderGutenBubble(content, {
+      charaIcon: chara_icon_preset !== 'custom' ? chara_icon_preset : chara_icon_custom,
+      charaAlign: chara_align,
+      charaName: chara_name,
+      themeColor: theme_color,
+      tailType: tail_type,
       contentFontSize: contentFontSize,
-      effectShadow: effectShadow,
-      effectNega: effectNega,
-      effectCharaRadius: effectCharaRadius,
-      effectBubbleRadius: effectBubbleRadius,
+      effectShadow: effect_shadow,
+      effectNega: effect_nega,
+      effectCharaRadius: effect_chara_radius,
+      effectBubbleRadius: effect_bubble_radius,
       animation: animation
     });
   }

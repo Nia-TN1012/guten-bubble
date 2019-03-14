@@ -79,65 +79,65 @@ export default {
     description: __( 'Displays a speech bubble like a chat conversation.', 'guten-bubble' ),
     keywords: [ __( 'speech', 'guten-bubble' ), __( 'bubble', 'guten-bubble' ), __( 'chara', 'guten-bubble' ) ],
     attributes: {
-        charaIconPreset: {
+        chara_icon_preset: {
             type: 'string',
             default: 'custom',
         },
-        charaIconCustom: {
+        chara_icon_custom: {
             type: 'string',
             source: 'attribute',
             attribute: 'alt',
             selector: 'img',
             default: 'default/01-rose.png',
         },
-        charaName: {
+        chara_name: {
             type: 'array',
             source: 'children',
             selector: '.chara-name',
         },
-        contentText: {
+        content: {
             type: 'array',
             source: 'children',
             selector: '.content',
         },
-        themeColor: {
+        theme_color: {
             type: 'string',
             source: 'attribute',
             attribute: 'data-theme-color',
             selector: 'div',
             default: 'default',
         },
-        charaAlign: {
+        chara_align: {
             type: 'string',
             source: 'attribute',
             attribute: 'data-chara-align',
             selector: 'div',
             default: 'left',
         },
-        tailType: {
+        tail_type: {
             type: 'string',
             source: 'attribute',
             attribute: 'data-tail',
             selector: 'div',
             default: 'speak',
         },
-        contentFontSize: {
+        content_fontsize: {
             type: 'number',
             default: undefined,
         },
-        effectShadow: {
+        effect_shadow: {
+            type: 'bool',
+            default: true,
+        },
+        effect_nega: {
             type: 'bool',
             default: false,
         },
-        effectNega: {
-            type: 'bool',
-            default: false,
-        },
-        effectCharaRadius: {
+        effect_chara_radius: {
             type: 'string',
             default: 'square',
         },
-        effectBubbleRadius: {
+        effect_bubble_radius: {
             type: 'string',
             default: 'square',
         },
@@ -153,18 +153,18 @@ export default {
         const {
             className,
 			attributes: {
-                charaIconPreset,
-                charaIconCustom,
-                charaName,
-                contentText,
-                themeColor,
-                charaAlign,
-                tailType,
-                contentFontSize,
-                effectShadow,
-                effectNega,
-                effectCharaRadius,
-                effectBubbleRadius,
+                chara_icon_preset,
+                chara_icon_custom,
+                chara_name,
+                content,
+                theme_color,
+                chara_align,
+                tail_type,
+                content_fontsize,
+                effect_shadow,
+                effect_nega,
+                effect_chara_radius,
+                effect_bubble_radius,
                 animation
             },
             setAttributes,
@@ -175,27 +175,27 @@ export default {
                     <RichText
                         tagName="p"
                         placeholder={ __( 'Enter serif here ...', 'guten-bubble' ) }
-                        value={ contentText }
+                        value={ content }
                         keepPlaceholderOnFocus={ true }
-                        style={ { fontSize: contentFontSize + 'px' } }
+                        style={ { fontSize: content_fontsize + 'px' } }
                         onChange={
                             ( value ) => {
-                                setAttributes( { contentText: value } );
+                                setAttributes( { content: value } );
                             }
                         }
                     />
                 ),
                 {
-                    charaIcon: charaIconPreset !== 'custom' ? charaIconPreset : charaIconCustom,
-                    charaAlign: charaAlign,
-                    charaName: charaName,
-                    themeColor: themeColor,
-                    tailType: tailType,
-                    contentFontSize: contentFontSize,
-                    effectShadow: effectShadow,
-                    effectNega: effectNega,
-                    effectCharaRadius: effectCharaRadius,
-                    effectBubbleRadius: effectBubbleRadius,
+                    charaIcon: chara_icon_preset !== 'custom' ? chara_icon_preset : chara_icon_custom,
+                    charaAlign: chara_align,
+                    charaName: chara_name,
+                    themeColor: theme_color,
+                    tailType: tail_type,
+                    contentFontSize: content_fontsize,
+                    effectShadow: effect_shadow,
+                    effectNega: effect_nega,
+                    effectCharaRadius: effect_chara_radius,
+                    effectBubbleRadius: effect_bubble_radius,
                     animation: animation
                 }
             ),
@@ -204,9 +204,9 @@ export default {
                     <PanelBody title={ __( 'Character icon settings', 'guten-bubble' ) }>
                         <div>
                             <label style={ { display: 'block' } }>{ __( 'Character icon (preset)', 'guten-bubble' ) }</label>
-                            <select value={ charaIconPreset } onChange={
+                            <select value={ chara_icon_preset } onChange={
                                 ( event ) => {
-                                    props.setAttributes( { charaIconPreset: event.target.value } );
+                                    props.setAttributes( { chara_icon_preset: event.target.value } );
                                     event.preventDefault();
                                 }
                             }>
@@ -223,15 +223,15 @@ export default {
                             <small style={ { display: 'block' } }>{ __( 'Specifies a image file in the \'/wp-content/uploads/guten-bubble/img/\' folder.', 'guten-bubble' ) }</small>
                             <TextControl
                                 placeholder={ __( 'Character icon file name', 'guten-bubble' ) }
-                                value={ charaIconCustom }
-                                onChange={ ( value ) => setAttributes( { charaIconCustom: value } ) }
+                                value={ chara_icon_custom }
+                                onChange={ ( value ) => setAttributes( { chara_icon_custom: value } ) }
                             />
                         </div>
                         <div>
                             <label style={ { display: 'block' } }>{ __( 'Character icon alignment', 'guten-bubble' ) }</label>
-                            <select value={ charaAlign } onChange={
+                            <select value={ chara_align } onChange={
                                 ( event ) => {
-                                    props.setAttributes( { charaAlign: event.target.value } );
+                                    props.setAttributes( { chara_align: event.target.value } );
                                     event.preventDefault();
                                 }
                             }>
@@ -243,17 +243,17 @@ export default {
                             <label style={ { display: 'block' } }>{ __( 'Character name', 'guten-bubble' ) }</label>
                             <TextControl
                                 placeholder={ __( 'Character name', 'guten-bubble' ) }
-                                value={ charaName }
-                                onChange={ ( value ) => setAttributes( { charaName: value } ) }
+                                value={ chara_name }
+                                onChange={ ( value ) => setAttributes( { chara_name: value } ) }
                             />
                         </div>
                     </PanelBody>
                     <PanelBody title={ __( 'Speech bubble settings', 'guten-bubble' ) }>
                         <div>
                             <label style={ { display: 'block' } }>{ __( 'Theme color', 'guten-bubble' ) }</label>
-                            <select value={ themeColor } onChange={
+                            <select value={ theme_color } onChange={
                                 ( event ) => {
-                                    props.setAttributes( { themeColor: event.target.value } );
+                                    props.setAttributes( { theme_color: event.target.value } );
                                     event.preventDefault();
                                 }
                             }>
@@ -266,9 +266,9 @@ export default {
                         </div>
                         <div>
                             <label style={ { display: 'block' } }>{ __( 'Speech bubble tail type', 'guten-bubble' ) }</label>
-                            <select value={ tailType } onChange={
+                            <select value={ tail_type } onChange={
                                 ( event ) => {
-                                    props.setAttributes( { tailType: event.target.value } );
+                                    props.setAttributes( { tail_type: event.target.value } );
                                     event.preventDefault();
                                 }
                             }>
@@ -279,7 +279,7 @@ export default {
                         <div>
                             <label style={ { display: 'block' } }>{ __( 'Speech bubble text font size', 'guten-bubble' ) }</label>
                             <FontSizePicker
-                                value={ contentFontSize }
+                                value={ content_fontsize }
                                 fallbackFontSize="12"
                                 fontSizes={[
                                     // 0.625rem
@@ -313,7 +313,7 @@ export default {
                                         size: 32,
                                     }
                                 ]}
-                                onChange={ ( value ) => setAttributes( { contentFontSize: value } ) }
+                                onChange={ ( value ) => setAttributes( { content_fontsize: value } ) }
                             />
                         </div>
                     </PanelBody>
@@ -321,22 +321,22 @@ export default {
                         <div>
                             <ToggleControl
                                 label={ __( 'Drop shadow', 'guten-bubble' ) }
-                                checked={ effectShadow }
-                                onChange={ ( value ) => setAttributes( { effectShadow: value } ) }
+                                checked={ effect_shadow }
+                                onChange={ ( value ) => setAttributes( { effect_shadow: value } ) }
                             />
                         </div>
                         <div>
                             <ToggleControl
                                 label={ __( 'Icon negation', 'guten-bubble' ) }
-                                checked={ effectNega }
-                                onChange={ ( value ) => setAttributes( { effectNega: value } ) }
+                                checked={ effect_nega }
+                                onChange={ ( value ) => setAttributes( { effect_nega: value } ) }
                             />
                         </div>
                         <div>
                             <label style={ { display: 'block' } }>{ __( 'Character icon corner radius', 'guten-bubble' ) }</label>
-                            <select value={ effectCharaRadius } onChange={
+                            <select value={ effect_chara_radius } onChange={
                                 ( event ) => {
-                                    props.setAttributes( { effectCharaRadius: event.target.value } );
+                                    props.setAttributes( { effect_chara_radius: event.target.value } );
                                     event.preventDefault();
                                 }
                             }>
@@ -349,9 +349,9 @@ export default {
                         </div>
                         <div>
                             <label style={ { display: 'block' } }>{ __( 'Speech bubble corner radius', 'guten-bubble' ) }</label>
-                            <select value={ effectBubbleRadius } onChange={
+                            <select value={ effect_bubble_radius } onChange={
                                 ( event ) => {
-                                    props.setAttributes( { effectBubbleRadius: event.target.value } );
+                                    props.setAttributes( { effect_bubble_radius: event.target.value } );
                                     event.preventDefault();
                                 }
                             }>
@@ -386,35 +386,35 @@ export default {
     save: ( props ) => {
         const {
 			attributes: {
-                charaIconPreset,
-                charaIconCustom,
-                charaName,
-                contentText,
-                themeColor,
-                charaAlign,
-                tailType,
+                chara_icon_preset,
+                chara_icon_custom,
+                chara_name,
+                content,
+                theme_color,
+                chara_align,
+                tail_type,
                 contentFontSize,
-                effectShadow,
-                effectNega,
-                effectCharaRadius,
-                effectBubbleRadius,
+                effect_shadow,
+                effect_nega,
+                effect_chara_radius,
+                effect_bubble_radius,
                 animation
             },
         } = props;
         
         return renderGutenBubble(
-            contentText,
+            content,
             {
-                charaIcon: charaIconPreset !== 'custom' ? charaIconPreset : charaIconCustom,
-                charaAlign: charaAlign,
-                charaName: charaName,
-                themeColor: themeColor,
-                tailType: tailType,
+                charaIcon: chara_icon_preset !== 'custom' ? chara_icon_preset : chara_icon_custom,
+                charaAlign: chara_align,
+                charaName: chara_name,
+                themeColor: theme_color,
+                tailType: tail_type,
                 contentFontSize: contentFontSize,
-                effectShadow: effectShadow,
-                effectNega: effectNega,
-                effectCharaRadius: effectCharaRadius,
-                effectBubbleRadius: effectBubbleRadius,
+                effectShadow: effect_shadow,
+                effectNega: effect_nega,
+                effectCharaRadius: effect_chara_radius,
+                effectBubbleRadius: effect_bubble_radius,
                 animation: animation
             }
         );
