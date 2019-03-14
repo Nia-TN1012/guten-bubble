@@ -9,6 +9,7 @@ const {
     ToggleControl, 
     FontSizePicker 
 } = wp.components;
+import deprecated_v_0_8_1 from './deprecated/v_0_8_1.jsx';
 
 const presetCharaIcons = require( './json/preset-chara-icons.json' );
 const presetThemeColors = require( './json/preset-theme-colors.json' );
@@ -147,7 +148,7 @@ export default {
             attribute: 'data-animation',
             selector: 'div',
             default: 'none',
-        }
+        },
     },
     edit: ( props ) => {
         const {
@@ -419,4 +420,5 @@ export default {
             }
         );
     },
+    deprecated: [ deprecated_v_0_8_1 ]
 };

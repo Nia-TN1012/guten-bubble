@@ -102,6 +102,209 @@ registerBlockType(_js_guten_bubble_jsx__WEBPACK_IMPORTED_MODULE_0__["default"].n
 
 /***/ }),
 
+/***/ "./js/deprecated/v_0_8_1.jsx":
+/*!***********************************!*\
+  !*** ./js/deprecated/v_0_8_1.jsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  attributes: {
+    chara_icon_preset: {
+      type: 'string',
+      default: 'custom'
+    },
+    chara_icon_custom: {
+      type: 'string',
+      source: 'attribute',
+      attribute: 'alt',
+      selector: 'img',
+      default: 'default/01-rose.png'
+    },
+    chara_name: {
+      type: 'array',
+      source: 'children',
+      selector: '.chara-name'
+    },
+    content: {
+      type: 'array',
+      source: 'children',
+      selector: '.content'
+    },
+    theme_color: {
+      type: 'string',
+      source: 'attribute',
+      attribute: 'data-theme-color',
+      selector: 'div',
+      default: 'default'
+    },
+    chara_align: {
+      type: 'string',
+      source: 'attribute',
+      attribute: 'data-chara-align',
+      selector: 'div',
+      default: 'left'
+    },
+    tail_type: {
+      type: 'string',
+      source: 'attribute',
+      attribute: 'data-tail',
+      selector: 'div',
+      default: 'speak'
+    },
+    content_fontsize: {
+      type: 'number',
+      default: undefined
+    },
+    effect_shadow: {
+      type: 'bool',
+      default: false
+    },
+    effect_nega: {
+      type: 'bool',
+      default: false
+    },
+    effect_chara_radius: {
+      type: 'string',
+      default: 'square'
+    },
+    effect_bubble_radius: {
+      type: 'string',
+      default: 'square'
+    },
+    animation: {
+      type: 'string',
+      source: 'attribute',
+      attribute: 'data-animation',
+      selector: 'div',
+      default: 'none'
+    }
+  },
+  migrate: function migrate(_ref) {
+    var chara_icon_preset = _ref.chara_icon_preset,
+        chara_icon_custom = _ref.chara_icon_custom,
+        chara_name = _ref.chara_name,
+        content = _ref.content,
+        theme_color = _ref.theme_color,
+        chara_align = _ref.chara_align,
+        tail_type = _ref.tail_type,
+        content_fontsize = _ref.content_fontsize,
+        effect_shadow = _ref.effect_shadow,
+        effect_nega = _ref.effect_nega,
+        effect_chara_radius = _ref.effect_chara_radius,
+        effect_bubble_radius = _ref.effect_bubble_radius,
+        animation = _ref.animation;
+    return {
+      charaIconPreset: chara_icon_preset,
+      charaIconCustom: chara_icon_custom,
+      charaName: chara_name,
+      contentText: content,
+      themeColor: theme_color,
+      charaAlign: chara_align,
+      tailType: tail_type,
+      contentFontSize: content_fontsize,
+      effectShadow: effect_shadow,
+      effectNega: effect_nega,
+      effectCharaRadius: effect_chara_radius,
+      effectBubbleRadius: effect_bubble_radius,
+      animation: animation
+    };
+  },
+  save: function save(props) {
+    var contentText = props.attributes.content,
+        charaIcon = props.attributes.chara_icon_preset,
+        charaName = props.attributes.chara_name,
+        themeColor = props.attributes.theme_color,
+        charaAlign = props.attributes.chara_align,
+        tailType = props.attributes.tail_type,
+        contentFontSize = props.attributes.content_fontsize,
+        effectShadow = props.attributes.effect_shadow,
+        effectNega = props.attributes.effect_nega,
+        effectCharaRadius = props.attributes.effect_chara_radius,
+        effectBubbleRadius = props.attributes.effect_bubble_radius,
+        animation = props.attributes.animation;
+
+    if (charaIcon === 'custom') {
+      charaIcon = props.attributes.chara_icon_custom;
+    } // Outputs HTML code of speech bubble display.
+
+
+    var renderGutenBubble = function renderGutenBubble(elContent, charaIcon, charaAlign, charaName, themeColor, tailType, contentFontSize, effectShadow, effectNega, effectCharaRadius, effectBubbleRadius, animation) {
+      var dataAttributes = {
+        className: 'cn-gutenbubble',
+        'data-theme-color': themeColor,
+        'data-chara-align': charaAlign,
+        'data-tail': tailType,
+        'data-animation': animation
+      };
+      var charaIconClass = '';
+      var tailClass = 'bubble-' + charaAlign + ' tail-' + tailType + '-' + charaAlign;
+      var contentClass = 'content';
+
+      if (themeColor !== 'default') {
+        tailClass += ' theme-color-' + themeColor;
+        contentClass += ' theme-color-' + themeColor;
+      }
+
+      if (effectShadow) {
+        charaIconClass += ' shadow';
+        tailClass += ' shadow';
+        contentClass += ' shadow';
+      }
+
+      if (effectNega) {
+        charaIconClass += ' nega';
+      }
+
+      if (effectCharaRadius !== 'square') {
+        charaIconClass += ' ' + effectCharaRadius;
+      }
+
+      if (effectBubbleRadius !== 'square') {
+        contentClass += ' ' + effectBubbleRadius;
+      }
+
+      if (animation !== 'none') {
+        charaIconClass += ' ' + animation;
+        tailClass += ' ' + animation;
+        contentClass += ' ' + animation;
+      }
+
+      var contentAttributes = {
+        className: contentClass
+      };
+
+      if (contentFontSize !== undefined && contentFontSize > 0) {
+        contentAttributes['style'] = {
+          fontSize: contentFontSize + 'px'
+        };
+      }
+
+      var el = wp.element.createElement;
+      return el('div', dataAttributes, el('div', {
+        className: 'chara-' + charaAlign
+      }, el('div', {
+        className: 'chara-icon'
+      }, el('img', {
+        className: charaIconClass,
+        src: '/wp-content/uploads/guten-bubble/img/' + charaIcon,
+        alt: charaIcon
+      })), el('div', {
+        className: 'chara-name'
+      }, charaName)), el('div', {
+        className: tailClass
+      }, el('div', contentAttributes, elContent)));
+    };
+
+    return renderGutenBubble(contentText, charaIcon, charaAlign, charaName, themeColor, tailType, contentFontSize, effectShadow, effectNega, effectCharaRadius, effectBubbleRadius, animation);
+  }
+});
+
+/***/ }),
+
 /***/ "./js/guten-bubble.jsx":
 /*!*****************************!*\
   !*** ./js/guten-bubble.jsx ***!
@@ -111,6 +314,7 @@ registerBlockType(_js_guten_bubble_jsx__WEBPACK_IMPORTED_MODULE_0__["default"].n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _deprecated_v_0_8_1_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./deprecated/v_0_8_1.jsx */ "./js/deprecated/v_0_8_1.jsx");
 var __ = wp.i18n.__;
 var _wp$editor = wp.editor,
     RichText = _wp$editor.RichText,
@@ -120,6 +324,7 @@ var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     ToggleControl = _wp$components.ToggleControl,
     FontSizePicker = _wp$components.FontSizePicker;
+
 
 var presetCharaIcons = __webpack_require__(/*! ./json/preset-chara-icons.json */ "./js/json/preset-chara-icons.json");
 
@@ -544,7 +749,8 @@ var renderGutenBubble = function renderGutenBubble(elContent, gbprops) {
       effectBubbleRadius: effectBubbleRadius,
       animation: animation
     });
-  }
+  },
+  deprecated: [_deprecated_v_0_8_1_jsx__WEBPACK_IMPORTED_MODULE_0__["default"]]
 });
 
 /***/ }),
