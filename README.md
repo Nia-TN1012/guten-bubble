@@ -33,6 +33,7 @@ that Icon image can be used.
 
 # Release Note.
 
+* 0.8.2: Fixed some CSS
 * 0.8.1: First release
 
 # Legal Disclaimer

@@ -217,6 +217,7 @@
 	.content {
 		position: relative;
 		padding: 5px 10px;
+		margin: auto;
 		z-index: 2;
 		background-color: #FFFFFF;
 		border-style: solid;
@@ -405,5 +406,13 @@
 	}
 	.chara-icon > .bound {
 		@include bound-animation;
+	}
+}
+
+.editor-styles-wrapper {
+	.cn-gutenbubble {
+		.content {
+			margin: auto;
+		}
 	}
 }

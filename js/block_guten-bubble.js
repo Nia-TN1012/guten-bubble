@@ -98,7 +98,7 @@
                 source: 'attribute',
                 attribute: 'alt',
                 selector: 'img',
-                default: '01-rose.png',
+                default: 'default/01-rose.png',
             },
             chara_name: {
                 type: 'array',
