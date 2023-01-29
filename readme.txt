@@ -16,7 +16,7 @@ Displays a speech bubble like a chat conversation.
 Guten-bubble can create a speech bubble display like a chat conversation.
 
 # Features
-* It's easy to create speech bubble using Guten-bubble block for WordPress 5.0's Gutenberg editor.
+* It's easy to create speech bubble using Guten-bubble block for Gutenberg editor in WordPress 5.0 or later.
 * Pick from 24 color themes for speech bubble.
 * You can use it as an icon image by importing image files from WordPress's media library. Let's make interesting articles by using icon image on hand!
 
@@ -50,6 +50,7 @@ that Icon image can be used.
 == Changelog ==
 
 = 0.8.2 =
+* Upgraded 'Speech bubble text font size' property (Blocks already set as of version 0.8.1 will be migrated after the update).
 * Fixed some CSS.
 = 0.8.1 =
 * First release.
