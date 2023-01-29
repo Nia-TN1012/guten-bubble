@@ -4,7 +4,7 @@ Donate link:
 Tags: speech, bubble, balloon
 Requires at least: 5.0.0
 Tested up to: 6.1.1
-Stable tag: 0.8.2
+Stable tag: 0.9.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -49,7 +49,9 @@ that Icon image can be used.
 
 == Changelog ==
 
-= 0.8.2 =
+= 0.9.2 =
+* Fixted version number.
+= 0.9.1 =
 * Upgraded 'Speech bubble text font size' property (Blocks already set as of version 0.8.1 will be migrated after the update).
 * Fixed some CSS.
 = 0.8.1 =
