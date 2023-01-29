@@ -8,20 +8,88 @@
     var ToggleControl = components.ToggleControl;
     var FontSizePicker = components.FontSizePicker;
 
-    // Outputs HTML code of speech bubble display.
-    var renderGutenBubble = function(
+    var blockAttributes = {
+        chara_icon_preset: {
+            type: 'string',
+            default: 'custom',
+        },
+        chara_icon_custom: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'alt',
+            selector: 'img',
+            default: 'default/01-rose.png',
+        },
+        chara_name: {
+            type: 'array',
+            source: 'children',
+            selector: '.chara-name',
+        },
+        content: {
+            type: 'array',
+            source: 'children',
+            selector: '.content',
+        },
+        theme_color: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'data-theme-color',
+            selector: 'div',
+            default: 'default',
+        },
+        chara_align: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'data-chara-align',
+            selector: 'div',
+            default: 'left',
+        },
+        tail_type: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'data-tail',
+            selector: 'div',
+            default: 'speak',
+        },
+        effect_shadow: {
+            type: 'bool',
+            default: true,
+        },
+        effect_nega: {
+            type: 'bool',
+            default: false,
+        },
+        effect_chara_radius: {
+            type: 'string',
+            default: 'square',
+        },
+        effect_bubble_radius: {
+            type: 'string',
+            default: 'square',
+        },
+        animation: {
+            type: 'string',
+            source: 'attribute',
+            attribute: 'data-animation',
+            selector: 'div',
+            default: 'none',
+        }
+    };
+
+    function renderGutenBubble(
         elContent,
         charaIcon,
         charaAlign,
         charaName,
         themeColor,
         tailType,
-        contentFontSize,
+        contentFontSizeV2,
         effectShadow,
         effectNega,
         effectCharaRadius,
         effectBubbleRadius,
-        animation ) {
+        animation
+    ) {
         var dataAttributes = {
             className: 'cn-gutenbubble',
             'data-theme-color': themeColor,
@@ -58,8 +126,9 @@
         var contentAttributes = {
             className: contentClass
         };
-        if( contentFontSize !== undefined && contentFontSize > 0 ) {
-            contentAttributes['style'] = { fontSize: contentFontSize + 'px' };
+
+        if( contentFontSizeV2 != undefined ) {
+            contentAttributes['style'] = { fontSize: contentFontSizeV2 };
         }
 
         return el( 'div', dataAttributes,
@@ -79,7 +148,7 @@
                 el( 'div', contentAttributes, elContent )
             )
         );
-    };
+    }
     
     // Block registration
     blocks.registerBlockType( 'chronoir-net/guten-bubble', {
@@ -89,76 +158,108 @@
         description: __( 'Displays a speech bubble like a chat conversation.', 'guten-bubble' ),
         keywords: [ __( 'speech', 'guten-bubble' ), __( 'bubble', 'guten-bubble' ), __( 'chara', 'guten-bubble' ) ],
         attributes: {
-            chara_icon_preset: {
+            ...blockAttributes,
+            content_fontsize_v2: {
                 type: 'string',
-                default: 'custom',
-            },
-            chara_icon_custom: {
-                type: 'string',
-                source: 'attribute',
-                attribute: 'alt',
-                selector: 'img',
-                default: 'default/01-rose.png',
-            },
-            chara_name: {
-                type: 'array',
-                source: 'children',
-                selector: '.chara-name',
-            },
-            content: {
-                type: 'array',
-                source: 'children',
-                selector: '.content',
-            },
-            theme_color: {
-                type: 'string',
-                source: 'attribute',
-                attribute: 'data-theme-color',
-                selector: 'div',
-                default: 'default',
-            },
-            chara_align: {
-                type: 'string',
-                source: 'attribute',
-                attribute: 'data-chara-align',
-                selector: 'div',
-                default: 'left',
-            },
-            tail_type: {
-                type: 'string',
-                source: 'attribute',
-                attribute: 'data-tail',
-                selector: 'div',
-                default: 'speak',
-            },
-            content_fontsize: {
-                type: 'number',
                 default: undefined,
             },
-            effect_shadow: {
-                type: 'bool',
-                default: true,
-            },
-            effect_nega: {
-                type: 'bool',
-                default: false,
-            },
-            effect_chara_radius: {
-                type: 'string',
-                default: 'square',
-            },
-            effect_bubble_radius: {
-                type: 'string',
-                default: 'square',
-            },
-            animation: {
-                type: 'string',
-                source: 'attribute',
-                attribute: 'data-animation',
-                selector: 'div',
-                default: 'none',
-            }
         },
+        deprecated: [
+            // ver. 0.8.1 to ver. 0.9.1: upgraded font size setting
+            {
+                attributes: {
+                    ...blockAttributes,
+                    content_fontsize: {
+                        type: 'number',
+                        default: undefined,
+                    },
+                },
+                migrate: function( attributes ) {
+                    var contentFontSize = attributes.content_fontsize;
+                    return {
+                        ...attributes,
+                        content_fontsize_v2: contentFontSize !== undefined && contentFontSize > 0 ? contentFontSize + 'px' : undefined
+                    };
+                },
+                save: function( props ) {
+                    var contentText = props.attributes.content,
+                        charaIcon = props.attributes.chara_icon_preset,
+                        charaName = props.attributes.chara_name,
+                        themeColor = props.attributes.theme_color,
+                        charaAlign = props.attributes.chara_align,
+                        tailType = props.attributes.tail_type,
+                        contentFontSize = props.attributes.content_fontsize,
+                        effectShadow = props.attributes.effect_shadow,
+                        effectNega = props.attributes.effect_nega,
+                        effectCharaRadius = props.attributes.effect_chara_radius,
+                        effectBubbleRadius = props.attributes.effect_bubble_radius,
+                        animation = props.attributes.animation;
+                    
+                    if( charaIcon === 'custom' ) {
+                        charaIcon = props.attributes.chara_icon_custom;
+                    }
+
+                    var dataAttributes = {
+                        className: 'cn-gutenbubble',
+                        'data-theme-color': themeColor,
+                        'data-chara-align': charaAlign,
+                        'data-tail': tailType,
+                        'data-animation': animation,
+                    };
+                    var charaIconClass = '';
+                    var tailClass = 'bubble-' + charaAlign + ' tail-' + tailType + '-' + charaAlign;
+                    var contentClass = 'content';
+                    if( themeColor !== 'default' ) {
+                        tailClass += ' theme-color-' + themeColor;
+                        contentClass += ' theme-color-' + themeColor;
+                    }
+                    if( effectShadow ) {
+                        charaIconClass += ' shadow';
+                        tailClass += ' shadow';
+                        contentClass += ' shadow';
+                    }
+                    if( effectNega ) {
+                        charaIconClass += ' nega';
+                    }
+                    if( effectCharaRadius !== 'square' ) {
+                        charaIconClass += ' ' + effectCharaRadius;
+                    }
+                    if( effectBubbleRadius !== 'square' ) {
+                        contentClass += ' ' + effectBubbleRadius;
+                    }
+                    if( animation !== 'none' ) {
+                        charaIconClass += ' ' + animation;
+                        tailClass += ' ' + animation;
+                        contentClass += ' ' + animation;
+                    }
+                    var contentAttributes = {
+                        className: contentClass
+                    };
+            
+                    if( contentFontSize !== undefined && contentFontSize > 0 ) {
+                        contentAttributes['style'] = { fontSize: contentFontSize + 'px' };
+                    }
+            
+                    return el( 'div', dataAttributes,
+                        el( 'div', { className: 'chara-' + charaAlign },
+                            el( 'div', { className: 'chara-icon' },
+                                el( 'img',
+                                    {
+                                        className: charaIconClass,
+                                        src: '/wp-content/uploads/guten-bubble/img/' + charaIcon,
+                                        alt: charaIcon,
+                                    },
+                                )
+                            ),
+                            el( 'div', { className: 'chara-name' }, charaName )
+                        ),
+                        el( 'div', { className: tailClass },
+                            el( 'div', contentAttributes, contentText )
+                        )
+                    );
+                }
+            }
+        ],
         edit: function( props ) {
             var charaIconPreset = props.attributes.chara_icon_preset,
                 charaIconCustom = props.attributes.chara_icon_custom,
@@ -167,7 +268,7 @@
                 themeColor = props.attributes.theme_color,
                 charaAlign = props.attributes.chara_align,
                 tailType = props.attributes.tail_type,
-                contentFontSize = props.attributes.content_fontsize,
+                contentFontSizeV2 = props.attributes.content_fontsize_v2,
                 effectShadow = props.attributes.effect_shadow,
                 effectNega = props.attributes.effect_nega,
                 effectCharaRadius = props.attributes.effect_chara_radius,
@@ -181,7 +282,7 @@
                 placeholder: __( 'Enter serif here ...', 'guten-bubble' ),
                 value: contentText,
                 keepPlaceholderOnFocus: true,
-                style: { fontSize: contentFontSize + 'px' },
+                style: contentFontSizeV2 !== undefined ? { fontSize: contentFontSizeV2 } : {},
                 onChange: function( value ) {
                     props.setAttributes( { content: value } );
                 }
@@ -295,47 +396,65 @@
                     el( 'option', { value: 'think' }, __( 'Thinking', 'guten-bubble' ) ),
                 )
             );
-            // Content Font Size
-            var elContentFontSize = el( 'div', {},
+            // Content Font Size (v2)
+            var elContentFontSizeV2 = el( 'div', {},
                 el( 'label', { style: { display: 'block' } }, __( 'Speech bubble text font size', 'guten-bubble' ) ),
                 el( FontSizePicker, {
-                    value: contentFontSize,
-                    fallbackFontSize: 12,
+                    value: contentFontSizeV2,
                     fontSizes: [
-                        // 0.625rem
-                        {
-                            name: __( 'Extra Small', 'guten-bubble' ),
-                            slug: 'xsmall',
-                            size: 10,
-                        },
-                        // 0.75rem
                         {
                             name: __( 'Small', 'guten-bubble' ),
-                            slug: 'small',
-                            size: 12,
+                            slug: 'small-v2',
+                            size: '1.0rem',
                         },
-                        // 1rem
                         {
                             name: __( 'Middle', 'guten-bubble' ),
-                            slug: 'middle',
-                            size: 16,
+                            slug: 'middle-v2',
+                            size: '1.125rem',
                         },
-                        // 1.5rem
                         {
                             name: __( 'Large', 'guten-bubble' ),
-                            slug: 'large',
-                            size: 24,
+                            slug: 'large-v2',
+                            size: '1.75rem',
                         },
-                        // 2rem
                         {
                             name: __( 'Extra Large', 'guten-bubble' ),
+                            slug: 'xlarge-v2',
+                            size: '2.25rem',
+                        },
+                        {
+                            name: __( 'Ex Extra Large', 'guten-bubble' ),
+                            slug: 'xxlarge-v2',
+                            size: '3.75rem',
+                        },
+                        {
+                            name: __( '(Legacy) Extra Small', 'guten-bubble' ),
+                            slug: 'xsmall',
+                            size: '10px',
+                        },
+                        {
+                            name: __( '(Legacy) Small', 'guten-bubble' ),
+                            slug: 'small',
+                            size: '12px',
+                        },
+                        {
+                            name: __( '(Legacy) Middle', 'guten-bubble' ),
+                            slug: 'middle',
+                            size: '16px',
+                        },
+                        {
+                            name: __( '(Legacy) Large', 'guten-bubble' ),
+                            slug: 'large',
+                            size: '24px',
+                        },
+                        {
+                            name: __( '(Legacy) Extra Large', 'guten-bubble' ),
                             slug: 'xlarge',
-                            size: 32,
-                        }
+                            size: '32px',
+                        },
                     ],
                     onChange: function( value ) {
-                        console.log( value );
-                        props.setAttributes( { content_fontsize: value } );
+                        props.setAttributes( { content_fontsize_v2: value } );
                     }
                 })
             );
@@ -413,7 +532,7 @@
                     charaName,
                     themeColor,
                     tailType,
-                    contentFontSize,
+                    contentFontSizeV2,
                     effectShadow,
                     effectNega,
                     effectCharaRadius,
@@ -430,7 +549,7 @@
                     el( PanelBody, { title: __( 'Speech bubble settings', 'guten-bubble' ) },
                         elThemeColor,
                         elTailType,
-                        elContentFontSize,
+                        elContentFontSizeV2,
                     ),
 					el( PanelBody, { title: __( 'Effect settings', 'guten-bubble' ) },
 						elEffectShadow,
@@ -444,6 +563,8 @@
 				)
 			];
         },
+
+        // Outputs HTML code of speech bubble display.
         save: function( props ) {
             var contentText = props.attributes.content,
                 charaIcon = props.attributes.chara_icon_preset,
@@ -451,7 +572,7 @@
 				themeColor = props.attributes.theme_color,
                 charaAlign = props.attributes.chara_align,
                 tailType = props.attributes.tail_type,
-                contentFontSize = props.attributes.content_fontsize,
+                contentFontSizeV2 = props.attributes.content_fontsize_v2,
                 effectShadow = props.attributes.effect_shadow,
                 effectNega = props.attributes.effect_nega,
                 effectCharaRadius = props.attributes.effect_chara_radius,
@@ -469,7 +590,7 @@
                 charaName,
                 themeColor,
                 tailType,
-                contentFontSize,
+                contentFontSizeV2,
                 effectShadow,
                 effectNega,
                 effectCharaRadius,
