@@ -21,6 +21,24 @@ copyDocToDocker:
 clean:
 	rm -rf docker/wp docker/guten-bubble
 
+# Copies plugin code files to build folder.
+# NOTE: Build SCSS and Minify JavaScript in advance.
+copyCodeToBuild:
+	cp -rf ./css ./build/
+	cp -rf ./js ./build/
+	cp -f ./*.php ./build/
+	cp -rf ./languages ./build/
+	cp -rf ./img ./build/
+
+# Copies readme.txt and screenshot files to build folder.
+copyDocToBuild:
+	cp -f ./readme.txt ./build/
+	cp -f ./screenshot-*.png ./build/
+
+# Clears build folders.
+cleanBuild:
+	rm -rf build/*
+
 # Copies plugin code files to trunk folder of svn.
 # NOTE: Build SCSS and Minify JavaScript in advance.
 copyCodeToTrunk:
@@ -34,3 +52,7 @@ copyCodeToTrunk:
 copyDocToTrunk:
 	cp -f ./readme.txt ./svn/guten-bubble/trunk/
 	cp -f ./screenshot-*.png ./svn/guten-bubble/trunk/
+
+# Clears trunk folder of svn.
+cleanTrunk:
+	rm -rf ./svn/guten-bubble/trunk/*
