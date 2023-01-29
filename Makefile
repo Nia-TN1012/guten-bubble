@@ -17,6 +17,7 @@ copyDocToDocker:
 	cp -f ./readme.txt ./docker/guten-bubble/
 	cp -f ./screenshot-*.png ./docker/guten-bubble/
 
+# Clears working folders.
 clean:
 	rm -rf docker/wp docker/guten-bubble
 
@@ -33,10 +34,3 @@ copyCodeToTrunk:
 copyDocToTrunk:
 	cp -f ./readme.txt ./svn/guten-bubble/trunk/
 	cp -f ./screenshot-*.png ./svn/guten-bubble/trunk/
-
-# Creates new release.
-# Params:
-#	VERSION - verison (format: X.Y.Z)
-createRelease:
-	mkdir ./svn/guten-bubble/tags/${VERSION}
-	cp -r /svn/guten-bubble/trunk/* ./svn/guten-bubble/tags/${VERSION}/
