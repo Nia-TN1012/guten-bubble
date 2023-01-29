@@ -33,7 +33,10 @@ that Icon image can be used.
 
 # Release Note.
 
-* 0.8.2: Fixed some CSS
+* 0.9.2: Fixted version number.
+* 0.9.1:
+  * Upgraded 'Speech bubble text font size' property (Blocks already set as of version 0.8.1 will be migrated after the update).
+  * Fixed some CSS.
 * 0.8.1: First release
 
 # Legal Disclaimer
