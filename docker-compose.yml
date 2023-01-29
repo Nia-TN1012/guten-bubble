@@ -14,9 +14,9 @@ services:
       WORDPRESS_DEBUG: 1
     volumes:
       - ./docker/wp:/var/www/html
-      # It's possible to debug guten-bubble copied to trunk folder of svn.
+      # It's possible to debug guten-bubble copied to folder used from docker.
       # NOTE: Cannot edit them from WordPress running on this container.
-      - ./svn/guten-bubble/trunk:/var/www/html/wp-content/plugins/guten-bubble:ro
+      - ./docker/guten-bubble:/var/www/html/wp-content/plugins/guten-bubble:ro
   
   db:
     image: mysql:5.7
