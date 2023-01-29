@@ -6,16 +6,16 @@ po2json:
 # Copies plugin code files to build folder.
 # NOTE: Build SCSS and Minify JavaScript in advance.
 copyCodeToBuild:
-	cp -rf ./css ./build/
-	cp -rf ./js ./build/
-	cp -f ./*.php ./build/
-	cp -rf ./languages ./build/
-	cp -rf ./img ./build/
+	cp -rf ./css ./guten-bubble/
+	cp -rf ./js ./guten-bubble/
+	cp -f ./*.php ./guten-bubble/
+	cp -rf ./languages ./guten-bubble/
+	cp -rf ./img ./guten-bubble/
 
 # Copies readme.txt and screenshot files to build folder.
 copyDocToBuild:
-	cp -f ./readme.txt ./build/
-	cp -f ./screenshot-*.png ./build/
+	cp -f ./readme.txt ./guten-bubble/
+	cp -f ./screenshot-*.png ./guten-bubble/
 
 # Clears wordpress folder.
 cleanTestWP:
@@ -23,7 +23,9 @@ cleanTestWP:
 
 # Clears build folders.
 cleanBuild:
-	rm -rf build/*
+	rm -rf guten-bubble/*
+
+## --- svn ---
 
 # Copies plugin code files to trunk folder of svn.
 # NOTE: Build SCSS and Minify JavaScript in advance.
@@ -42,3 +44,8 @@ copyDocToTrunk:
 # Clears trunk folder of svn.
 cleanTrunk:
 	rm -rf ./svn/guten-bubble/trunk/*
+
+## --- GitHub ---
+
+pack:
+	zip -r guten-bubble.zip ./css ./js ./*.php ./languages ./img ./readme.txt ./screenshot-*.png -x "*.DS_Store" 

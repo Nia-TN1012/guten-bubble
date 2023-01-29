@@ -16,7 +16,7 @@ services:
       - ./docker/wp:/var/www/html
       # It's possible to debug guten-bubble copied to build folder.
       # NOTE: Cannot edit them from WordPress running on this container.
-      - ./build:/var/www/html/wp-content/plugins/guten-bubble:ro
+      - ./guten-bubble:/var/www/html/wp-content/plugins/guten-bubble:ro
   
   db:
     image: mysql:5.7
