@@ -3,24 +3,6 @@
 po2json:
 	po2json languages/guten-bubble-ja.po languages/guten-bubble-ja-block-guten-bubble.json -f jed1.x
 
-# Copies plugin code files to folder used from docker.
-# NOTE: Build SCSS and Minify JavaScript in advance.
-copyCodeToDocker:
-	cp -rf ./css ./docker/guten-bubble/
-	cp -rf ./js ./docker/guten-bubble/
-	cp -f ./*.php ./docker/guten-bubble/
-	cp -rf ./languages ./docker/guten-bubble/
-	cp -rf ./img ./docker/guten-bubble/
-
-# Copies readme.txt and screenshot files to folder used from docker.
-copyDocToDocker:
-	cp -f ./readme.txt ./docker/guten-bubble/
-	cp -f ./screenshot-*.png ./docker/guten-bubble/
-
-# Clears working folders.
-clean:
-	rm -rf docker/wp docker/guten-bubble
-
 # Copies plugin code files to build folder.
 # NOTE: Build SCSS and Minify JavaScript in advance.
 copyCodeToBuild:
@@ -34,6 +16,10 @@ copyCodeToBuild:
 copyDocToBuild:
 	cp -f ./readme.txt ./build/
 	cp -f ./screenshot-*.png ./build/
+
+# Clears wordpress folder.
+cleanTestWP:
+	rm -rf docker/wp
 
 # Clears build folders.
 cleanBuild:

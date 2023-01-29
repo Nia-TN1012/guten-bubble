@@ -1,0 +1,351 @@
+# Copyright (C) 2013 WordPress
+# This file is distributed under the same license as the WordPress package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Guten-Bubble\n"
+"Report-Msgid-Bugs-To: http://wppolyglots.wordpress.com\n"
+"POT-Creation-Date: 2023-01-29 20:17+0900\n"
+"PO-Revision-Date: 2023-01-29 20:18+0900\n"
+"Last-Translator: Nia Tomonaka <nia1012@outlook.jp>\n"
+"Language-Team: Nia Tomonaka <nia1012-tmnk@outlook.jp>\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: ../js\n"
+"X-Poedit-SearchPath-0: block_guten-bubble.js\n"
+
+#: block_guten-bubble.js:158
+msgid "Displays a speech bubble like a chat conversation."
+msgstr "チャットの会話のような吹き出しを表示します。"
+
+#: block_guten-bubble.js:159
+msgid "speech"
+msgstr "会話"
+
+#: block_guten-bubble.js:159
+msgid "bubble"
+msgstr "吹き出し"
+
+#: block_guten-bubble.js:159
+msgid "chara"
+msgstr "キャラ"
+
+#: block_guten-bubble.js:283
+msgid "Enter serif here ..."
+msgstr "ここにセリフを入力 …"
+
+#: block_guten-bubble.js:296
+msgid "Character icon (preset)"
+msgstr "キャラアイコン (プリセット)"
+
+#: block_guten-bubble.js:302
+msgid "Custom"
+msgstr "カスタム"
+
+#: block_guten-bubble.js:303 block_guten-bubble.js:362
+msgid "Rose"
+msgstr "ローズ"
+
+#: block_guten-bubble.js:304 block_guten-bubble.js:364
+msgid "Orange"
+msgstr "オレンジ"
+
+#: block_guten-bubble.js:305 block_guten-bubble.js:366
+msgid "Lemon"
+msgstr "レモン"
+
+#: block_guten-bubble.js:306 block_guten-bubble.js:368
+msgid "Lime"
+msgstr "ライム"
+
+#: block_guten-bubble.js:307 block_guten-bubble.js:370
+msgid "Viridian"
+msgstr "ビリジアン"
+
+#: block_guten-bubble.js:308 block_guten-bubble.js:372
+msgid "Sky Blue"
+msgstr "スカイブルー"
+
+#: block_guten-bubble.js:309 block_guten-bubble.js:374
+msgid "Imperial Blue"
+msgstr "インペリアルブルー"
+
+#: block_guten-bubble.js:310 block_guten-bubble.js:376
+msgid "Lavendar"
+msgstr "ラベンダー"
+
+#: block_guten-bubble.js:311 block_guten-bubble.js:378
+msgid "Monotone"
+msgstr "モノトーン"
+
+#: block_guten-bubble.js:312 block_guten-bubble.js:380
+msgid "Espresso"
+msgstr "エスプレッソ"
+
+#: block_guten-bubble.js:317
+msgid "Character icon (custom)"
+msgstr "キャラアイコン (カスタム)"
+
+#: block_guten-bubble.js:318
+msgid ""
+"Enabled only when \"Custom\" is selected for the \"Character icon (preset)\"."
+msgstr ""
+"「キャラアイコン (プリセット)」で「カスタム」が選択されている場合にのみ有効に"
+"なります。"
+
+#: block_guten-bubble.js:319
+msgid ""
+"Specifies a image file in the '/wp-content/uploads/guten-bubble/img/' folder."
+msgstr ""
+"'/wp-content/uploads/guten-bubble/img/' フォルダ内の画像ファイルを指定しま"
+"す。"
+
+#: block_guten-bubble.js:321
+msgid "Character icon file name"
+msgstr "キャラアイコンのファイル名"
+
+#: block_guten-bubble.js:330
+msgid "Character icon alignment"
+msgstr "キャラアイコンの配置"
+
+#: block_guten-bubble.js:336
+msgid "Left"
+msgstr "左寄せ"
+
+#: block_guten-bubble.js:337
+msgid "Right"
+msgstr "右寄せ"
+
+#: block_guten-bubble.js:342 block_guten-bubble.js:344
+msgid "Character name"
+msgstr "キャラの名前"
+
+#: block_guten-bubble.js:355
+msgid "Theme color"
+msgstr "テーマカラー"
+
+#: block_guten-bubble.js:361
+msgid "Default"
+msgstr "デフォルト"
+
+#: block_guten-bubble.js:363
+msgid "Rose (fill-color)"
+msgstr "ローズ（塗りつぶし）"
+
+#: block_guten-bubble.js:365
+msgid "Orange (fill-color)"
+msgstr "オレンジ（塗りつぶし）"
+
+#: block_guten-bubble.js:367
+msgid "Lemon (fill-color)"
+msgstr "レモン（塗りつぶし）"
+
+#: block_guten-bubble.js:369
+msgid "Lime (fill-color)"
+msgstr "ライム（塗りつぶし）"
+
+#: block_guten-bubble.js:371
+msgid "Viridian (fill-color)"
+msgstr "ビリジアン（塗りつぶし）"
+
+#: block_guten-bubble.js:373
+msgid "Sky Blue (fill-color)"
+msgstr "スカイブルー（塗りつぶし）"
+
+#: block_guten-bubble.js:375
+msgid "Imperial Blue (fill-color)"
+msgstr "インペリアルブルー（塗りつぶし）"
+
+#: block_guten-bubble.js:377
+msgid "Lavendar (fill-color)"
+msgstr "ラベンダー（塗りつぶし）"
+
+#: block_guten-bubble.js:379
+msgid "Monotone (fill-color)"
+msgstr "モノトーン（塗りつぶし）"
+
+#: block_guten-bubble.js:381
+msgid "Espresso (fill-color)"
+msgstr "エスプレッソ（塗りつぶし）"
+
+#: block_guten-bubble.js:382
+msgid "Bootstrap like (Success)"
+msgstr "Bootstrap風（Success）"
+
+#: block_guten-bubble.js:383
+msgid "Bootstrap like (Info)"
+msgstr "Bootstrap風（Info）"
+
+#: block_guten-bubble.js:384
+msgid "Bootstrap like (Warning)"
+msgstr "Bootstrap風（Warning）"
+
+#: block_guten-bubble.js:385
+msgid "Bootstrap like (Danger)"
+msgstr "Bootstrap風（Danger）"
+
+#: block_guten-bubble.js:390
+msgid "Speech bubble tail type"
+msgstr "吹き出しのしっぽのタイプ"
+
+#: block_guten-bubble.js:396
+msgid "Speaking"
+msgstr "Speaking"
+
+#: block_guten-bubble.js:397
+msgid "Thinking"
+msgstr "Thinking"
+
+#: block_guten-bubble.js:402
+msgid "Speech bubble text font size"
+msgstr "吹き出しテキストのフォントサイズ"
+
+#: block_guten-bubble.js:407
+msgid "Small"
+msgstr "小"
+
+#: block_guten-bubble.js:412
+msgid "Middle"
+msgstr "中"
+
+#: block_guten-bubble.js:417
+msgid "Large"
+msgstr "大"
+
+#: block_guten-bubble.js:422
+msgid "Extra Large"
+msgstr "特大"
+
+#: block_guten-bubble.js:427
+msgid "Ex Extra Large"
+msgstr "超特大"
+
+#: block_guten-bubble.js:432
+msgid "(Legacy) Extra Small"
+msgstr "（レガシー）特小"
+
+#: block_guten-bubble.js:437
+msgid "(Legacy) Small"
+msgstr "（レガシー）小"
+
+#: block_guten-bubble.js:442
+msgid "(Legacy) Middle"
+msgstr "（レガシー）中"
+
+#: block_guten-bubble.js:447
+msgid "(Legacy) Large"
+msgstr "（レガシー）大"
+
+#: block_guten-bubble.js:452
+msgid "(Legacy) Extra Large"
+msgstr "（レガシー）特大"
+
+#: block_guten-bubble.js:466
+msgid "Drop shadow"
+msgstr "影を付ける"
+
+#: block_guten-bubble.js:474
+msgid "Icon negation"
+msgstr "アイコンのネガ化"
+
+#: block_guten-bubble.js:482
+msgid "Character icon corner radius"
+msgstr "キャラアイコンの角丸設定"
+
+#: block_guten-bubble.js:488 block_guten-bubble.js:505
+msgid "Square"
+msgstr "四角"
+
+#: block_guten-bubble.js:489 block_guten-bubble.js:506
+msgid "Corner radius Lv.1"
+msgstr "角丸（Lv.1）"
+
+#: block_guten-bubble.js:490 block_guten-bubble.js:507
+msgid "Corner radius Lv.2"
+msgstr "角丸（Lv.2）"
+
+#: block_guten-bubble.js:491 block_guten-bubble.js:508
+msgid "Corner radius Lv.3"
+msgstr "角丸（Lv.3）"
+
+#: block_guten-bubble.js:492 block_guten-bubble.js:509
+msgid "Corner radius Lv.4"
+msgstr "角丸（Lv.4）"
+
+#: block_guten-bubble.js:493 block_guten-bubble.js:510
+msgid "Corner radius Lv.5"
+msgstr "角丸（Lv.5）"
+
+#: block_guten-bubble.js:494
+msgid "Rounded"
+msgstr "丸型"
+
+#: block_guten-bubble.js:499
+msgid "Speech bubble corner radius"
+msgstr "吹き出しの角丸設定"
+
+#: block_guten-bubble.js:520
+msgid "None"
+msgstr "なし"
+
+#: block_guten-bubble.js:521
+msgid "Spin"
+msgstr "回転"
+
+#: block_guten-bubble.js:522
+msgid "Spin (Reverse)"
+msgstr "回転（逆方向）"
+
+#: block_guten-bubble.js:523
+msgid "Pendulum"
+msgstr "振り子"
+
+#: block_guten-bubble.js:524
+msgid "Snake"
+msgstr "振動"
+
+#: block_guten-bubble.js:525
+msgid "Bound"
+msgstr "バウンド"
+
+#: block_guten-bubble.js:544
+msgid "Character icon settings"
+msgstr "キャラアイコンの設定"
+
+#: block_guten-bubble.js:550
+msgid "Speech bubble settings"
+msgstr "吹き出しの設定"
+
+#: block_guten-bubble.js:555
+msgid "Effect settings"
+msgstr "エフェクトの設定"
+
+#: block_guten-bubble.js:561
+msgid "Animation"
+msgstr "アニメーション"
+
+#~ msgid "Speech bubble text font size (rem)"
+#~ msgstr "吹き出しテキストのフォントサイズ（rem）"
+
+#~ msgid ""
+#~ "Specifies the font size in rem. If 'Speech bubble text font size (px)', "
+#~ "that takes precedence."
+#~ msgstr ""
+#~ "フォントサイズをrem単位で指定します。「吹き出しの文字サイズ(px)」が指定さ"
+#~ "れている場合は、そちらが優先されます。"
+
+#~ msgid ""
+#~ "Specifies the font size in pixel. Takes precedence over 'Speech bubble "
+#~ "text font size (rem)' ."
+#~ msgstr ""
+#~ "フォントサイズをpx単位で指定します。「吹き出しの文字サイズ(rem)」より優先"
+#~ "されます。"
+
+#~ msgid "Regular"
+#~ msgstr "中"
+
+#~ msgid "Content settings"
+#~ msgstr "Content settings"
