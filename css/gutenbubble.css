@@ -524,7 +524,7 @@
   border-radius: 10px;
 }
 .cn-gutenbubble .chara-icon > .corner-round {
-  border-radius: 50 %;
+  border-radius: 50%;
 }
 .cn-gutenbubble .chara-icon > .nega {
   filter: invert(100%);
