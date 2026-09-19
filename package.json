@@ -17,7 +17,7 @@
     "i18n:update": "yarn build && yarn i18n:pot && yarn i18n:po",
     "i18n:compile": "yarn i18n:mo && yarn i18n:json",
     "package": "yarn build && rm -f guten-bubble.zip && zip -rq guten-bubble.zip guten-bubble -x 'guten-bubble/src/*' 'guten-bubble/assets/*' '*.DS_Store'",
-    "svn:copy": "yarn build && rsync -a --delete --exclude=.svn --exclude=src --exclude=assets --exclude=.DS_Store guten-bubble/ svn/guten-bubble/trunk/ && rsync -a --delete --exclude=.svn --exclude=.DS_Store guten-bubble/assets/ svn/guten-bubble/assets/"
+    "svn:copy": "yarn build && rsync -a --delete --exclude=.svn --exclude=/src --exclude=/assets --exclude=.DS_Store guten-bubble/ svn/guten-bubble/trunk/ && rsync -a --delete --exclude=.svn --exclude=.DS_Store guten-bubble/assets/ svn/guten-bubble/assets/"
   },
   "dependencies": {},
   "devDependencies": {
