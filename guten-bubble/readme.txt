@@ -2,10 +2,10 @@
 Contributors: niatn1012
 Donate link: 
 Tags: speech, bubble, balloon
-Requires at least: 5.0.0
-Tested up to: 6.1.1
-Stable tag: 0.9.2
-Requires PHP: 5.6
+Requires at least: 6.6
+Tested up to: 7.1
+Stable tag: 1.0.0
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Displays a speech bubble like a chat conversation.
 Guten-bubble can create a speech bubble display like a chat conversation.
 
 # Features
-* It's easy to create speech bubble using Guten-bubble block for Gutenberg editor in WordPress 5.0 or later.
+* It's easy to create speech bubble using Guten-bubble block for the block editor in WordPress 6.6 or later.
 * Pick from 24 color themes for speech bubble.
 * You can use it as an icon image by importing image files from WordPress's media library. Let's make interesting articles by using icon image on hand!
 
@@ -49,6 +49,12 @@ that Icon image can be used.
 
 == Changelog ==
 
+= 1.0.0 =
+* Rewrote the Guten-bubble block with TypeScript and React. Blocks created with earlier versions can be used as they are.
+* Renewed the block settings in the inspector with the standard WordPress components.
+* Supported the iframed block editor (Block API version 3).
+* Added the 'Use legacy block' option to the settings page, to use the block of ver. 0.9.x.
+* Changed the requirements to WordPress 6.6 or later and PHP 7.4 or later.
 = 0.9.2 =
 * Fixted version number.
 = 0.9.1 =
@@ -56,3 +62,7 @@ that Icon image can be used.
 * Fixed some CSS.
 = 0.8.1 =
 * First release.
+== Upgrade Notice ==
+
+= 1.0.0 =
+Requires WordPress 6.6 or later and PHP 7.4 or later. If you have a problem with the new block, enable 'Use legacy block' in the Guten-bubble settings page.

@@ -26,6 +26,12 @@
 	}
 
 	&-thumbnail {
+		display: inline-block;
+		margin: 5px;
+		text-align: center;
+		vertical-align: top;
+		width: 120px;
+
 		&-view {
 			border: 1px solid #ccc;
 			padding: 5px;
@@ -50,11 +56,6 @@
 			list-style: none;
 		}
 
-		display: inline-block;
-		margin: 5px;
-		text-align: center;
-		vertical-align: top;
-		width: 120px;
 
 		img {
 			width: 120px;

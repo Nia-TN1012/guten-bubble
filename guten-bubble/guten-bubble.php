@@ -3,7 +3,9 @@
 Plugin Name: Guten-Bubble
 Plugin URI: https://github.com/Nia-TN1012/guten-bubble/
 Description: Displays a speech bubble like a chat conversation. 
-Version: 0.9.2
+Version: 1.0.0
+Requires at least: 6.6
+Requires PHP: 7.4
 Author: Nia Tomonaka
 Author URI: https://tech.nia-tn1012.com
 License: GPLv2 or later
@@ -30,20 +32,54 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 defined( 'ABSPATH' ) || exit;
 
+require_once( __DIR__.'/settings.php' );
+require_once( __DIR__.'/vite-assets.php' );
 require_once( __DIR__.'/options-page.php' );
 
 class GutenBubble {
 
+    const VERSION = '1.0.0';
+
+    /** Script handle of the block. Shared by the current and legacy versions. */
+    const SCRIPT_HANDLE = 'block-guten-bubble';
+
+    /** Style handle of the block. */
+    const STYLE_HANDLE = 'block-guten-bubble';
+
+    /** Style handle of the settings page. */
+    const ADMIN_STYLE_HANDLE = 'admin-guten-bubble';
+
+    /** Vite entries (keys of dist/manifest.json). */
+    const ENTRY_SCRIPT = 'guten-bubble/src/index.ts';
+    const ENTRY_STYLE = 'guten-bubble/src/css/gutenbubble.scss';
+    const ENTRY_ADMIN_STYLE = 'guten-bubble/src/css/admin-gutenbubble.scss';
+
+    /** @var GutenBubbleOptionsPage */
     public $options_page;
 
+    /** @var GutenBubbleViteAssets */
+    private $vite_assets;
+
+    /** @var string|false Hook suffix of the settings page. */
+    private $options_page_hook = false;
+
     public function __construct() {
+        $this->options_page = new GutenBubbleOptionsPage();
+        $this->vite_assets = new GutenBubbleViteAssets( __FILE__ );
+        new GutenBubbleSettings();
+
         register_activation_hook( __FILE__, [$this, 'activation'] );
 
-        add_action( 'enqueue_block_editor_assets', [$this, 'add_cunstom_block_to_block_editor'] );
+        add_action( 'enqueue_block_editor_assets', [$this, 'enqueue_block_editor_assets'] );
 
-        add_action( 'init', [$this, 'GutenBubble::add_css_style'] );
+        // Fires on the front end and in the block editor (including the iframed editor canvas).
+        add_action( 'enqueue_block_assets', [$this, 'enqueue_block_assets'] );
 
         add_action( 'admin_menu', [$this, 'add_menu_page'] );
+
+        add_action( 'admin_enqueue_scripts', [$this, 'enqueue_admin_assets'] );
+
+        add_action( 'admin_notices', [$this, 'show_build_notice'] );
 
         add_filter( 'plugin_action_links_'.plugin_basename( __FILE__ ), [$this, 'add_action_links'] );
     }
@@ -54,55 +90,97 @@ class GutenBubble {
         $plugin_dir = plugin_dir_path( __FILE__ ).'img';
         $upload_dir = trailingslashit( wp_upload_dir()['basedir'] ).'guten-bubble/img/default';
         wp_mkdir_p( $upload_dir );
-        $default_imgs = [
-            '01-rose.png',
-            '02-orange.png',
-            '03-lemon.png',
-            '04-lime.png',
-            '05-viridian.png',
-            '06-sky.png',
-            '07-imperial.png',
-            '08-lavendar.png',
-            '09-monotone.png',
-            '10-espresso.png'
-        ];
-        foreach( $default_imgs as $default_img ) {
+        foreach( GutenBubbleOptionsPage::$default_images as $default_img ) {
             if( !file_exists( $upload_dir.'/'.$default_img ) ) {
                 copy( $plugin_dir.'/'.$default_img, $upload_dir.'/'.$default_img );
             }
         }
     }
 
-    /** Invoke when enqueue block edtior assets. */
-    public function add_cunstom_block_to_block_editor() {
-        if( !function_exists( 'register_block_type' ) ) {
-            return;
+    /** Returns true if the files built by Vite should be used. */
+    private function use_vite_assets() {
+        return !GutenBubbleSettings::use_legacy_block() && $this->vite_assets->is_built();
+    }
+
+    /** Enqueues the block script. Invoked on 'enqueue_block_editor_assets'. */
+    public function enqueue_block_editor_assets() {
+        if( $this->use_vite_assets() ) {
+            wp_enqueue_script(
+                self::SCRIPT_HANDLE,
+                $this->vite_assets->get_url( self::ENTRY_SCRIPT ),
+                ['react-jsx-runtime', 'wp-blocks', 'wp-block-editor', 'wp-components', 'wp-i18n'],
+                $this->vite_assets->get_version( self::ENTRY_SCRIPT ),
+                true
+            );
         }
-        
-        wp_enqueue_script( 'block-guten-bubble', plugins_url( 'js/block_guten-bubble.min.js', __FILE__ ), ['wp-blocks', 'wp-editor', 'wp-i18n', 'wp-element', 'wp-components'], "", true );
-    
-        if( function_exists( 'wp_set_script_translations' ) ) {
-            wp_set_script_translations( 'block-guten-bubble', 'guten-bubble', plugin_dir_path( __FILE__ ).'languages' );
+        else {
+            wp_enqueue_script(
+                self::SCRIPT_HANDLE,
+                plugins_url( 'legacy/block_guten-bubble.min.js', __FILE__ ),
+                ['wp-blocks', 'wp-editor', 'wp-i18n', 'wp-element', 'wp-components'],
+                self::VERSION,
+                true
+            );
+        }
+
+        wp_set_script_translations( self::SCRIPT_HANDLE, 'guten-bubble', plugin_dir_path( __FILE__ ).'languages' );
+    }
+
+    /** Enqueues the block style. Invoked on 'enqueue_block_assets'. */
+    public function enqueue_block_assets() {
+        if( $this->use_vite_assets() ) {
+            wp_enqueue_style(
+                self::STYLE_HANDLE,
+                $this->vite_assets->get_url( self::ENTRY_STYLE ),
+                [],
+                $this->vite_assets->get_version( self::ENTRY_STYLE )
+            );
+        }
+        else {
+            wp_enqueue_style( self::STYLE_HANDLE, plugins_url( 'legacy/css/gutenbubble.min.css', __FILE__ ), [], self::VERSION );
         }
     }
 
-    /** Add Guten-bubble's CSS style */
-    public function add_css_style() {
-        wp_enqueue_style( 'block-guten-bubble', plugins_url( 'css/gutenbubble.min.css', __FILE__ ) );
+    /** Enqueues the assets of the settings page. Invoked on 'admin_enqueue_scripts'. */
+    public function enqueue_admin_assets( $hook_suffix ) {
+        if( $hook_suffix !== $this->options_page_hook ) {
+            return;
+        }
+        if( $this->use_vite_assets() ) {
+            wp_enqueue_style(
+                self::ADMIN_STYLE_HANDLE,
+                $this->vite_assets->get_url( self::ENTRY_ADMIN_STYLE ),
+                [],
+                $this->vite_assets->get_version( self::ENTRY_ADMIN_STYLE )
+            );
+        }
+        else {
+            wp_enqueue_style( self::ADMIN_STYLE_HANDLE, plugins_url( 'legacy/css/admin-gutenbubble.min.css', __FILE__ ), [], self::VERSION );
+        }
+        wp_enqueue_media();
     }
 
     /** Add settings page */
     public function add_menu_page() {
-        wp_enqueue_style( 'admin-guten-bubble', plugins_url( 'css/admin-gutenbubble.min.css', __FILE__ ) );
         load_plugin_textdomain( "guten-bubble-admin", false, basename( dirname( __FILE__ ) ).'/languages' );
-        wp_enqueue_media();
-        $options_page = new GutenBubbleOptionsPage();
-        add_submenu_page( 'options-general.php', 'Guten-bubble', 'Guten-bubble', 'manage_options', 'guten-bubble-options', [&$options_page, 'index'] );
+        $this->options_page_hook = add_submenu_page( 'options-general.php', 'Guten-bubble', 'Guten-bubble', 'manage_options', GutenBubbleSettings::PAGE_SLUG, [$this->options_page, 'index'] );
+    }
+
+    /** Warns administrators when the files built by Vite are missing (e.g. not built yet in development). */
+    public function show_build_notice() {
+        if( GutenBubbleSettings::use_legacy_block() || $this->vite_assets->is_built() || !current_user_can( 'manage_options' ) ) {
+            return;
+        }
+        ?>
+        <div class="notice notice-warning">
+            <p><?php esc_html_e( "Guten-bubble: The built files (dist/manifest.json) were not found, so the legacy block is used instead. Run 'yarn build' to build them.", "guten-bubble-admin" ) ?></p>
+        </div>
+        <?php
     }
 
     public function add_action_links( $links ) {
         load_plugin_textdomain( "guten-bubble-admin", false, basename( dirname( __FILE__ ) ).'/languages' );
-        $links[] = '<a href="'.esc_url( get_admin_url( null, 'options-general.php?page=guten-bubble-options' ) ).'">'.__( "Settings", "guten-bubble-admin" ).'</a>';
+        $links[] = '<a href="'.esc_url( get_admin_url( null, 'options-general.php?page='.GutenBubbleSettings::PAGE_SLUG ) ).'">'.__( "Settings", "guten-bubble-admin" ).'</a>';
         return $links;
     }
 }

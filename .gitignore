@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 svn
+# Distribution package
+guten-bubble.zip
+
+# Claude Code local settings
+.claude/settings.local.json

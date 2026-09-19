@@ -1,0 +1,341 @@
+# Copyright (C) 2026 Nia Tomonaka
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Guten-Bubble 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/guten-bubble\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-19T12:04:57+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: guten-bubble\n"
+
+#. Plugin Name of the plugin
+#: guten-bubble.php
+msgid "Guten-Bubble"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: guten-bubble.php
+msgid "https://github.com/Nia-TN1012/guten-bubble/"
+msgstr ""
+
+#. Description of the plugin
+#: guten-bubble.php
+#: dist/assets/block-guten-bubble.js:1
+msgid "Displays a speech bubble like a chat conversation."
+msgstr ""
+
+#. Author of the plugin
+#: guten-bubble.php
+msgid "Nia Tomonaka"
+msgstr ""
+
+#. Author URI of the plugin
+#: guten-bubble.php
+msgid "https://tech.nia-tn1012.com"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Custom"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Rose"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Orange"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Lemon"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Lime"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Viridian"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Sky Blue"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Imperial Blue"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Lavendar"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Monotone"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Espresso"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Left"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Right"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Default"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Rose (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Orange (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Lemon (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Lime (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Viridian (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Sky Blue (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Imperial Blue (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Lavendar (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Monotone (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Espresso (fill-color)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Bootstrap like (Success)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Bootstrap like (Info)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Bootstrap like (Warning)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Bootstrap like (Danger)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Speaking"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Thinking"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Small"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Middle"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Large"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Extra Large"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Ex Extra Large"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "(Legacy) Extra Small"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "(Legacy) Small"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "(Legacy) Middle"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "(Legacy) Large"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "(Legacy) Extra Large"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Square"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Corner radius Lv.1"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Corner radius Lv.2"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Corner radius Lv.3"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Corner radius Lv.4"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Corner radius Lv.5"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Rounded"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "None"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Spin"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Spin (Reverse)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Pendulum"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Snake"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Bound"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Enter serif here ..."
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Character icon settings"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Character icon (preset)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Character icon (custom)"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Enabled only when \"Custom\" is selected for the \"Character icon (preset)\"."
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Specifies a image file in the '/wp-content/uploads/guten-bubble/img/' folder."
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Character icon file name"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Character icon alignment"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Character name"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Speech bubble settings"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Theme color"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Speech bubble tail type"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Speech bubble text font size"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Effect settings"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Drop shadow"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Icon negation"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Character icon corner radius"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Speech bubble corner radius"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Animation"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "speech"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "bubble"
+msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "chara"
+msgstr ""
