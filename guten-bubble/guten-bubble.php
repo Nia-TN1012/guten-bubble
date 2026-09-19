@@ -4,14 +4,14 @@ Plugin Name: Guten-Bubble
 Plugin URI: https://github.com/Nia-TN1012/guten-bubble/
 Description: Displays a speech bubble like a chat conversation. 
 Version: 0.9.2
-Author: Chronoir.net
-Author URI: https://chronoir.net/
+Author: Nia Tomonaka
+Author URI: https://tech.nia-tn1012.com
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: guten-bubble
 Domain Path: /languages
 
-Copyright 2023 Chronoir.net (email: nia1012-tmnk@outlook.jp)
+Copyright 2023-2026 Nia T.N. Tech Lab.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

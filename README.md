@@ -41,7 +41,7 @@ that Icon image can be used.
 
 # Legal Disclaimer
 
-The author and Chronoir.net accept no any responsibility for any obstacles or damages caused by using this Plugin. Please be understanding of this beforehand.
+The author accept no any responsibility for any obstacles or damages caused by using this Plugin. Please be understanding of this beforehand.
 
 # License
 
