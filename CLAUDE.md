@@ -2,6 +2,8 @@
 
 Guidance for Claude Code when working in this repository.
 
+This file is the source of truth for all AI coding agents. `AGENTS.md` (Codex and others) and `.cursor/rules/project.mdc` (Cursor) only point to this file and add notes for agents other than Claude Code; keep project rules here and do not duplicate them there.
+
 ## Project
 
 Guten-bubble is a WordPress plugin that provides a block (`chronoir-net/guten-bubble`) displaying speech bubbles like a chat conversation.

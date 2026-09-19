@@ -1,0 +1,16 @@
+---
+description: Project rules for Guten-bubble (source of truth is CLAUDE.md)
+alwaysApply: true
+---
+
+# Guten-bubble project rules
+
+**`CLAUDE.md` at the repository root is the single source of truth for this project.** Read it before starting any work, and follow all of its rules as if they were addressed to you.
+
+@CLAUDE.md
+
+Also follow the notes for agents other than Claude Code in `AGENTS.md` (language, `DEV_DOCS_DIR`, and actions that require the user's instruction).
+
+@AGENTS.md
+
+Do not duplicate or override the rules of `CLAUDE.md` here. If they are outdated or wrong, update `CLAUDE.md` itself.
