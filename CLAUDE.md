@@ -57,6 +57,8 @@ For changes that affect the editor or the front end, also check them in wp-env.
 
 Posts created with ver. 0.8.1 - 0.9.x must never become invalid blocks. The block validator compares the saved HTML with the output of `save()`, so:
 
+The rules below describe ver. 1.0.x, where blocks are editable with both the current and the legacy block. From ver. 1.1.x the markup is planned to change, so blocks created with ver. 1.1.x or later will no longer be editable with the legacy block. See `$DEV_DOCS_DIR/guten-bubble/roadmap.md` before changing the markup.
+
 * The output of `save()` must stay **byte-identical** to `legacy/block_guten-bubble.js`, including class strings with their leading spaces, element order and attribute order. `yarn test` verifies this; keep the tests passing, and add fixtures when touching the markup.
 * Do not change attribute definitions in `src/block/attributes.ts` (sources, selectors, defaults, and the non-standard `type: 'bool'`). `chara_name` and `content` use `source: 'children'` on purpose.
 * The block uses `apiVersion: 3`. The legacy block (API version 1) got the class `wp-block-chronoir-net-guten-bubble` added to its root element automatically, so `save()` must apply `useBlockProps.save()` to the root element.
