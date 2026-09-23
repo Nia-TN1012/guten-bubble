@@ -1,3 +1,9 @@
+> IMPORTANT NOTICE
+> 
+> The upcoming version 1.0.0 will require **WordPress 6.6 or later** and **PHP 7.4 or later**.
+> Please make sure your environment meets these requirements before updating.
+> 
+
 # Guten-bubble
 
 Guten-bubble can create a speech bubble display like a chat conversation.
