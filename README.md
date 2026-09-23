@@ -18,7 +18,7 @@ Guten-bubble can create a speech bubble display like a chat conversation.
 1. Add a Guten-bubble block where you want to add a speech bubble.
 2. Enter serif in the balloon in the block ( the part where 'Enter serif here ...' placeholder is displayed ), select character icon and set the balloon in the inspector.
 
-![Screeenshot-1](https://raw.githubusercontent.com/Nia-TN1012/guten-bubble/master/assets/screenshot-1.png)
+![Screeenshot-1](https://raw.githubusercontent.com/Nia-TN1012/guten-bubble/main/guten-bubble/screenshot-1.png)
 
 ### To use the icon image on hand
 
@@ -26,7 +26,7 @@ Open Guten-bubble settings page in the setting menu of the admin page.
 Press the 'Select from media library' button to select the icon image you want to use from the media library (if you have not uploaded it yet, upload it here) and press the 'Import' button to import.
 ( Or upload the icon image files to the `/wp-content/uploads/guten-bubble/img` directory ( that is created on plugin install ) using FTP software etc. )
 
-![Screeenshot-2](https://raw.githubusercontent.com/Nia-TN1012/guten-bubble/master/assets/screenshot-2.png)
+![Screeenshot-2](https://raw.githubusercontent.com/Nia-TN1012/guten-bubble/main/guten-bubble/screenshot-2.png)
 
 In the Inspector of "Guten-bubble" block, select "custom" from the "Character icon (preset)" drop-down box
 and enter the file name of the icon image ( relative path from `/wp-content/uploads/guten-bubble/img` directory ) in the "Character icon (custom)" input box,
