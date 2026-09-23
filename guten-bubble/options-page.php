@@ -17,10 +17,18 @@ class GutenBubbleOptionsPage {
         '10-espresso.png'
     ];
 
+    /** Nonce action of the icon import form. */
+    const IMPORT_NONCE_ACTION = 'guten_bubble_import_chara_icon';
+
     public function index() {
 
+       if( !current_user_can( 'manage_options' ) ) {
+           return;
+       }
+
        if( isset( $_POST['selected-icon-url'] ) ) {
-           $result = $this->import_chara_icon_file( $_POST['selected-icon-url'] );
+           check_admin_referer( self::IMPORT_NONCE_ACTION );
+           $result = $this->import_chara_icon_file( esc_url_raw( wp_unslash( $_POST['selected-icon-url'] ) ) );
        }
     ?>
         <div class="wrap">
@@ -31,6 +39,14 @@ class GutenBubbleOptionsPage {
                 <p><b><?= __( "NOTICE: To use the Guten-bubble plugin, required WordPress 5.0 or later.", "guten-bubble-admin" ) ?></b></p>
             </div>
             <?php endif ?>
+
+            <form method="post" action="options.php">
+                <?php
+                    settings_fields( GutenBubbleSettings::OPTION_GROUP );
+                    do_settings_sections( GutenBubbleSettings::PAGE_SLUG );
+                    submit_button();
+                ?>
+            </form>
 
             <div id="cngb-nedia-upload">
                 <h2><?= __( "Import character icon image from media library", "guten-bubble-admin" ) ?></h2>
@@ -43,6 +59,7 @@ class GutenBubbleOptionsPage {
                 </div>
                 <?php endif ?>
                 <form method="post" id="cngb-chara-icon-upload">
+                    <?php wp_nonce_field( self::IMPORT_NONCE_ACTION ) ?>
                     <table class="form-table">
                         <tbody>
                             <tr>

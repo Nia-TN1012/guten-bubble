@@ -1,0 +1,14 @@
+{
+    "core": "https://ja.wordpress.org/latest-ja.zip",
+    "phpVersion": "8.4",
+    "port": 8080,
+    "plugins": [
+        "./guten-bubble"
+    ],
+    "themes": [],
+    "config": {
+        "WP_DEBUG": true,
+        "WP_DEBUG_LOG": true
+    },
+    "testsEnvironment": false
+}
