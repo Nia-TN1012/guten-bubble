@@ -91,9 +91,9 @@ Documents (designs, implementation plans) and dev-logs are stored in a separate 
 ## Git workflow
 
 * Branches:
-  * `master` (to be renamed to `main` before the 1.0.0 release): the main branch.
-  * `feature/<topic>`: create one from `master` for each piece of work, then merge it into `master`. No pull requests are needed (personal project).
-  * `release/<version>`: created from `master` when releasing to the WordPress.org plugin directory.
+  * `main`: the main branch (renamed from `master`).
+  * `feature/<topic>`: create one from `main` for each piece of work, then merge it into `main`. No pull requests are needed (personal project).
+  * `release/<version>`: created from `main` when releasing to the WordPress.org plugin directory.
   * `develop` is no longer used.
 * Commit messages: English, a short imperative summary line (e.g. `Add legacy block option`), with details in the body if needed.
 * Never commit `dist/`, `svn/`, `guten-bubble.zip` or `.claude/settings.local.json`.
