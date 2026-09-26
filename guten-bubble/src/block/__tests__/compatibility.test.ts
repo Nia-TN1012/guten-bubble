@@ -89,6 +89,10 @@ const fixtures: Record< string, Record< string, unknown > > = {
 		chara_align: 'right',
 		tail_type: 'think',
 	},
+	'imported icon selected as a preset': {
+		chara_icon_preset: 'my-icon.png',
+		chara_name: html( 'Alice' ),
+	},
 	'custom icon with plain name and content': {
 		chara_icon_custom: 'my-icon.png',
 		chara_name: html( 'Alice' ),
@@ -157,6 +161,20 @@ describe( 'the new save()', () => {
 
 		useNewBlock();
 		expect( serialize( [ createBlock( name, attributes ) ] ) ).toBe( legacyHtml );
+	} );
+} );
+
+describe( 'an imported icon selected as a preset', () => {
+	it( 'saves the same markup as "Custom" with its file name', () => {
+		const common = { chara_name: html( 'Alice' ), content: html( 'Hi' ) };
+		const customHtml = serializeWithLegacy( { ...common, chara_icon_preset: 'custom', chara_icon_custom: 'my-icon.png' } );
+
+		useNewBlock();
+		const presetHtml = serialize( [ createBlock( name, { ...common, chara_icon_preset: 'my-icon.png' } ) ] );
+
+		// Only the block comment delimiter differs (it stores chara_icon_preset).
+		const markup = ( blockHtml: string ) => blockHtml.replace( /^<!-- wp:[^>]*-->/, '' );
+		expect( markup( presetHtml ) ).toBe( markup( customHtml ) );
 	} );
 } );
 

@@ -28,7 +28,7 @@ Requirements: WordPress 6.6 or later, PHP 7.4 or later.
 | `guten-bubble/dist/` | Vite build output (git-ignored, but distributed). |
 | `guten-bubble/legacy/` | JavaScript / CSS of ver. 0.9.x. **Never edit these files.** |
 | `guten-bubble/languages/` | Translations. Two text domains: `guten-bubble` (block script) and `guten-bubble-admin` (PHP / settings page). |
-| `guten-bubble/*.php` | `guten-bubble.php` (entry, asset loading), `settings.php` (Settings API options), `vite-assets.php` (reads `dist/manifest.json`), `options-page.php` (settings page). |
+| `guten-bubble/*.php` | `guten-bubble.php` (entry, asset loading), `settings.php` (Settings API options), `vite-assets.php` (reads `dist/manifest.json`), `chara-icons.php` (imported character icons and their labels and order), `options-page.php` (settings page). |
 | `guten-bubble/assets/` | Banners and icons for the WordPress.org plugin page (not distributed in the zip). |
 | `svn/` | WordPress.org SVN working copy (git-ignored). |
 
@@ -70,7 +70,8 @@ The rules below describe ver. 1.0.x, where blocks are editable with both the cur
 
 ## Other constraints
 
-* **Legacy toggle**: the `use_legacy_block` option (settings page) switches the editor script, the block style and the settings page style between `dist/` and `legacy/`. Both versions register the same block name, so they must always be loaded exclusively. When `dist/manifest.json` is missing, the legacy files are used.
+* **Legacy toggle**: the `use_legacy_block` option (settings page) switches the editor script and the block style between `dist/` and `legacy/`. Both versions register the same block name, so they must always be loaded exclusively. When `dist/manifest.json` is missing, the legacy files are used.
+* **Settings page style**: the settings page is not part of the block and its markup (PHP) is always the current one, so it always uses the style in `dist/`, regardless of `use_legacy_block`. `legacy/css/admin-gutenbubble*.css` is used only when `dist/manifest.json` is missing.
 * **Stable build file names**: `vite.config.ts` disables hashes in output file names, because `wp_set_script_translations()` looks up translation JSON by the MD5 of the script path. Do not re-enable hashing.
 * **IIFE wrapper**: build outputs are enqueued as classic scripts, so `vite.config.ts` wraps entry chunks in an IIFE (multiple inputs prevent `output.format: 'iife'`).
 * **WordPress globals**: `@wordpress/*` and React are external (`wp.*`, `React`, `ReactJSXRuntime`) via `@kucrut/vite-for-wp`. When importing a new `@wordpress/*` package, add its script handle to the dependencies in `enqueue_block_editor_assets()` in `guten-bubble.php`.

@@ -26,17 +26,9 @@
 	}
 
 	&-thumbnail {
-		display: inline-block;
-		margin: 5px;
-		text-align: center;
-		vertical-align: top;
-		width: 120px;
-
 		&-view {
 			border: 1px solid #ccc;
 			padding: 5px;
-			height: 800px;
-			overflow: auto visible;
 		}
 		&-head {
 			&-d {
@@ -50,20 +42,162 @@
 				background-color: #def;
 			}
 		}
-		&-list {
-			margin: 5px;
-			margin-bottom: 20px;
+
+		&-empty {
+			margin: 5px 10px 20px;
+		}
+	}
+
+	// Collapsible character icon lists
+	&-accordion {
+		margin-bottom: 10px;
+
+		> summary {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 1.1em;
+			font-weight: 600;
+			cursor: pointer;
 			list-style: none;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+
+			// Chevron (dashicons-arrow-right-alt2), rotated when expanded
+			&::before {
+				content: "\f345";
+				font-family: dashicons;
+				font-weight: normal;
+				transition: transform 0.15s;
+			}
+
+			&:focus-visible {
+				outline: 2px solid #2271b1;
+				outline-offset: -2px;
+			}
 		}
 
+		&[open] > summary::before {
+			transform: rotate( 90deg );
+		}
+	}
 
-		img {
-			width: 120px;
-			height: 120px;
+	// Character icon lists (one icon per row)
+	&-icon {
+		&-table {
+			margin: 10px 0 20px;
+
+			td {
+				vertical-align: middle;
+			}
 		}
 
-		span {
-			overflow-wrap: break-word;
+		&-col {
+			&-handle {
+				width: 24px;
+			}
+			&-image {
+				width: 60px;
+			}
+			&-actions {
+				white-space: nowrap;
+				text-align: right;
+
+				.button {
+					min-height: 36px;
+					margin-left: 4px;
+					padding: 0 12px;
+					line-height: 34px;
+				}
+
+				.dashicons {
+					vertical-align: middle;
+				}
+
+				.cngb-delete-icon {
+					color: #b32d2e;
+					border-color: #b32d2e;
+				}
+			}
+		}
+
+		&-image {
+			display: block;
+			width: 60px;
+			height: 60px;
+			object-fit: contain;
+		}
+
+		&-file-name {
+			overflow-wrap: anywhere;
+		}
+	}
+
+	// Thumbnail that opens the preview popup
+	&-preview-icon {
+		display: block;
+		padding: 0;
+		border-radius: 2px;
+		cursor: zoom-in;
+
+		&:hover .cngb-icon-image {
+			opacity: 0.8;
+		}
+	}
+
+	// Imported character icon list (sortable)
+	&-sortable {
+		&-placeholder td {
+			border: 1px dashed #999;
+			background-color: #f6f7f7;
+		}
+
+		.ui-sortable-helper {
+			background-color: white;
+			box-shadow: 0 2px 6px rgba( 0, 0, 0, 0.2 );
+		}
+	}
+
+	&-sort-handle {
+		cursor: move;
+	}
+
+	// Image preview popup
+	&-preview {
+		&-dialog {
+			padding: 16px 20px;
+			border: none;
+			border-radius: 4px;
+			box-shadow: 0 4px 16px rgba( 0, 0, 0, 0.3 );
+			text-align: center;
+
+			&::backdrop {
+				background-color: rgba( 0, 0, 0, 0.5 );
+			}
+		}
+
+		&-title {
+			margin-top: 0;
+			overflow-wrap: anywhere;
+		}
+
+		// Checkerboard background to show transparent areas
+		&-image {
+			display: inline-block;
+			line-height: 0;
+			background-color: #fff;
+			background-image:
+				linear-gradient( 45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75% ),
+				linear-gradient( 45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75% );
+			background-position: 0 0, 8px 8px;
+			background-size: 16px 16px;
+			border: 1px solid #ccc;
+		}
+
+		&-size {
+			color: #646970;
 		}
 	}
 }

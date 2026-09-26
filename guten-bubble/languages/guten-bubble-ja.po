@@ -340,3 +340,16 @@ msgstr ""
 #: guten-bubble.php
 msgid "https://tech.nia-tn1012.com"
 msgstr ""
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Default icons"
+msgstr "デフォルトのアイコン"
+
+#: dist/assets/block-guten-bubble.js:1
+msgid "Imported icons"
+msgstr "インポートしたアイコン"
+
+#: dist/assets/block-guten-bubble.js:1
+#, js-format
+msgid "%s (not found)"
+msgstr "%s (見つかりません)"
