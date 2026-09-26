@@ -8,13 +8,15 @@ import {
 	TextControl,
 	ToggleControl,
 } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import {
 	getAnimationOptions,
 	getBubbleRadiusOptions,
 	getCharaAlignOptions,
+	getCharaIconPresetOptionGroups,
 	getCharaIconPresetOptions,
 	getCharaRadiusOptions,
+	getCustomCharaIconOption,
 	getFontSizeOptions,
 	getTailTypeOptions,
 	getThemeColorOptions,
@@ -38,6 +40,40 @@ function childrenToText( value: ChildrenValue | string | undefined ): string {
 			return childrenToText( node.props.children as ChildrenValue | string | undefined );
 		} )
 		.join( '' );
+}
+
+/**
+ * Renders the options of "Character icon (preset)", grouped into the bundled and imported icons.
+ *
+ * If the current value is not among them (e.g. the imported icon was deleted, or the block was
+ * copied from another site), an option for it is appended; otherwise the select box would show
+ * "Custom" while the block still uses the stored value.
+ */
+function CharaIconPresetOptions( { value }: { value: string } ) {
+	const custom = getCustomCharaIconOption();
+	const isKnown = getCharaIconPresetOptions().some( ( option ) => option.value === value );
+	return (
+		<>
+			<option value={ custom.value }>{ custom.label }</option>
+			{ getCharaIconPresetOptionGroups().map( ( group ) => (
+				<optgroup key={ group.label } label={ group.label }>
+					{ group.options.map( ( option ) => (
+						<option key={ option.value } value={ option.value }>
+							{ option.label }
+						</option>
+					) ) }
+				</optgroup>
+			) ) }
+			{ ! isKnown && (
+				<option value={ value }>
+					{
+						/* translators: %s: File name of the character icon. */
+						sprintf( __( '%s (not found)', 'guten-bubble' ), value )
+					}
+				</option>
+			) }
+		</>
+	);
 }
 
 export default function Edit( { attributes, setAttributes }: BlockEditProps< GutenBubbleAttributes > ) {
@@ -81,9 +117,10 @@ export default function Edit( { attributes, setAttributes }: BlockEditProps< Gut
 						__nextHasNoMarginBottom
 						label={ __( 'Character icon (preset)', 'guten-bubble' ) }
 						value={ attributes.chara_icon_preset }
-						options={ getCharaIconPresetOptions() }
 						onChange={ ( value ) => setAttributes( { chara_icon_preset: value } ) }
-					/>
+					>
+						<CharaIconPresetOptions value={ attributes.chara_icon_preset } />
+					</SelectControl>
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom

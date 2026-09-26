@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Guten-Bubble 1.0.0\n"
+"Project-Id-Version: Guten-Bubble 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/guten-bubble\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-19T12:04:58+00:00\n"
+"POT-Creation-Date: 2026-09-26T13:19:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: guten-bubble-admin\n"
@@ -39,92 +39,209 @@ msgstr ""
 msgid "https://tech.nia-tn1012.com"
 msgstr ""
 
-#: guten-bubble.php:176
+#: guten-bubble.php:189
 msgid "Guten-bubble: The built files (dist/manifest.json) were not found, so the legacy block is used instead. Run 'yarn build' to build them."
 msgstr ""
 
-#: guten-bubble.php:183
+#: guten-bubble.php:196
 msgid "Settings"
 msgstr ""
 
-#: options-page.php:35
+#: options-page.php:47
 msgid "Guten-bubble settings"
 msgstr ""
 
-#: options-page.php:39
+#: options-page.php:51
 msgid "NOTICE: To use the Guten-bubble plugin, required WordPress 5.0 or later."
 msgstr ""
 
-#: options-page.php:52
+#: options-page.php:64
 msgid "Import character icon image from media library"
 msgstr ""
 
-#: options-page.php:67
+#: options-page.php:72
 msgid "Select character icon image"
 msgstr ""
 
-#: options-page.php:71
+#: options-page.php:76
 msgid "Choose Image"
 msgstr ""
 
-#: options-page.php:72
+#: options-page.php:77
 msgid "Select from media library"
 msgstr ""
 
-#: options-page.php:83
-msgid "Import"
+#: options-page.php:88
+#: options-page.php:161
+msgid "Label"
 msgstr ""
 
-#: options-page.php:87
-msgid "Remarks"
-msgstr ""
-
-#: options-page.php:89
-msgid "Select the image in the WordPress media library and import it into the image folder of Guten-bubble."
-msgstr ""
-
-#: options-page.php:90
-msgid "The recommended image size is 120px x 120px or more."
-msgstr ""
-
-#: options-page.php:91
-msgid "Imported icon images are not deleted even if they are deleted from the media library."
-msgstr ""
-
-#: options-page.php:95
-msgid "Attention"
+#: options-page.php:92
+msgid "Text displayed in \"Character icon (preset)\" of the block. If it is empty, the file name is displayed."
 msgstr ""
 
 #: options-page.php:97
-msgid "If there is an image file of the same name in the import destination, it will be overwritten."
+msgid "Import"
+msgstr ""
+
+#: options-page.php:101
+msgid "Remarks"
+msgstr ""
+
+#: options-page.php:103
+msgid "Select the image in the WordPress media library and import it into the image folder of Guten-bubble."
+msgstr ""
+
+#: options-page.php:104
+msgid "The recommended image size is 120px x 120px or more."
+msgstr ""
+
+#: options-page.php:105
+msgid "Imported icon images are not deleted even if they are deleted from the media library."
+msgstr ""
+
+#: options-page.php:106
+msgid "Imported icon images can be selected in \"Character icon (preset)\" of the block, in the order of the imported character icon list. To use them, \"Use legacy block\" must be disabled."
+msgstr ""
+
+#: options-page.php:107
+msgid "Deleting an imported icon image does not delete the original image in the media library."
 msgstr ""
 
 #: options-page.php:111
+msgid "Attention"
+msgstr ""
+
+#: options-page.php:113
+msgid "If there is an image file of the same name in the import destination, it will be overwritten."
+msgstr ""
+
+#: options-page.php:114
+msgid "When an imported icon image is deleted, the character icon is no longer displayed in the blocks that use it."
+msgstr ""
+
+#: options-page.php:126
+msgid "Click an icon image to preview it."
+msgstr ""
+
+#: options-page.php:129
 msgid "Default character icon list"
 msgstr ""
 
-#: options-page.php:120
+#: options-page.php:133
+#: options-page.php:159
+msgid "Image"
+msgstr ""
+
+#: options-page.php:134
+#: options-page.php:160
+msgid "File name"
+msgstr ""
+
+#: options-page.php:148
 msgid "Imported character icon list"
 msgstr ""
 
+#: options-page.php:152
+msgid "No character icon images have been imported."
+msgstr ""
+
+#: options-page.php:154
+msgid "Drag the icons (or use the arrow buttons) to change the order, then save."
+msgstr ""
+
+#: options-page.php:158
+msgid "Order"
+msgstr ""
+
+#: options-page.php:162
+msgid "Actions"
+msgstr ""
+
+#: options-page.php:166
+msgid "Unsaved changes to the labels and order will be lost."
+msgstr ""
+
 #: options-page.php:171
+msgid "Drag to change the order"
+msgstr ""
+
+#: options-page.php:179
+#, php-format
+msgid "Label of '%s'"
+msgstr ""
+
+#: options-page.php:187
+#, php-format
+msgid "Move '%s' up"
+msgstr ""
+
+#: options-page.php:191
+#, php-format
+msgid "Move '%s' down"
+msgstr ""
+
+#: options-page.php:195
+#, php-format
+msgid "Delete '%s'? The character icon will no longer be displayed in the blocks that use it. This cannot be undone."
+msgstr ""
+
+#: options-page.php:196
+msgid "Delete"
+msgstr ""
+
+#: options-page.php:197
+#, php-format
+msgid "Delete '%s'"
+msgstr ""
+
+#: options-page.php:204
+msgid "Save labels and order"
+msgstr ""
+
+#: options-page.php:219
+msgid "Close"
+msgstr ""
+
+#: options-page.php:343
+#, php-format
+msgid "Preview '%s'"
+msgstr ""
+
+#: options-page.php:371
 #, php-format
 msgid "ERROR: The selected image URL is invalid. ('%s')"
 msgstr ""
 
-#: options-page.php:177
+#: options-page.php:377
+#, php-format
+msgid "ERROR: '%s' is not an image file."
+msgstr ""
+
+#: options-page.php:383
+#: options-page.php:405
 #, php-format
 msgid "ERROR: '%s' does not exist or the file path is invalid."
 msgstr ""
 
-#: options-page.php:183
+#: options-page.php:390
 #, php-format
 msgid "ERROR: Failed to import '%s'."
 msgstr ""
 
-#: options-page.php:188
+#: options-page.php:396
 #, php-format
 msgid "Info: '%s' is imported."
+msgstr ""
+
+#: options-page.php:413
+#, php-format
+msgid "ERROR: Failed to delete '%s'."
+msgstr ""
+
+#: options-page.php:419
+#, php-format
+msgid "Info: '%s' is deleted."
 msgstr ""
 
 #: settings.php:50

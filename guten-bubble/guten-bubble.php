@@ -3,7 +3,7 @@
 Plugin Name: Guten-Bubble
 Plugin URI: https://github.com/Nia-TN1012/guten-bubble/
 Description: Displays a speech bubble like a chat conversation. 
-Version: 1.0.0
+Version: 1.0.1
 Requires at least: 6.6
 Requires PHP: 7.4
 Author: Nia Tomonaka
@@ -33,12 +33,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 defined( 'ABSPATH' ) || exit;
 
 require_once( __DIR__.'/settings.php' );
+require_once( __DIR__.'/chara-icons.php' );
 require_once( __DIR__.'/vite-assets.php' );
 require_once( __DIR__.'/options-page.php' );
 
 class GutenBubble {
 
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.1';
 
     /** Script handle of the block. Shared by the current and legacy versions. */
     const SCRIPT_HANDLE = 'block-guten-bubble';
@@ -67,6 +68,7 @@ class GutenBubble {
         $this->options_page = new GutenBubbleOptionsPage();
         $this->vite_assets = new GutenBubbleViteAssets( __FILE__ );
         new GutenBubbleSettings();
+        new GutenBubbleCharaIcons();
 
         register_activation_hook( __FILE__, [$this, 'activation'] );
 
@@ -112,6 +114,14 @@ class GutenBubble {
                 $this->vite_assets->get_version( self::ENTRY_SCRIPT ),
                 true
             );
+            // Options of "Character icon (preset)" for the icons imported on the settings page.
+            wp_add_inline_script(
+                self::SCRIPT_HANDLE,
+                'window.gutenBubble = '.wp_json_encode( [
+                    'charaIcons' => GutenBubbleCharaIcons::get_preset_options(),
+                ], JSON_HEX_TAG | JSON_HEX_AMP ).';',
+                'before'
+            );
         }
         else {
             wp_enqueue_script(
@@ -146,7 +156,9 @@ class GutenBubble {
         if( $hook_suffix !== $this->options_page_hook ) {
             return;
         }
-        if( $this->use_vite_assets() ) {
+        // The settings page is not part of the block, and its markup is always the current one,
+        // so the built style is used regardless of the legacy block option.
+        if( $this->vite_assets->is_built() ) {
             wp_enqueue_style(
                 self::ADMIN_STYLE_HANDLE,
                 $this->vite_assets->get_url( self::ENTRY_ADMIN_STYLE ),
@@ -158,6 +170,7 @@ class GutenBubble {
             wp_enqueue_style( self::ADMIN_STYLE_HANDLE, plugins_url( 'legacy/css/admin-gutenbubble.min.css', __FILE__ ), [], self::VERSION );
         }
         wp_enqueue_media();
+        wp_enqueue_script( 'jquery-ui-sortable' );
     }
 
     /** Add settings page */

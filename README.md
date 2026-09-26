@@ -28,9 +28,14 @@ Press the 'Select from media library' button to select the icon image you want t
 
 ![Screeenshot-2](https://raw.githubusercontent.com/Nia-TN1012/guten-bubble/main/guten-bubble/screenshot-2.png)
 
-In the Inspector of "Guten-bubble" block, select "custom" from the "Character icon (preset)" drop-down box
+The imported icon images can be selected in the "Imported icons" group of the "Character icon (preset)" drop-down box in the Inspector of "Guten-bubble" block.
+In the settings page, you can set the label displayed in the drop-down box (also when importing), change the order by dragging the icons (or using the arrow buttons), and delete the imported icon images.
+
+Alternatively, select "custom" from the "Character icon (preset)" drop-down box
 and enter the file name of the icon image ( relative path from `/wp-content/uploads/guten-bubble/img` directory ) in the "Character icon (custom)" input box,
 that Icon image can be used.
+
+Note: The imported icon images cannot be selected in the "Character icon (preset)" of the legacy block ('Use legacy block' option). Blocks using them are still displayed correctly.
 
 # Installation
 
@@ -39,6 +44,9 @@ that Icon image can be used.
 
 # Release Note.
 
+* 1.0.1:
+  * The imported character icon images can be selected in 'Character icon (preset)' of the block.
+  * Added the label, order and deletion of the imported character icon images to the settings page.
 * 1.0.0:
   * Rewrote the Guten-bubble block with TypeScript and React. Blocks created with earlier versions can be used as they are.
   * Renewed the block settings in the inspector with the standard WordPress components.

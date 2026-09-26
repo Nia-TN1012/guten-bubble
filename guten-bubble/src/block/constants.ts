@@ -10,14 +10,22 @@ export interface SelectOption {
 	value: string;
 }
 
+export interface SelectOptionGroup {
+	label: string;
+	options: SelectOption[];
+}
+
 export interface FontSizeOption {
 	name: string;
 	slug: string;
 	size: string;
 }
 
-export const getCharaIconPresetOptions = (): SelectOption[] => [
-	{ value: 'custom', label: __( 'Custom', 'guten-bubble' ) },
+/** The "Custom" option of "Character icon (preset)". */
+export const getCustomCharaIconOption = (): SelectOption => ( { value: 'custom', label: __( 'Custom', 'guten-bubble' ) } );
+
+/** Character icons bundled with the plugin. */
+export const getDefaultCharaIconOptions = (): SelectOption[] => [
 	{ value: 'default/01-rose.png', label: __( 'Rose', 'guten-bubble' ) },
 	{ value: 'default/02-orange.png', label: __( 'Orange', 'guten-bubble' ) },
 	{ value: 'default/03-lemon.png', label: __( 'Lemon', 'guten-bubble' ) },
@@ -29,6 +37,33 @@ export const getCharaIconPresetOptions = (): SelectOption[] => [
 	{ value: 'default/09-monotone.png', label: __( 'Monotone', 'guten-bubble' ) },
 	{ value: 'default/10-espresso.png', label: __( 'Espresso', 'guten-bubble' ) },
 ];
+
+/**
+ * Character icons imported on the settings page, in the order set there.
+ * The value is the file name in the 'wp-content/uploads/guten-bubble/img/' folder,
+ * which renders the same markup as "Custom" with that file name.
+ */
+export const getImportedCharaIconOptions = (): SelectOption[] => window.gutenBubble?.charaIcons ?? [];
+
+/** All options of "Character icon (preset)": "Custom", the bundled icons and the imported icons. */
+export const getCharaIconPresetOptions = (): SelectOption[] => [
+	getCustomCharaIconOption(),
+	...getDefaultCharaIconOptions(),
+	...getImportedCharaIconOptions(),
+];
+
+/**
+ * Groups of "Character icon (preset)" shown in the select box, following the "Custom" option.
+ * The group of imported icons is omitted when there are none.
+ */
+export const getCharaIconPresetOptionGroups = (): SelectOptionGroup[] => {
+	const groups: SelectOptionGroup[] = [ { label: __( 'Default icons', 'guten-bubble' ), options: getDefaultCharaIconOptions() } ];
+	const imported = getImportedCharaIconOptions();
+	if ( imported.length > 0 ) {
+		groups.push( { label: __( 'Imported icons', 'guten-bubble' ), options: imported } );
+	}
+	return groups;
+};
 
 export const getCharaAlignOptions = (): SelectOption[] => [
 	{ value: 'left', label: __( 'Left', 'guten-bubble' ) },
