@@ -47,14 +47,14 @@ class GutenBubbleSettings {
 
         add_settings_section(
             'guten_bubble_block',
-            __( "Block settings", "guten-bubble-admin" ),
+            esc_html__( "Block settings", "guten-bubble-admin" ),
             '__return_false',
             self::PAGE_SLUG
         );
 
         add_settings_field(
             'use_legacy_block',
-            __( "Use legacy block", "guten-bubble-admin" ),
+            esc_html__( "Use legacy block", "guten-bubble-admin" ),
             [$this, 'render_use_legacy_block_field'],
             self::PAGE_SLUG,
             'guten_bubble_block',
