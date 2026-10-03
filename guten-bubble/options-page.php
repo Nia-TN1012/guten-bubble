@@ -44,11 +44,11 @@ class GutenBubbleOptionsPage {
        $icon_entries = GutenBubbleCharaIcons::get_entries();
     ?>
         <div class="wrap">
-            <h1><?= __( "Guten-bubble settings", "guten-bubble-admin" ) ?></h1>
+            <h1><?= esc_html__( "Guten-bubble settings", "guten-bubble-admin" ) ?></h1>
 
             <?php if( !function_exists( 'register_block_type' ) ): ?>
             <div class="notice notice-warning">
-                <p><b><?= __( "NOTICE: To use the Guten-bubble plugin, required WordPress 5.0 or later.", "guten-bubble-admin" ) ?></b></p>
+                <p><b><?= esc_html__( "NOTICE: To use the Guten-bubble plugin, required WordPress 5.0 or later.", "guten-bubble-admin" ) ?></b></p>
             </div>
             <?php endif ?>
 
@@ -61,7 +61,7 @@ class GutenBubbleOptionsPage {
             </form>
 
             <div id="cngb-nedia-upload">
-                <h2><?= __( "Import character icon image from media library", "guten-bubble-admin" ) ?></h2>
+                <h2><?= esc_html__( "Import character icon image from media library", "guten-bubble-admin" ) ?></h2>
                 <?php if( isset( $import_result ) ) { $this->render_result_notice( $import_result ); } ?>
                 <form method="post" id="cngb-chara-icon-upload">
                     <?php wp_nonce_field( self::IMPORT_NONCE_ACTION ) ?>
@@ -69,12 +69,12 @@ class GutenBubbleOptionsPage {
                         <tbody>
                             <tr>
                                 <th>
-                                    <?= __( "Select character icon image", "guten-bubble-admin" ) ?>
+                                    <?= esc_html__( "Select character icon image", "guten-bubble-admin" ) ?>
                                 </th>
                                 <td>
                                     <button id="media-upload" type="button" class="button button-default"
                                         data-title="<?= esc_attr__( "Choose Image", "guten-bubble-admin" ) ?>">
-                                        <?= __( "Select from media library", "guten-bubble-admin" ) ?>
+                                        <?= esc_html__( "Select from media library", "guten-bubble-admin" ) ?>
                                     </button>
                                     <input id="selected-icon-url" name="selected-icon-url" type="hidden" value=""/>
                                 </td>
@@ -85,33 +85,33 @@ class GutenBubbleOptionsPage {
                             </tr>
                             <tr>
                                 <th>
-                                    <label for="chara-icon-label"><?= __( "Label", "guten-bubble-admin" ) ?></label>
+                                    <label for="chara-icon-label"><?= esc_html__( "Label", "guten-bubble-admin" ) ?></label>
                                 </th>
                                 <td>
                                     <input id="chara-icon-label" name="chara-icon-label" type="text" class="regular-text" value=""/>
-                                    <p class="description"><?= __( "Text displayed in \"Character icon (preset)\" of the block. If it is empty, the file name is displayed.", "guten-bubble-admin" ) ?></p>
+                                    <p class="description"><?= esc_html__( "Text displayed in \"Character icon (preset)\" of the block. If it is empty, the file name is displayed.", "guten-bubble-admin" ) ?></p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <button id="chara-icon-upload" type="submit" class="button button-primary"><?= __( "Import", "guten-bubble-admin" ) ?></button>
+                    <button id="chara-icon-upload" type="submit" class="button button-primary"><?= esc_html__( "Import", "guten-bubble-admin" ) ?></button>
                 </form>
                 <br/>
                 <div class="cngb-remarks">
-                    <h3><?= __( "Remarks", "guten-bubble-admin" ) ?></h3>
+                    <h3><?= esc_html__( "Remarks", "guten-bubble-admin" ) ?></h3>
                     <ul>
-                        <li><?= __( "Select the image in the WordPress media library and import it into the image folder of Guten-bubble.", "guten-bubble-admin" ) ?></li>
-                        <li><?= __( "The recommended image size is 120px x 120px or more.", "guten-bubble-admin" ) ?></li>
-                        <li><?= __( "Imported icon images are not deleted even if they are deleted from the media library.", "guten-bubble-admin" ) ?></li>
-                        <li><?= __( "Imported icon images can be selected in \"Character icon (preset)\" of the block, in the order of the imported character icon list. To use them, \"Use legacy block\" must be disabled.", "guten-bubble-admin" ) ?></li>
-                        <li><?= __( "Deleting an imported icon image does not delete the original image in the media library.", "guten-bubble-admin" ) ?></li>
+                        <li><?= esc_html__( "Select the image in the WordPress media library and import it into the image folder of Guten-bubble.", "guten-bubble-admin" ) ?></li>
+                        <li><?= esc_html__( "The recommended image size is 120px x 120px or more.", "guten-bubble-admin" ) ?></li>
+                        <li><?= esc_html__( "Imported icon images are not deleted even if they are deleted from the media library.", "guten-bubble-admin" ) ?></li>
+                        <li><?= esc_html__( "Imported icon images can be selected in \"Character icon (preset)\" of the block, in the order of the imported character icon list. To use them, \"Use legacy block\" must be disabled.", "guten-bubble-admin" ) ?></li>
+                        <li><?= esc_html__( "Deleting an imported icon image does not delete the original image in the media library.", "guten-bubble-admin" ) ?></li>
                     </ul>
                 </div>
                 <div class="cngb-remarks-warning">
-                    <h3><?= __( "Attention", "guten-bubble-admin" ) ?></h3>
+                    <h3><?= esc_html__( "Attention", "guten-bubble-admin" ) ?></h3>
                     <ul>
-                        <li><?= __( "If there is an image file of the same name in the import destination, it will be overwritten.", "guten-bubble-admin" ) ?></li>
-                        <li><?= __( "When an imported icon image is deleted, the character icon is no longer displayed in the blocks that use it.", "guten-bubble-admin" ) ?></li>
+                        <li><?= esc_html__( "If there is an image file of the same name in the import destination, it will be overwritten.", "guten-bubble-admin" ) ?></li>
+                        <li><?= esc_html__( "When an imported icon image is deleted, the character icon is no longer displayed in the blocks that use it.", "guten-bubble-admin" ) ?></li>
                     </ul>
                 </div>
                 <br/>
@@ -123,15 +123,15 @@ class GutenBubbleOptionsPage {
                 </form>
 
                 <div class="cngb-thumbnail-view">
-                    <p class="description"><?= __( "Click an icon image to preview it.", "guten-bubble-admin" ) ?></p>
+                    <p class="description"><?= esc_html__( "Click an icon image to preview it.", "guten-bubble-admin" ) ?></p>
                     <!-- Accordions: the default list is collapsed and the imported list is expanded by default. -->
                     <details class="cngb-accordion">
-                    <summary class="cngb-thumbnail-head-d"><?= __( "Default character icon list", "guten-bubble-admin" ) ?></summary>
+                    <summary class="cngb-thumbnail-head-d"><?= esc_html__( "Default character icon list", "guten-bubble-admin" ) ?></summary>
                     <table class="widefat striped cngb-icon-table">
                         <thead>
                             <tr>
-                                <th scope="col" class="cngb-icon-col-image"><?= __( "Image", "guten-bubble-admin" ) ?></th>
-                                <th scope="col"><?= __( "File name", "guten-bubble-admin" ) ?></th>
+                                <th scope="col" class="cngb-icon-col-image"><?= esc_html__( "Image", "guten-bubble-admin" ) ?></th>
+                                <th scope="col"><?= esc_html__( "File name", "guten-bubble-admin" ) ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -145,21 +145,21 @@ class GutenBubbleOptionsPage {
                     </table>
                     </details>
                     <details class="cngb-accordion" open>
-                    <summary class="cngb-thumbnail-head-i"><?= __( "Imported character icon list", "guten-bubble-admin" ) ?></summary>
+                    <summary class="cngb-thumbnail-head-i"><?= esc_html__( "Imported character icon list", "guten-bubble-admin" ) ?></summary>
                     <form method="post" action="options.php" id="cngb-chara-icon-labels">
                         <?php settings_fields( GutenBubbleCharaIcons::OPTION_GROUP ) ?>
                         <?php if( empty( $icon_entries ) ): ?>
-                        <p class="cngb-thumbnail-empty"><?= __( "No character icon images have been imported.", "guten-bubble-admin" ) ?></p>
+                        <p class="cngb-thumbnail-empty"><?= esc_html__( "No character icon images have been imported.", "guten-bubble-admin" ) ?></p>
                         <?php else: ?>
-                        <p class="description"><?= __( "Drag the icons (or use the arrow buttons) to change the order, then save.", "guten-bubble-admin" ) ?></p>
+                        <p class="description"><?= esc_html__( "Drag the icons (or use the arrow buttons) to change the order, then save.", "guten-bubble-admin" ) ?></p>
                         <table class="widefat striped cngb-icon-table">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="cngb-icon-col-handle"><span class="screen-reader-text"><?= __( "Order", "guten-bubble-admin" ) ?></span></th>
-                                    <th scope="col" class="cngb-icon-col-image"><?= __( "Image", "guten-bubble-admin" ) ?></th>
-                                    <th scope="col"><?= __( "File name", "guten-bubble-admin" ) ?></th>
-                                    <th scope="col"><?= __( "Label", "guten-bubble-admin" ) ?></th>
-                                    <th scope="col" class="cngb-icon-col-actions"><?= __( "Actions", "guten-bubble-admin" ) ?></th>
+                                    <th scope="col" class="cngb-icon-col-handle"><span class="screen-reader-text"><?= esc_html__( "Order", "guten-bubble-admin" ) ?></span></th>
+                                    <th scope="col" class="cngb-icon-col-image"><?= esc_html__( "Image", "guten-bubble-admin" ) ?></th>
+                                    <th scope="col"><?= esc_html__( "File name", "guten-bubble-admin" ) ?></th>
+                                    <th scope="col"><?= esc_html__( "Label", "guten-bubble-admin" ) ?></th>
+                                    <th scope="col" class="cngb-icon-col-actions"><?= esc_html__( "Actions", "guten-bubble-admin" ) ?></th>
                                 </tr>
                             </thead>
                             <tbody class="cngb-sortable"
@@ -193,7 +193,7 @@ class GutenBubbleOptionsPage {
                                         <button type="submit" form="cngb-chara-icon-delete" name="delete-icon" value="<?= esc_attr( $file ) ?>"
                                             class="button button-link-delete cngb-delete-icon"
                                             data-confirm="<?= esc_attr( sprintf( __( "Delete '%s'? The character icon will no longer be displayed in the blocks that use it. This cannot be undone.", "guten-bubble-admin" ), $file ) ) ?>">
-                                            <span aria-hidden="true"><?= __( "Delete", "guten-bubble-admin" ) ?></span>
+                                            <span aria-hidden="true"><?= esc_html__( "Delete", "guten-bubble-admin" ) ?></span>
                                             <span class="screen-reader-text"><?= esc_html( sprintf( __( "Delete '%s'", "guten-bubble-admin" ), $file ) ) ?></span>
                                         </button>
                                     </td>
@@ -216,7 +216,7 @@ class GutenBubbleOptionsPage {
                 </div>
                 <p class="cngb-preview-size"></p>
                 <form method="dialog">
-                    <button type="submit" class="button"><?= __( "Close", "guten-bubble-admin" ) ?></button>
+                    <button type="submit" class="button"><?= esc_html__( "Close", "guten-bubble-admin" ) ?></button>
                 </form>
             </dialog>
         </div>

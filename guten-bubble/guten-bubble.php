@@ -193,7 +193,7 @@ class GutenBubble {
 
     public function add_action_links( $links ) {
         load_plugin_textdomain( "guten-bubble-admin", false, basename( dirname( __FILE__ ) ).'/languages' );
-        $links[] = '<a href="'.esc_url( get_admin_url( null, 'options-general.php?page='.GutenBubbleSettings::PAGE_SLUG ) ).'">'.__( "Settings", "guten-bubble-admin" ).'</a>';
+        $links[] = '<a href="'.esc_url( get_admin_url( null, 'options-general.php?page='.GutenBubbleSettings::PAGE_SLUG ) ).'">'.esc_html__( "Settings", "guten-bubble-admin" ).'</a>';
         return $links;
     }
 }
