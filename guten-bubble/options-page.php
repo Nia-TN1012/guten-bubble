@@ -36,8 +36,14 @@ class GutenBubbleOptionsPage {
        }
        if( isset( $_POST['delete-icon'] ) || isset( $_POST['delete-selected'] ) ) {
            check_admin_referer( self::DELETE_NONCE_ACTION );
-           // 'delete-icon' is the file name of the clicked row, and 'delete-files' is the list of the checked rows.
-           $delete_files = isset( $_POST['delete-icon'] ) ? [wp_unslash( $_POST['delete-icon'] )] : ( isset( $_POST['delete-files'] ) ? (array)wp_unslash( $_POST['delete-files'] ) : [] );
+           // Only the clicked submit button is sent: 'delete-selected' deletes the checked rows ('delete-files'),
+           // and 'delete-icon' deletes the file name of its own row.
+           if( isset( $_POST['delete-selected'] ) ) {
+               $delete_files = isset( $_POST['delete-files'] ) ? (array)wp_unslash( $_POST['delete-files'] ) : [];
+           }
+           else {
+               $delete_files = [wp_unslash( $_POST['delete-icon'] )];
+           }
            $delete_result = $this->delete_chara_icon_files( $delete_files );
        }
 
@@ -345,6 +351,9 @@ class GutenBubbleOptionsPage {
                     $selectAll.prop( 'indeterminate', count > 0 && count < $selectIcons.length );
                 }
                 $selectIcons.on( 'change', updateSelection );
+                // The browser may restore the checked state after a reload or back/forward navigation.
+                updateSelection();
+                jQuery( window ).on( 'pageshow', updateSelection );
                 $selectAll.on( 'change', function() {
                     $selectIcons.prop( 'checked', this.checked );
                     updateSelection();
