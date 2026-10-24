@@ -118,7 +118,7 @@ class GutenBubble {
             wp_add_inline_script(
                 self::SCRIPT_HANDLE,
                 'window.gutenBubble = '.wp_json_encode( [
-                    'charaIcons' => GutenBubbleCharaIcons::get_preset_options(),
+                    'charaIcons' => GutenBubbleCharaIcons::get_editor_options(),
                 ], JSON_HEX_TAG | JSON_HEX_AMP ).';',
                 'before'
             );
