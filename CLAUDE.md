@@ -28,8 +28,9 @@ Requirements: WordPress 6.6 or later, PHP 7.4 or later.
 | `guten-bubble/dist/` | Vite build output (git-ignored, but distributed). |
 | `guten-bubble/legacy/` | JavaScript / CSS of ver. 0.9.x. **Never edit these files.** |
 | `guten-bubble/languages/` | Translations. Two text domains: `guten-bubble` (block script) and `guten-bubble-admin` (PHP / settings page). |
-| `guten-bubble/*.php` | `guten-bubble.php` (entry, asset loading), `settings.php` (Settings API options), `vite-assets.php` (reads `dist/manifest.json`), `chara-icons.php` (imported character icons and their labels and order), `options-page.php` (settings page). |
+| `guten-bubble/*.php` | `guten-bubble.php` (entry, asset loading), `settings.php` (Settings API options), `vite-assets.php` (reads `dist/manifest.json`), `chara-icons.php` (imported character icons and their labels, order and visibility in the preset list), `options-page.php` (settings page). |
 | `guten-bubble/assets/` | Banners and icons for the WordPress.org plugin page (not distributed in the zip). |
+| `.claude/agents/` | Subagents (`plugin-developer`, `plugin-reviewer`). See [Subagents](#subagents). |
 | `svn/` | WordPress.org SVN working copy (git-ignored). |
 
 ## Commands
@@ -88,6 +89,19 @@ Documents (designs, implementation plans) and dev-logs are stored in a separate 
 * **dev-log**: one file per feature branch at `$DEV_DOCS_DIR/guten-bubble/dev-log/<branch name with "/" replaced by "-">.md` (e.g. `feature/vite-wp-env` → `feature-vite-wp-env.md`). Record what was done, decisions and their reasons, findings, verification results and remaining issues, under date headings. Update it at meaningful milestones of the branch.
 * **Japanese translation of this file**: `$DEV_DOCS_DIR/guten-bubble/CLAUDE.ja.md`. This file (`CLAUDE.md`) is the source of truth; whenever you change it, update the translation too.
 * In the dev-docs repository, always work on the `main` branch. Commit messages are in Japanese. You may commit and push there without asking.
+
+## Subagents
+
+Two subagents are defined in `.claude/agents/` (English; Claude Code format). Their Japanese translations are in `$DEV_DOCS_DIR/guten-bubble/agents/`.
+
+| Agent | Role |
+| --- | --- |
+| `plugin-developer` | Implements features and fixes, runs the checks, and writes the dev-log. |
+| `plugin-reviewer` | Reviews changes without modifying the source, and writes the result in Japanese to `$DEV_DOCS_DIR/guten-bubble/reviews/<YYYY-MM-DD>-<topic>.md`. |
+
+* Subagents never commit or push the dev-docs repository. The main agent commits and pushes the dev-log, review files and other documents they leave there.
+* Subagents follow all the rules of this file, including [Actions that require the user's instruction](#actions-that-require-the-users-instruction).
+* When you change a file in `.claude/agents/`, update its Japanese translation as well. `AGENTS.md` explains how agents other than Claude Code use these files.
 
 ## Git workflow
 
