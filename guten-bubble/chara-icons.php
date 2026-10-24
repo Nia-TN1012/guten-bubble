@@ -88,7 +88,7 @@ class GutenBubbleCharaIcons {
      *
      * @return array[] List of ['value' => file name, 'label' => label or file name, 'preset' => bool].
      */
-    public static function get_preset_options() {
+    public static function get_editor_options() {
         $options = [];
         foreach( self::get_entries() as $entry ) {
             $options[] = [

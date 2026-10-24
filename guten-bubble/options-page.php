@@ -504,7 +504,7 @@ class GutenBubbleOptionsPage {
         if( empty( $failed ) && !empty( $deleted ) ) {
             return [
                 'success' => true,
-                'message' => sprintf( __( "Info: %d icons are deleted.", "guten-bubble-admin" ), count( $deleted ) )
+                'message' => sprintf( _n( "Info: %d icon is deleted.", "Info: %d icons are deleted.", count( $deleted ), "guten-bubble-admin" ), count( $deleted ) )
             ];
         }
         if( empty( $failed ) ) {
@@ -514,7 +514,7 @@ class GutenBubbleOptionsPage {
             ];
         }
         if( !empty( $deleted ) ) {
-            array_unshift( $failed, sprintf( __( "Info: %d icons are deleted.", "guten-bubble-admin" ), count( $deleted ) ) );
+            array_unshift( $failed, sprintf( _n( "Info: %d icon is deleted.", "Info: %d icons are deleted.", count( $deleted ), "guten-bubble-admin" ), count( $deleted ) ) );
         }
         return [
             'success' => false,
