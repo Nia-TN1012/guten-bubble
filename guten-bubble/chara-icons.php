@@ -5,9 +5,11 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Character icon images imported into the uploads folder, and their labels and order.
  *
- * The labels and order are stored as a list in the option, in display order:
- *     [ ['file' => 'nia.png', 'label' => 'Nia'], ['file' => 'tmp.png', 'label' => ''], ... ]
+ * The labels, order and visibility are stored as a list in the option, in display order:
+ *     [ ['file' => 'nia.png', 'label' => 'Nia', 'preset' => true], ['file' => 'tmp.png', 'label' => '', 'preset' => false], ... ]
  * An empty label means that the file name is displayed instead.
+ * 'preset' tells whether the image is shown in "Character icon (preset)" of the block. An entry without it
+ * (saved by ver. 1.0.1 or earlier) is shown.
  */
 class GutenBubbleCharaIcons {
 
@@ -72,7 +74,7 @@ class GutenBubbleCharaIcons {
         $listed = array_flip( array_column( $entries, 'file' ) );
         foreach( $files as $file ) {
             if( !isset( $listed[$file] ) ) {
-                $entries[] = ['file' => $file, 'label' => ''];
+                $entries[] = ['file' => $file, 'label' => '', 'preset' => true];
             }
         }
         return $entries;
@@ -81,7 +83,10 @@ class GutenBubbleCharaIcons {
     /**
      * Returns the options of "Character icon (preset)" in the block editor.
      *
-     * @return array[] List of ['value' => file name, 'label' => label or file name].
+     * Icons hidden from the preset list are included with 'preset' => false, so that the editor can
+     * display the label of a hidden icon that is still used by a block.
+     *
+     * @return array[] List of ['value' => file name, 'label' => label or file name, 'preset' => bool].
      */
     public static function get_preset_options() {
         $options = [];
@@ -89,6 +94,7 @@ class GutenBubbleCharaIcons {
             $options[] = [
                 'value' => $entry['file'],
                 'label' => $entry['label'] !== '' ? $entry['label'] : $entry['file'],
+                'preset' => $entry['preset'],
             ];
         }
         return $options;
@@ -97,13 +103,15 @@ class GutenBubbleCharaIcons {
     /**
      * Adds or updates the entry of an imported icon image. Invoked after the file is copied.
      * A file that was already there (overwritten) keeps its position, and keeps its label if the given label is empty.
-     * A new file is appended to the end.
+     * A new file is appended to the end, and shown in the preset list only if $preset is true.
+     * An existing entry keeps its position and 'preset'.
      *
      * @param string $file     File name.
      * @param string $label    Label.
      * @param bool   $existed  True if the file already existed before the import.
+     * @param bool   $preset   Whether a new file is shown in "Character icon (preset)".
      */
-    public static function upsert_entry( $file, $label, $existed ) {
+    public static function upsert_entry( $file, $label, $existed, $preset = true ) {
         $label = sanitize_text_field( $label );
         $entries = self::get_entries();
         if( $existed ) {
@@ -119,15 +127,24 @@ class GutenBubbleCharaIcons {
             $entries = array_values( array_filter( $entries, function( $entry ) use ( $file ) {
                 return $entry['file'] !== $file;
             } ) );
-            $entries[] = ['file' => $file, 'label' => $label];
+            $entries[] = ['file' => $file, 'label' => $label, 'preset' => (bool)$preset];
         }
         self::save_entries( $entries );
     }
 
     /** Removes the entry of an imported icon image. */
     public static function remove_entry( $file ) {
-        $entries = array_filter( self::get_entries(), function( $entry ) use ( $file ) {
-            return $entry['file'] !== $file;
+        self::remove_entries( [$file] );
+    }
+
+    /**
+     * Removes the entries of imported icon images with a single update of the option.
+     *
+     * @param string[] $files File names.
+     */
+    public static function remove_entries( array $files ) {
+        $entries = array_filter( self::get_entries(), function( $entry ) use ( $files ) {
+            return !in_array( $entry['file'], $files, true );
         } );
         self::save_entries( array_values( $entries ) );
     }
@@ -170,7 +187,8 @@ class GutenBubbleCharaIcons {
             }
             $seen[$file] = true;
             $label = isset( $entry['label'] ) && is_string( $entry['label'] ) ? sanitize_text_field( $entry['label'] ) : '';
-            $normalized[] = ['file' => $file, 'label' => $label];
+            $preset = !isset( $entry['preset'] ) || (bool)$entry['preset'];
+            $normalized[] = ['file' => $file, 'label' => $label, 'preset' => $preset];
         }
         return $normalized;
     }
@@ -188,17 +206,20 @@ class GutenBubbleCharaIcons {
      * Sanitizes the option. Invoked on every update of the option.
      *
      * @param mixed $input Either a list of entries (when saved by this class),
-     *                     or ['file' => string[], 'label' => string[]] (when submitted from the settings page).
+     *                     or ['file' => string[], 'label' => string[], 'preset' => string[]] (when submitted from the settings page;
+     *                     'preset' is the list of the checked file names, since unchecked boxes are not submitted).
      * @return array[] List of entries.
      */
     public function sanitize( $input ) {
         if( is_array( $input ) && isset( $input['file'] ) && is_array( $input['file'] ) ) {
             $labels = isset( $input['label'] ) && is_array( $input['label'] ) ? array_values( $input['label'] ) : [];
+            $checked = isset( $input['preset'] ) && is_array( $input['preset'] ) ? $input['preset'] : [];
             $entries = [];
             foreach( array_values( $input['file'] ) as $index => $file ) {
                 $entries[] = [
                     'file' => $file,
                     'label' => isset( $labels[$index] ) ? $labels[$index] : '',
+                    'preset' => in_array( $file, $checked, true ),
                 ];
             }
             $input = $entries;

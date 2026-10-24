@@ -95,6 +95,13 @@
 		}
 
 		&-col {
+			&-check {
+				width: 24px;
+			}
+			&-preset {
+				width: 80px;
+				text-align: center;
+			}
 			&-handle {
 				width: 24px;
 			}
@@ -157,6 +164,16 @@
 		.ui-sortable-helper {
 			background-color: white;
 			box-shadow: 0 2px 6px rgba( 0, 0, 0, 0.2 );
+		}
+	}
+
+	// Button to delete the selected icons
+	&-bulk-delete .button-link-delete {
+		color: #b32d2e;
+		border-color: #b32d2e;
+
+		&:disabled {
+			opacity: 0.5;
 		}
 	}
 

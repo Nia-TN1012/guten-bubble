@@ -4,7 +4,10 @@
  */
 interface Window {
 	gutenBubble?: {
-		/** Options of "Character icon (preset)" for the imported icons, in the order set on the settings page. */
-		charaIcons?: Array< { value: string; label: string } >;
+		/**
+		 * Imported icons, in the order set on the settings page.
+		 * Icons with `preset: false` are not shown in "Character icon (preset)".
+		 */
+		charaIcons?: Array< { value: string; label: string; preset?: boolean } >;
 	};
 }

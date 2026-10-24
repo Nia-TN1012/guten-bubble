@@ -39,7 +39,8 @@ Press the 'Select from media library' button to select the icon image you want t
 ( Or upload the icon image files to the `/wp-content/uploads/guten-bubble/img` directory ( that is created on plugin install ) using FTP software etc. )
 
 The imported icon images can be selected in the "Imported icons" group of the "Character icon (preset)" drop-down box in the Inspector of "Guten-bubble" block.
-In the settings page, you can set the label displayed in the drop-down box (also when importing), change the order by dragging the icons (or using the arrow buttons), and delete the imported icon images.
+In the settings page, you can set the label displayed in the drop-down box (also when importing), change the order by dragging the icons (or using the arrow buttons), and delete the imported icon images (also several at once).
+You can also choose whether each imported icon image is shown in the drop-down box (also when importing). The icon images that are not shown can still be used with "custom" described below.
 
 Alternatively, select "custom" from the "Character icon (preset)" drop-down box
 and enter the file name of the icon image ( relative path from `/wp-content/uploads/guten-bubble/img` directory ) in the "Character icon (custom)" input box,
@@ -54,6 +55,9 @@ Note: The imported icon images cannot be selected in the "Character icon (preset
 
 == Changelog ==
 
+= 1.0.2 =
+* Added the option to choose the imported character icon images shown in 'Character icon (preset)' of the block (all of them are shown by default).
+* Added the bulk deletion of the imported character icon images to the settings page.
 = 1.0.1 =
 * The imported character icon images can be selected in 'Character icon (preset)' of the block.
 * Added the label, order and deletion of the imported character icon images to the settings page.

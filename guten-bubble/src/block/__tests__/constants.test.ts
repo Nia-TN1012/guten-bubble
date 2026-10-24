@@ -4,6 +4,7 @@
  */
 import { afterEach, describe, expect, it } from 'vitest';
 import {
+	findHiddenCharaIconOption,
 	getCharaIconPresetOptionGroups,
 	getCharaIconPresetOptions,
 	getDefaultCharaIconOptions,
@@ -74,5 +75,36 @@ describe( 'with imported icons', () => {
 		expect( groups.map( ( group ) => group.label ) ).toEqual( [ 'Default icons', 'Imported icons' ] );
 		expect( groups[ 0 ].options ).toEqual( getDefaultCharaIconOptions() );
 		expect( groups[ 1 ].options ).toEqual( imported );
+	} );
+} );
+
+describe( 'with icons hidden from the preset list', () => {
+	const mixed = [
+		{ value: 'miku.png', label: 'Miku', preset: true },
+		{ value: 'nia.png', label: 'Nia', preset: false },
+		{ value: 'tmp.png', label: 'tmp.png' },
+	];
+
+	it( 'excludes only the icons with `preset: false`, keeping the order', () => {
+		window.gutenBubble = { charaIcons: mixed };
+		expect( getImportedCharaIconOptions() ).toEqual( [
+			{ value: 'miku.png', label: 'Miku' },
+			{ value: 'tmp.png', label: 'tmp.png' },
+		] );
+	} );
+
+	it( 'omits the group of imported icons when all of them are hidden', () => {
+		window.gutenBubble = { charaIcons: mixed.map( ( icon ) => ( { ...icon, preset: false } ) ) };
+		const groups = getCharaIconPresetOptionGroups();
+		expect( groups.map( ( group ) => group.label ) ).toEqual( [ 'Default icons' ] );
+		expect( getCharaIconPresetOptions().map( ( option ) => option.value ) ).toEqual( legacyPresetValues );
+	} );
+
+	it( 'finds only the hidden icons', () => {
+		window.gutenBubble = { charaIcons: mixed };
+		expect( findHiddenCharaIconOption( 'nia.png' ) ).toEqual( { value: 'nia.png', label: 'Nia' } );
+		expect( findHiddenCharaIconOption( 'miku.png' ) ).toBeUndefined();
+		expect( findHiddenCharaIconOption( 'tmp.png' ) ).toBeUndefined();
+		expect( findHiddenCharaIconOption( 'none.png' ) ).toBeUndefined();
 	} );
 } );
