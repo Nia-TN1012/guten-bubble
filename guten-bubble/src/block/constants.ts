@@ -43,7 +43,16 @@ export const getDefaultCharaIconOptions = (): SelectOption[] => [
  * The value is the file name in the 'wp-content/uploads/guten-bubble/img/' folder,
  * which renders the same markup as "Custom" with that file name.
  */
-export const getImportedCharaIconOptions = (): SelectOption[] => window.gutenBubble?.charaIcons ?? [];
+export const getImportedCharaIconOptions = (): SelectOption[] =>
+	( window.gutenBubble?.charaIcons ?? [] )
+		.filter( ( icon ) => icon.preset !== false )
+		.map( ( { value, label } ) => ( { value, label } ) );
+
+/** Imported icon that is hidden from "Character icon (preset)" on the settings page, if it matches `value`. */
+export const findHiddenCharaIconOption = ( value: string ): SelectOption | undefined => {
+	const icon = ( window.gutenBubble?.charaIcons ?? [] ).find( ( item ) => item.preset === false && item.value === value );
+	return icon ? { value: icon.value, label: icon.label } : undefined;
+};
 
 /** All options of "Character icon (preset)": "Custom", the bundled icons and the imported icons. */
 export const getCharaIconPresetOptions = (): SelectOption[] => [

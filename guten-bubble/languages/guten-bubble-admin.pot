@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-26T13:19:04+00:00\n"
+"POT-Creation-Date: 2026-10-24T11:39:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: guten-bubble-admin\n"
@@ -47,201 +47,254 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: options-page.php:47
+#: options-page.php:49
 msgid "Guten-bubble settings"
 msgstr ""
 
-#: options-page.php:51
+#: options-page.php:53
 msgid "NOTICE: To use the Guten-bubble plugin, required WordPress 5.0 or later."
 msgstr ""
 
-#: options-page.php:64
+#: options-page.php:66
 msgid "Import character icon image from media library"
 msgstr ""
 
-#: options-page.php:72
+#: options-page.php:74
 msgid "Select character icon image"
 msgstr ""
 
-#: options-page.php:76
+#: options-page.php:78
 msgid "Choose Image"
 msgstr ""
 
-#: options-page.php:77
+#: options-page.php:79
 msgid "Select from media library"
 msgstr ""
 
-#: options-page.php:88
-#: options-page.php:161
+#: options-page.php:90
+#: options-page.php:177
 msgid "Label"
 msgstr ""
 
-#: options-page.php:92
+#: options-page.php:94
 msgid "Text displayed in \"Character icon (preset)\" of the block. If it is empty, the file name is displayed."
 msgstr ""
 
-#: options-page.php:97
-msgid "Import"
+#: options-page.php:98
+msgid "Preset"
 msgstr ""
 
-#: options-page.php:101
-msgid "Remarks"
-msgstr ""
-
-#: options-page.php:103
-msgid "Select the image in the WordPress media library and import it into the image folder of Guten-bubble."
+#: options-page.php:102
+msgid "Show in \"Character icon (preset)\""
 msgstr ""
 
 #: options-page.php:104
-msgid "The recommended image size is 120px x 120px or more."
+msgid "If it is unchecked, the icon can be used by selecting \"Custom\" and entering the file name. This setting is not applied when an imported icon image is overwritten; the setting in the list is kept."
 msgstr ""
 
-#: options-page.php:105
-msgid "Imported icon images are not deleted even if they are deleted from the media library."
-msgstr ""
-
-#: options-page.php:106
-msgid "Imported icon images can be selected in \"Character icon (preset)\" of the block, in the order of the imported character icon list. To use them, \"Use legacy block\" must be disabled."
-msgstr ""
-
-#: options-page.php:107
-msgid "Deleting an imported icon image does not delete the original image in the media library."
-msgstr ""
-
-#: options-page.php:111
-msgid "Attention"
+#: options-page.php:109
+msgid "Import"
 msgstr ""
 
 #: options-page.php:113
+msgid "Remarks"
+msgstr ""
+
+#: options-page.php:115
+msgid "Select the image in the WordPress media library and import it into the image folder of Guten-bubble."
+msgstr ""
+
+#: options-page.php:116
+msgid "The recommended image size is 120px x 120px or more."
+msgstr ""
+
+#: options-page.php:117
+msgid "Imported icon images are not deleted even if they are deleted from the media library."
+msgstr ""
+
+#: options-page.php:118
+msgid "Imported icon images can be selected in \"Character icon (preset)\" of the block, in the order of the imported character icon list. To use them, \"Use legacy block\" must be disabled."
+msgstr ""
+
+#: options-page.php:119
+msgid "Deleting an imported icon image does not delete the original image in the media library."
+msgstr ""
+
+#: options-page.php:123
+msgid "Attention"
+msgstr ""
+
+#: options-page.php:125
 msgid "If there is an image file of the same name in the import destination, it will be overwritten."
 msgstr ""
 
-#: options-page.php:114
+#: options-page.php:126
 msgid "When an imported icon image is deleted, the character icon is no longer displayed in the blocks that use it."
 msgstr ""
 
-#: options-page.php:126
+#: options-page.php:138
 msgid "Click an icon image to preview it."
 msgstr ""
 
-#: options-page.php:129
+#: options-page.php:141
 msgid "Default character icon list"
 msgstr ""
 
-#: options-page.php:133
-#: options-page.php:159
+#: options-page.php:145
+#: options-page.php:175
 msgid "Image"
 msgstr ""
 
-#: options-page.php:134
-#: options-page.php:160
+#: options-page.php:146
+#: options-page.php:176
 msgid "File name"
 msgstr ""
 
-#: options-page.php:148
+#: options-page.php:160
 msgid "Imported character icon list"
 msgstr ""
 
-#: options-page.php:152
+#: options-page.php:164
 msgid "No character icon images have been imported."
 msgstr ""
 
-#: options-page.php:154
+#: options-page.php:166
 msgid "Drag the icons (or use the arrow buttons) to change the order, then save."
 msgstr ""
 
-#: options-page.php:158
+#: options-page.php:167
+msgid "Only the checked icons can be selected in \"Character icon (preset)\" of the block. Unchecked icons can be used by selecting \"Custom\" and entering the file name. Save to apply the changes."
+msgstr ""
+
+#: options-page.php:172
+msgid "Select all icons to delete"
+msgstr ""
+
+#: options-page.php:174
 msgid "Order"
 msgstr ""
 
-#: options-page.php:162
-msgid "Actions"
-msgstr ""
-
-#: options-page.php:166
-msgid "Unsaved changes to the labels and order will be lost."
-msgstr ""
-
-#: options-page.php:171
-msgid "Drag to change the order"
+#: options-page.php:178
+msgid "Show in preset"
 msgstr ""
 
 #: options-page.php:179
+msgid "Actions"
+msgstr ""
+
+#: options-page.php:183
+msgid "Unsaved changes to the labels, order and preset display will be lost."
+msgstr ""
+
+#: options-page.php:189
+#, php-format
+msgid "Select '%s' to delete"
+msgstr ""
+
+#: options-page.php:192
+msgid "Drag to change the order"
+msgstr ""
+
+#: options-page.php:200
 #, php-format
 msgid "Label of '%s'"
 msgstr ""
 
-#: options-page.php:187
+#: options-page.php:207
+#, php-format
+msgid "Show '%s' in \"Character icon (preset)\""
+msgstr ""
+
+#: options-page.php:213
 #, php-format
 msgid "Move '%s' up"
 msgstr ""
 
-#: options-page.php:191
+#: options-page.php:217
 #, php-format
 msgid "Move '%s' down"
 msgstr ""
 
-#: options-page.php:195
+#: options-page.php:221
 #, php-format
 msgid "Delete '%s'? The character icon will no longer be displayed in the blocks that use it. This cannot be undone."
 msgstr ""
 
-#: options-page.php:196
+#: options-page.php:222
 msgid "Delete"
 msgstr ""
 
-#: options-page.php:197
+#: options-page.php:223
 #, php-format
 msgid "Delete '%s'"
 msgstr ""
 
-#: options-page.php:204
-msgid "Save labels and order"
+#: options-page.php:230
+msgid "Save labels, order and preset display"
 msgstr ""
 
-#: options-page.php:219
+#: options-page.php:234
+#, php-format
+msgid "Delete the selected icons (%d)? The character icons will no longer be displayed in the blocks that use them. This cannot be undone."
+msgstr ""
+
+#: options-page.php:235
+msgid "Delete selected icons"
+msgstr ""
+
+#: options-page.php:252
 msgid "Close"
 msgstr ""
 
-#: options-page.php:343
+#: options-page.php:405
 #, php-format
 msgid "Preview '%s'"
 msgstr ""
 
-#: options-page.php:371
+#: options-page.php:433
 #, php-format
 msgid "ERROR: The selected image URL is invalid. ('%s')"
 msgstr ""
 
-#: options-page.php:377
+#: options-page.php:439
 #, php-format
 msgid "ERROR: '%s' is not an image file."
 msgstr ""
 
-#: options-page.php:383
-#: options-page.php:405
+#: options-page.php:445
+#: options-page.php:476
 #, php-format
 msgid "ERROR: '%s' does not exist or the file path is invalid."
 msgstr ""
 
-#: options-page.php:390
+#: options-page.php:452
 #, php-format
 msgid "ERROR: Failed to import '%s'."
 msgstr ""
 
-#: options-page.php:396
+#: options-page.php:458
 #, php-format
 msgid "Info: '%s' is imported."
 msgstr ""
 
-#: options-page.php:413
+#: options-page.php:481
 #, php-format
 msgid "ERROR: Failed to delete '%s'."
 msgstr ""
 
-#: options-page.php:419
+#: options-page.php:492
 #, php-format
 msgid "Info: '%s' is deleted."
+msgstr ""
+
+#: options-page.php:498
+#: options-page.php:508
+#, php-format
+msgid "Info: %d icons are deleted."
+msgstr ""
+
+#: options-page.php:504
+msgid "ERROR: No icon is selected."
 msgstr ""
 
 #: settings.php:50

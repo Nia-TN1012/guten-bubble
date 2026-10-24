@@ -17,6 +17,7 @@ import {
 	getCharaIconPresetOptions,
 	getCharaRadiusOptions,
 	getCustomCharaIconOption,
+	findHiddenCharaIconOption,
 	getFontSizeOptions,
 	getTailTypeOptions,
 	getThemeColorOptions,
@@ -52,6 +53,7 @@ function childrenToText( value: ChildrenValue | string | undefined ): string {
 function CharaIconPresetOptions( { value }: { value: string } ) {
 	const custom = getCustomCharaIconOption();
 	const isKnown = getCharaIconPresetOptions().some( ( option ) => option.value === value );
+	const hidden = isKnown ? undefined : findHiddenCharaIconOption( value );
 	return (
 		<>
 			<option value={ custom.value }>{ custom.label }</option>
@@ -64,7 +66,15 @@ function CharaIconPresetOptions( { value }: { value: string } ) {
 					) ) }
 				</optgroup>
 			) ) }
-			{ ! isKnown && (
+			{ hidden && (
+				<option value={ value }>
+					{
+						/* translators: %s: Label of the character icon, which is hidden from the preset list on the settings page. */
+						sprintf( __( '%s (hidden)', 'guten-bubble' ), hidden.label )
+					}
+				</option>
+			) }
+			{ ! isKnown && ! hidden && (
 				<option value={ value }>
 					{
 						/* translators: %s: File name of the character icon. */

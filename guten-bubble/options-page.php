@@ -32,11 +32,13 @@ class GutenBubbleOptionsPage {
        if( isset( $_POST['selected-icon-url'] ) ) {
            check_admin_referer( self::IMPORT_NONCE_ACTION );
            $label = isset( $_POST['chara-icon-label'] ) ? wp_unslash( $_POST['chara-icon-label'] ) : '';
-           $import_result = $this->import_chara_icon_file( esc_url_raw( wp_unslash( $_POST['selected-icon-url'] ) ), is_string( $label ) ? $label : '' );
+           $import_result = $this->import_chara_icon_file( esc_url_raw( wp_unslash( $_POST['selected-icon-url'] ) ), is_string( $label ) ? $label : '', isset( $_POST['chara-icon-preset'] ) );
        }
-       if( isset( $_POST['delete-icon'] ) ) {
+       if( isset( $_POST['delete-icon'] ) || isset( $_POST['delete-selected'] ) ) {
            check_admin_referer( self::DELETE_NONCE_ACTION );
-           $delete_result = $this->delete_chara_icon_file( wp_unslash( $_POST['delete-icon'] ) );
+           // 'delete-icon' is the file name of the clicked row, and 'delete-files' is the list of the checked rows.
+           $delete_files = isset( $_POST['delete-icon'] ) ? [wp_unslash( $_POST['delete-icon'] )] : ( isset( $_POST['delete-files'] ) ? (array)wp_unslash( $_POST['delete-files'] ) : [] );
+           $delete_result = $this->delete_chara_icon_files( $delete_files );
        }
 
        GutenBubbleCharaIcons::ensure_option();
@@ -90,6 +92,16 @@ class GutenBubbleOptionsPage {
                                 <td>
                                     <input id="chara-icon-label" name="chara-icon-label" type="text" class="regular-text" value=""/>
                                     <p class="description"><?= esc_html__( "Text displayed in \"Character icon (preset)\" of the block. If it is empty, the file name is displayed.", "guten-bubble-admin" ) ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><?= esc_html__( "Preset", "guten-bubble-admin" ) ?></th>
+                                <td>
+                                    <label for="chara-icon-preset">
+                                        <input id="chara-icon-preset" name="chara-icon-preset" type="checkbox" value="1" checked />
+                                        <?= esc_html__( "Show in \"Character icon (preset)\"", "guten-bubble-admin" ) ?>
+                                    </label>
+                                    <p class="description"><?= esc_html__( "If it is unchecked, the icon can be used by selecting \"Custom\" and entering the file name. This setting is not applied when an imported icon image is overwritten; the setting in the list is kept.", "guten-bubble-admin" ) ?></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -152,21 +164,30 @@ class GutenBubbleOptionsPage {
                         <p class="cngb-thumbnail-empty"><?= esc_html__( "No character icon images have been imported.", "guten-bubble-admin" ) ?></p>
                         <?php else: ?>
                         <p class="description"><?= esc_html__( "Drag the icons (or use the arrow buttons) to change the order, then save.", "guten-bubble-admin" ) ?></p>
+                        <p class="description"><?= esc_html__( "Only the checked icons can be selected in \"Character icon (preset)\" of the block. Unchecked icons can be used by selecting \"Custom\" and entering the file name. Save to apply the changes.", "guten-bubble-admin" ) ?></p>
                         <table class="widefat striped cngb-icon-table">
                             <thead>
                                 <tr>
+                                    <th scope="col" class="cngb-icon-col-check">
+                                        <input type="checkbox" id="cngb-select-all" form="cngb-chara-icon-delete" aria-label="<?= esc_attr__( "Select all icons to delete", "guten-bubble-admin" ) ?>" />
+                                    </th>
                                     <th scope="col" class="cngb-icon-col-handle"><span class="screen-reader-text"><?= esc_html__( "Order", "guten-bubble-admin" ) ?></span></th>
                                     <th scope="col" class="cngb-icon-col-image"><?= esc_html__( "Image", "guten-bubble-admin" ) ?></th>
                                     <th scope="col"><?= esc_html__( "File name", "guten-bubble-admin" ) ?></th>
                                     <th scope="col"><?= esc_html__( "Label", "guten-bubble-admin" ) ?></th>
+                                    <th scope="col" class="cngb-icon-col-preset"><?= esc_html__( "Show in preset", "guten-bubble-admin" ) ?></th>
                                     <th scope="col" class="cngb-icon-col-actions"><?= esc_html__( "Actions", "guten-bubble-admin" ) ?></th>
                                 </tr>
                             </thead>
                             <tbody class="cngb-sortable"
-                                data-unsaved-message="<?= esc_attr__( "Unsaved changes to the labels and order will be lost.", "guten-bubble-admin" ) ?>">
+                                data-unsaved-message="<?= esc_attr__( "Unsaved changes to the labels, order and preset display will be lost.", "guten-bubble-admin" ) ?>">
                             <?php foreach( $icon_entries as $index => $entry ): ?>
                                 <?php $file = $entry['file']; $label_id = 'cngb-chara-icon-label-'.$index; ?>
                                 <tr class="cngb-sortable-item">
+                                    <td class="cngb-icon-col-check">
+                                        <input type="checkbox" class="cngb-select-icon" form="cngb-chara-icon-delete" name="delete-files[]" value="<?= esc_attr( $file ) ?>"
+                                            aria-label="<?= esc_attr( sprintf( __( "Select '%s' to delete", "guten-bubble-admin" ), $file ) ) ?>" />
+                                    </td>
                                     <td class="cngb-icon-col-handle">
                                         <span class="cngb-sort-handle dashicons dashicons-move" aria-hidden="true" title="<?= esc_attr__( "Drag to change the order", "guten-bubble-admin" ) ?>"></span>
                                     </td>
@@ -180,6 +201,11 @@ class GutenBubbleOptionsPage {
                                         <input type="text" id="<?= esc_attr( $label_id ) ?>" class="regular-text cngb-label-input"
                                             name="<?= esc_attr( GutenBubbleCharaIcons::OPTION_NAME ) ?>[label][]"
                                             value="<?= esc_attr( $entry['label'] ) ?>" placeholder="<?= esc_attr( $file ) ?>" />
+                                    </td>
+                                    <td class="cngb-icon-col-preset">
+                                        <input type="checkbox" class="cngb-preset-input" name="<?= esc_attr( GutenBubbleCharaIcons::OPTION_NAME ) ?>[preset][]" value="<?= esc_attr( $file ) ?>"
+                                            aria-label="<?= esc_attr( sprintf( __( "Show '%s' in \"Character icon (preset)\"", "guten-bubble-admin" ), $file ) ) ?>"
+                                            <?php checked( $entry['preset'] ) ?> />
                                     </td>
                                     <td class="cngb-icon-col-actions">
                                         <button type="button" class="button cngb-move-prev">
@@ -201,7 +227,14 @@ class GutenBubbleOptionsPage {
                             <?php endforeach ?>
                             </tbody>
                         </table>
-                        <?php submit_button( __( "Save labels and order", "guten-bubble-admin" ), "primary", "cngb-save-chara-icons" ) ?>
+                        <?php submit_button( __( "Save labels, order and preset display", "guten-bubble-admin" ), "primary", "cngb-save-chara-icons" ) ?>
+                        <p class="cngb-bulk-delete">
+                            <button type="submit" form="cngb-chara-icon-delete" name="delete-selected" value="1" id="cngb-delete-selected"
+                                class="button button-link-delete" disabled
+                                data-confirm="<?= esc_attr__( "Delete the selected icons (%d)? The character icons will no longer be displayed in the blocks that use them. This cannot be undone.", "guten-bubble-admin" ) ?>">
+                                <?= esc_html__( "Delete selected icons", "guten-bubble-admin" ) ?>
+                            </button>
+                        </p>
                         <?php endif ?>
                     </form>
                     </details>
@@ -297,6 +330,35 @@ class GutenBubbleOptionsPage {
                     unsaved = true;
                 });
 
+                $list.on( 'change', '.cngb-preset-input', function() {
+                    unsaved = true;
+                });
+
+                // Bulk delete: select all, and enable the button only while icons are selected.
+                var $deleteSelected = jQuery( '#cngb-delete-selected' );
+                var $selectAll = jQuery( '#cngb-select-all' );
+                var $selectIcons = $list.find( '.cngb-select-icon' );
+                function updateSelection() {
+                    var count = $selectIcons.filter( ':checked' ).length;
+                    $deleteSelected.prop( 'disabled', count === 0 );
+                    $selectAll.prop( 'checked', count > 0 && count === $selectIcons.length );
+                    $selectAll.prop( 'indeterminate', count > 0 && count < $selectIcons.length );
+                }
+                $selectIcons.on( 'change', updateSelection );
+                $selectAll.on( 'change', function() {
+                    $selectIcons.prop( 'checked', this.checked );
+                    updateSelection();
+                });
+                $deleteSelected.on( 'click', function( e ) {
+                    var message = jQuery( this ).attr( 'data-confirm' ).replace( '%d', $selectIcons.filter( ':checked' ).length );
+                    if( unsaved ) {
+                        message += '\n\n' + $list.attr( 'data-unsaved-message' );
+                    }
+                    if( !window.confirm( message ) ) {
+                        e.preventDefault();
+                    }
+                });
+
                 // Image preview popup
                 var dialog = document.getElementById( 'cngb-preview-dialog' );
                 var $dialogImg = jQuery( dialog ).find( 'img' );
@@ -360,7 +422,7 @@ class GutenBubbleOptionsPage {
         <?php
     }
 
-    private function import_chara_icon_file( $icon_url, $label ) {
+    private function import_chara_icon_file( $icon_url, $label, $preset ) {
         $upload_url = trailingslashit( wp_upload_dir()['baseurl'] );
         $upload_dir = trailingslashit( wp_upload_dir()['basedir'] );
         $icon_path = str_replace( $upload_url, $upload_dir, $icon_url );
@@ -390,33 +452,64 @@ class GutenBubbleOptionsPage {
                 'message' => sprintf( __( "ERROR: Failed to import '%s'.", "guten-bubble-admin" ), basename( $icon_path ) )
             ];
         }
-        GutenBubbleCharaIcons::upsert_entry( basename( $icon_path ), $label, $existed );
+        GutenBubbleCharaIcons::upsert_entry( basename( $icon_path ), $label, $existed, $preset );
         return [
             'success' => true,
             'message' => sprintf( __( "Info: '%s' is imported.", "guten-bubble-admin" ), basename( $icon_path ) )
         ];
     }
 
-    private function delete_chara_icon_file( $file ) {
+    /**
+     * Deletes imported icon images. The entries of the deleted ones are removed from the option at once.
+     *
+     * @param array $files File names.
+     * @return array ['success' => bool, 'message' => string]
+     */
+    private function delete_chara_icon_files( $files ) {
         // Only the imported icon images can be deleted. Checking against the list also prevents directory traversal.
-        if( !is_string( $file ) || !in_array( $file, GutenBubbleCharaIcons::get_imported_files(), true ) ) {
+        $imported = GutenBubbleCharaIcons::get_imported_files();
+        $dir = GutenBubbleCharaIcons::get_dir();
+        $deleted = [];
+        $failed = [];
+        foreach( array_unique( $files, SORT_REGULAR ) as $file ) {
+            if( !is_string( $file ) || !in_array( $file, $imported, true ) ) {
+                $failed[] = sprintf( __( "ERROR: '%s' does not exist or the file path is invalid.", "guten-bubble-admin" ), is_string( $file ) ? $file : '' );
+                continue;
+            }
+            wp_delete_file( $dir.'/'.$file );
+            if( file_exists( $dir.'/'.$file ) ) {
+                $failed[] = sprintf( __( "ERROR: Failed to delete '%s'.", "guten-bubble-admin" ), $file );
+                continue;
+            }
+            $deleted[] = $file;
+        }
+        if( !empty( $deleted ) ) {
+            GutenBubbleCharaIcons::remove_entries( $deleted );
+        }
+        if( empty( $failed ) && count( $deleted ) === 1 ) {
             return [
-                'success' => false,
-                'message' => sprintf( __( "ERROR: '%s' does not exist or the file path is invalid.", "guten-bubble-admin" ), is_string( $file ) ? $file : '' )
+                'success' => true,
+                'message' => sprintf( __( "Info: '%s' is deleted.", "guten-bubble-admin" ), $deleted[0] )
             ];
         }
-        $path = GutenBubbleCharaIcons::get_dir().'/'.$file;
-        wp_delete_file( $path );
-        if( file_exists( $path ) ) {
+        if( empty( $failed ) && !empty( $deleted ) ) {
             return [
-                'success' => false,
-                'message' => sprintf( __( "ERROR: Failed to delete '%s'.", "guten-bubble-admin" ), $file )
+                'success' => true,
+                'message' => sprintf( __( "Info: %d icons are deleted.", "guten-bubble-admin" ), count( $deleted ) )
             ];
         }
-        GutenBubbleCharaIcons::remove_entry( $file );
+        if( empty( $failed ) ) {
+            return [
+                'success' => false,
+                'message' => __( "ERROR: No icon is selected.", "guten-bubble-admin" )
+            ];
+        }
+        if( !empty( $deleted ) ) {
+            array_unshift( $failed, sprintf( __( "Info: %d icons are deleted.", "guten-bubble-admin" ), count( $deleted ) ) );
+        }
         return [
-            'success' => true,
-            'message' => sprintf( __( "Info: '%s' is deleted.", "guten-bubble-admin" ), $file )
+            'success' => false,
+            'message' => implode( ' ', $failed )
         ];
     }
 }
