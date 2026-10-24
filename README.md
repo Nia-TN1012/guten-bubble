@@ -1,6 +1,6 @@
 > IMPORTANT NOTICE
 > 
-> The upcoming version 1.0.0 will require **WordPress 6.6 or later** and **PHP 7.4 or later**.
+> Version 1.0.0 and later require **WordPress 6.6 or later** and **PHP 7.4 or later**.
 > Please make sure your environment meets these requirements before updating.
 > 
 
