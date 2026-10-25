@@ -170,7 +170,7 @@ class GutenBubbleOptionsPage {
                         <p class="cngb-thumbnail-empty"><?= esc_html__( "No character icon images have been imported.", "guten-bubble-admin" ) ?></p>
                         <?php else: ?>
                         <p class="description"><?= esc_html__( "Drag the icons (or use the arrow buttons) to change the order, then save.", "guten-bubble-admin" ) ?></p>
-                        <p class="description"><?= esc_html__( "Only the checked icons can be selected in \"Character icon (preset)\" of the block. Unchecked icons can be used by selecting \"Custom\" and entering the file name. Save to apply the changes.", "guten-bubble-admin" ) ?></p>
+                        <p class="description"><?= esc_html__( "Only the icons checked in the \"Show in preset\" column can be selected in \"Character icon (preset)\" of the block. Icons unchecked in that column can be used by selecting \"Custom\" and entering the file name. Save to apply the changes.", "guten-bubble-admin" ) ?></p>
                         <table class="widefat striped cngb-icon-table">
                             <thead>
                                 <tr>

@@ -267,10 +267,6 @@ msgstr "「キャラクターアイコン（プリセット）」に表示する
 msgid "If it is unchecked, the icon can be used by selecting \"Custom\" and entering the file name. This setting is not applied when an imported icon image is overwritten; the setting in the list is kept."
 msgstr "チェックを外した場合も、「カスタム」を選択してファイル名を入力すれば使用できます。インポート済みの画像を上書きした場合、この設定は反映されず、一覧の設定が保たれます。"
 
-#: options-page.php:173
-msgid "Only the checked icons can be selected in \"Character icon (preset)\" of the block. Unchecked icons can be used by selecting \"Custom\" and entering the file name. Save to apply the changes."
-msgstr "チェックを入れたアイコンのみ、ブロックの「キャラクターアイコン（プリセット）」で選択できます。チェックを外したアイコンも、「カスタム」を選択してファイル名を入力すれば使用できます。変更を反映するには保存してください。"
-
 #: options-page.php:178
 msgid "Select all icons to delete"
 msgstr "削除するアイコンをすべて選択"
@@ -316,3 +312,7 @@ msgstr "エラー: アイコンが選択されていません。"
 msgid "Info: %d icon is deleted."
 msgid_plural "Info: %d icons are deleted."
 msgstr[0] "情報: %d 個のアイコンを削除しました。"
+
+#: options-page.php:173
+msgid "Only the icons checked in the \"Show in preset\" column can be selected in \"Character icon (preset)\" of the block. Icons unchecked in that column can be used by selecting \"Custom\" and entering the file name. Save to apply the changes."
+msgstr "「プリセットに表示」列にチェックを入れたアイコンのみ、ブロックの「キャラクターアイコン（プリセット）」で選択できます。この列のチェックを外したアイコンも、「カスタム」を選択してファイル名を入力すれば使用できます。変更を反映するには保存してください。"
